@@ -1,4 +1,3 @@
-
 module.exports = {
   context: __dirname,
   entry: "./frontend/tuDu.jsx",
@@ -22,3 +21,4 @@ module.exports = {
   resolve: {
     extensions: ["", ".js", ".jsx"]
   }
+}
