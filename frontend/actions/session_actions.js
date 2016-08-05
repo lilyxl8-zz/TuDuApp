@@ -1,5 +1,5 @@
-import AppDispatcher = '../dispatcher/dispatcher'
-import SessionConstants = '../constants/session_constants'
+import AppDispatcher from '../dispatcher/dispatcher'
+import SessionConstants from '../constants/session_constants'
 
 const SessionActions = {
   currentUserReceived: function(currentUser) {

@@ -1,28 +1,30 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import ReactRouter from 'react-router'
+import { render } from 'react-dom'
+import { Router, Route, Link, browserHistory } from 'react-router'
 
-const Router = ReactRouter.Router;
-const Route = ReactRouter.Route;
-const browserHistory = ReactRouter.browserHistory;
-const Link = ReactRouter.Link;
+import SignupForm from './components/signup_form'
+import LoginForm from './components/login_form'
 
 const TuDuApp = React.createClass({
   render () {
     return (
-      <div>Hallo</div>
+      <div>
+        Hallo
+        {this.props.children}
+        <Link to='users/new'>SIGN UP KIDDOS</Link>
+      </div>
     )
   }
-});
+})
 
 document.addEventListener("DOMContentLoaded", () => {
-  ReactDOM.render(
+  render(
 		<Router history={browserHistory}>
 			<Route path= "/" component={TuDuApp}>
-				<Route path= "users/new" component={SignupForm} />
+				<Route path= "/users/new" component={SignupForm} />
 				<Route path="login" component={LoginForm}/>
 			</Route>
 		</Router>,
 		document.getElementById('main')
-	);
-});
+	)
+})

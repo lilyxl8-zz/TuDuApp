@@ -1,9 +1,7 @@
 import React, { PropTypes } from 'react'
-import UserUtil from '../util/user_util'
 import SessionUtil from '../util/session_util'
-import { Link } from 'react-router'
 
-const SignupForm = React.createClass({
+const LoginForm = React.createClass({
 
   contextTypes : {
     router: React.PropTypes.object.isRequired
@@ -16,11 +14,21 @@ const SignupForm = React.createClass({
     };
   },
 
+  componentDidMount () {
+    this.SessionStoreToken = SessionStore.addListener(this._checkUser)
+  },
+
+  _checkUser () {
+    if (SessionStore.currentUser()) {
+      this.context.router.push("/");
+    }
+  },
+
   render () {
     return (
       <div>
         <form onSubmit={this.executeSubmit}>
-          <h1>Sign Up</h1>
+          <h1>Log In</h1>
 
           <input onChange={this.updateUsername}
             type="text"
@@ -29,9 +37,9 @@ const SignupForm = React.createClass({
           <input onChange={this.updatePassword}
             type="password"
             value={this.state.password}
-            placeholder='Password (7 characters minimum)' />
+            placeholder='Password' />
           <Link
-            to="/login">Already have an account?
+            to="/users/new">Need an account?
           </Link>
           <button>Submit</button>
 
@@ -44,11 +52,7 @@ const SignupForm = React.createClass({
     e.preventDefault();
     let router = this.context.router;
 
-    UserUtil.createAccount(this.state, (credentials) => {
-      SessionUtil.login(credentials, () => {
-        router.push('/');
-      });
-    });
+    SessionUtil.login(this.state)
   },
 
   updateUsername (e) {
@@ -61,4 +65,4 @@ const SignupForm = React.createClass({
 
 })
 
-export default SignupForm
+export default LoginForm
