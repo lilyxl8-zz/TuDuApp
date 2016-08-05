@@ -1,4 +1,4 @@
-import UserActions from '../actions/user_actions'
+// import UserActions from '../actions/user_actions'
 
 const UserUtil = {
   createAccount: (credentials, callback) => {
@@ -9,7 +9,7 @@ const UserUtil = {
       data: { user: credentials },
       success: () => {
         callback && callback({
-          username: user.username,
+          username: credentials.username,
           password: credentials.password
         });
       }
