@@ -4,7 +4,7 @@ const SessionUtil = {
   login: (credentials, callback) => {
     $.ajax({
       type: 'POST',
-      url: '/api/sesion',
+      url: '/api/session',
       dataType: 'json',
       data: { user: credentials },
       success: (currentUser) => {
