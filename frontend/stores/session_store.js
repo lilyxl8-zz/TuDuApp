@@ -1,4 +1,4 @@
-import Store from 'flux/utils'.Store
+import { Store } from 'flux/utils'
 import SessionConstants from '../constants/session_constants'
 import AppDispatcher from '../dispatcher/dispatcher'
 
@@ -7,19 +7,19 @@ const SessionStore = new Store(AppDispatcher);
 let _currentUser;
 let _currentUserHasBeenFetched = false;
 
-SessionStore.currentUser = () {
+SessionStore.currentUser = () => {
   return _currentUser;
 };
 
-SessionStore.isLoggedIn = () {
+SessionStore.isLoggedIn = () => {
   return !!_currentUser;
 };
 
-SessionStore.currentUserHasBeenFetched = () {
+SessionStore.currentUserHasBeenFetched = () => {
   return _currentUserHasBeenFetched;
 };
 
-SessionStore.__onDispatch = (payload) {
+SessionStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
     case SessionConstants.CURRENT_USER_RECEIVED:
       _currentUser = payload.currentUser;
