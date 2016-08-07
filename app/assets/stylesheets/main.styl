@@ -1,25 +1,44 @@
 red-color = #f00
+black-color = #000
 
 /* RESET */
- html, body, header, nav, h1, a,
- ul, li, strong, main, button, i,
- section, img, div, h2, p, form,
- fieldset, label, input, textarea,
- span, article, footer, time, small
-   font-size inherit
-   color inherit
-   font-family inherit
-   box-sizing inherit
-   text-decoration inherit
-   margin 0
-   padding 0
-   border 0
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small
+  font-size inherit
+  color inherit
+  font-family inherit
+  box-sizing inherit
+  text-decoration inherit
+  margin 0
+  padding 0
+  border 0
 
-   background transparent
+  background transparent
 
- ul
-   list-style none
+ul
+  list-style none
 
 
- img
-   display block
+img
+  display block
+
+/* NAVBAR */
+.navbar
+  position fixed
+  width 100%
+  height 3rem
+  background red-color
+
+/* SIGN IN/UP */
+.auth-form
+  width 20rem
+  margin 0 auto
+  transform translateY(-50%) translateX(-50%)
+  top 50%
+  left 50%
+  padding 20px
+  border 1px solid black-color
+  border-radius 8px

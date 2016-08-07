@@ -10,7 +10,6 @@ const TuDuApp = React.createClass({
   render () {
     return (
       <div>
-        Hallo
         <NavBar />
         { this.props.children }
       </div>
