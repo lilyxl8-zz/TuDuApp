@@ -18,7 +18,7 @@ const SignupForm = React.createClass({
 
   render () {
     return (
-      <div>
+      <div className='auth-form'>
         <form onSubmit={this.executeSubmit}>
           <h1>Sign Up</h1>
 
@@ -26,13 +26,16 @@ const SignupForm = React.createClass({
             type="text"
             value={this.state.username}
             placeholder='Username' />
+          <br />
           <input onChange={this.updatePassword}
             type="password"
             value={this.state.password}
             placeholder='Password (7 characters minimum)' />
+          <br />
           <Link
             to="/signin">Already have an account?
           </Link>
+          <br />
           <button>Submit</button>
 
         </form>
