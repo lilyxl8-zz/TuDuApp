@@ -27,22 +27,33 @@ const NavBar = React.createClass({
   },
 
   render () {
-    if (!!this.state.currentUser) {
-      return (
-        <div>
-          {this.state.currentUser.username}
-          <Link to='/' onClick={ SessionUtil.logout }>Log out</Link>
-        </div>
-      );
+    let authText;
 
+    if (!!this.state.currentUser) {
+      authText = () => {
+        return (
+          <div>
+            { this.state.currentUser.username }
+            <Link to='/' onClick={ SessionUtil.logout }>Log out</Link>
+          </div>
+        );
+      }
     } else {
-      return (
-        <div>
-          <Link to='/signup'>Sign up</Link>
-          <Link to='/signin'>Sign in</Link>
-        </div>
-      );
+      authText = () => {
+        return (
+          <div>
+            <Link to='/signup'>Sign up</Link>
+            <Link to='/signin'>Sign in</Link>
+          </div>
+        );
+      }
     }
+
+    return (
+      <div className='navbar group'>
+        { authText() }
+      </div>
+    );
   }
 })
 

@@ -1,0 +1,44 @@
+/* RESET */
+html,
+body,
+header,
+nav,
+h1,
+a,
+ul,
+li,
+strong,
+main,
+button,
+i,
+section,
+img,
+div,
+h2,
+p,
+form,
+fieldset,
+label,
+input,
+textarea,
+span,
+article,
+footer,
+time,
+small {
+  font-size: inherit;
+  color: inherit;
+  font-family: inherit;
+  box-sizing: inherit;
+  text-decoration: inherit;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+ul {
+  list-style: none;
+}
+img {
+  display: block;
+}
