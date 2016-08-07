@@ -10,8 +10,8 @@ const TuDuApp = React.createClass({
     return (
       <div>
         Hallo
-        {this.props.children}
-        <Link to='users/new'>SIGN UP KIDDOS</Link>
+        { this.props.children }
+        <Link to='users/new'>Sign up here</Link>
       </div>
     )
   }
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		<Router history={browserHistory}>
 			<Route path= "/" component={TuDuApp}>
 				<Route path= "/users/new" component={SignupForm} />
-				<Route path="login" component={LoginForm}/>
+				<Route path="/" component={LoginForm}/>
 			</Route>
 		</Router>,
 		document.getElementById('main')
