@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router'
 
 import SessionUtil from '../util/session_util';
 import SessionStore from '../stores/session_store';
@@ -6,7 +7,7 @@ import SessionStore from '../stores/session_store';
 const NavBar = React.createClass({
   getInitialState () {
     return {
-      currentUser: SessionUtil.currentUser()
+      currentUser: SessionStore.currentUser()
     }
   },
 
@@ -26,11 +27,22 @@ const NavBar = React.createClass({
   },
 
   render () {
-    return (
-      <div>
-        {this.state.currentUser.username}
-      </div>
-    )
+    if (!!this.state.currentUser) {
+      return (
+        <div>
+          {this.state.currentUser.username}
+          <Link to='/' onClick={ SessionUtil.logout }>Log out</Link>
+        </div>
+      );
+
+    } else {
+      return (
+        <div>
+          <Link to='/signup'>Sign up</Link>
+          <Link to='/signin'>Sign in</Link>
+        </div>
+      );
+    }
   }
 })
 
