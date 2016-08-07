@@ -1,7 +1,9 @@
-import React, { PropTypes } from 'react'
-import SessionUtil from '../util/session_util'
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
+import SessionUtil from '../util/session_util';
+import SessionStore from '../stores/session_store';
 
-const LoginForm = React.createClass({
+const SigninForm = React.createClass({
 
   contextTypes : {
     router: React.PropTypes.object.isRequired
@@ -28,7 +30,7 @@ const LoginForm = React.createClass({
     return (
       <div>
         <form onSubmit={this.executeSubmit}>
-          <h1>Log In</h1>
+          <h1>Sign In</h1>
 
           <input onChange={this.updateUsername}
             type="text"
@@ -39,7 +41,7 @@ const LoginForm = React.createClass({
             value={this.state.password}
             placeholder='Password' />
           <Link
-            to="/users/new">Need an account?
+            to="/signup">Need an account?
           </Link>
           <button>Submit</button>
 
@@ -65,4 +67,4 @@ const LoginForm = React.createClass({
 
 })
 
-export default LoginForm
+export default SigninForm

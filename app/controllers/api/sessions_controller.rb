@@ -16,6 +16,14 @@ class Api::SessionsController < ApplicationController
 		end
 	end
 
+  def show
+    if logged_in?
+      render json: current_user
+    else
+      render json: nil
+    end
+  end
+
 	def destroy
 		logout_user!
 		render json: {}
