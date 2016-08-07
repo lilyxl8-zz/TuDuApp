@@ -4,12 +4,14 @@ import { Router, Route, Link, browserHistory } from 'react-router'
 
 import SignupForm from './components/signup_form'
 import LoginForm from './components/login_form'
+import NavBar from './components/navbar'
 
 const TuDuApp = React.createClass({
   render () {
     return (
       <div>
         Hallo
+        <NavBar />
         { this.props.children }
         <Link to='users/new'>Sign up here</Link>
       </div>
