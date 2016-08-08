@@ -8,7 +8,7 @@ const ListView = React.createClass({
       <div className="list-view">
         <TodoForm />
       </div>
-    )
+    );
   }
 })
 
