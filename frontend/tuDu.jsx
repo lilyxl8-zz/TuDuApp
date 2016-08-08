@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, Link, browserHistory } from 'react-router'
-import SessionStore from '../stores/session_store'
+import SessionStore from './stores/session_store'
 
 import SignupForm from './components/signup_form'
 import SigninForm from './components/signin_form'
@@ -9,25 +9,23 @@ import NavBar from './components/navbar'
 import ListView from './components/list_view'
 
 const TuDuApp = React.createClass({
-  let loggedIn = SessionStore.isLoggedIn();
-  let TodoList;
-
-  if (loggedIn) {
-    TodoList = () => {
-      return (
-        <ListView />
-      );
-    }
-  }
-
   render () {
+    let todoList;
+
+    if (SessionStore.isLoggedIn()) {
+      todoList = () => {
+        return (
+          <ListView />
+        );
+      }
+    }
     return (
       <div>
         <NavBar />
         { this.props.children }
-        { TodoList }
+        { todoList }
       </div>
-    )
+    );
   }
 })
 
