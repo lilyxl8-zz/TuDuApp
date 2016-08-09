@@ -6,10 +6,6 @@ const TodoStore = new Store(AppDispatcher);
 
 let _todos = [];
 
-TodoStore.todos = () => {
-  return _todos;
-};
-
 TodoStore.replaceTodo = (todo) => {
   let replaced = false;
 

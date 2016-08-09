@@ -1,34 +1,31 @@
 import React from 'react';
-import SessionStore from '../stores/session_store';
+import TodoStore from '../stores/todo_store';
 import TodoForm from './todo_form';
 
 const ListView = React.createClass({
-
 	getInitialState () {
 		return {
-			isLoggedIn: SessionStore.isLoggedIn()
+			todos: TodoStore.all()
 		};
 	},
 
 	componentDidMount () {
-		this.sessionStoreToken = SessionStore.addListener(this._onChange);
+		this.todoStoreToken = TodoStore.addListener(this._onChange);
 	},
 
 	_onChange () {
-		this.setState({isLoggedIn: SessionStore.isLoggedIn()});
+		this.setState({ todos: TodoStore.all() });
 	},
 
-	componentWillUnmount () {
-		this.sessionStoreToken.remove();
+	componentWillUnmount() {
+		this.todoStoreToken.remove();
 	},
-
 
   render () {
     let todoList = () => {
 			if (this.state.isLoggedIn) {
 				return (
 					<div>
-
 						<TodoForm />
 					</div>
 				);

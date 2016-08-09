@@ -1,7 +1,7 @@
 import React from 'react';
 import SessionStore from '../stores/session_store';
 
-// import ListView from './components/list_view';
+import ListView from './components/list_view';
 
 const ListIndex = React.createClass({
 
