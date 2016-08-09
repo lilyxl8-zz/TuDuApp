@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import SessionUtil from '../util/session_util';
 import SessionStore from '../stores/session_store';

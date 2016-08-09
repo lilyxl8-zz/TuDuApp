@@ -20,6 +20,11 @@ class Api::UsersController < ApplicationController
     end
   end
 
+	def show
+		@user = User.find(params[:id])
+		render :show
+	end
+
   private
     # For the internet is dark and full of terrors.
   def user_params

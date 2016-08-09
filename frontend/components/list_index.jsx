@@ -1,8 +1,9 @@
 import React from 'react';
 import SessionStore from '../stores/session_store';
-import TodoForm from './todo_form';
 
-const ListView = React.createClass({
+// import ListView from './components/list_view';
+
+const ListIndex = React.createClass({
 
 	getInitialState () {
 		return {
@@ -24,29 +25,11 @@ const ListView = React.createClass({
 
 
   render () {
-    let todoList = () => {
-			if (this.state.isLoggedIn) {
-				return (
-					<div>
-
-						<TodoForm />
-					</div>
-				);
-			} else {
-				return (
-					<h1>u w0t m8</h1>
-				);
-			}
-
-		};
-
-
     return (
-      <div className="list-view">
-        {todoList()}
+      <div className="list-index">
       </div>
     );
   }
 });
 
-export default ListView;
+export default ListIndex;

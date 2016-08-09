@@ -44,7 +44,6 @@ img {
 }
 /* NAVBAR */
 .navbar {
-  position: fixed;
   width: 100%;
   height: 3rem;
   background: #f00;
@@ -59,4 +58,7 @@ img {
   padding: 20px;
   border: 1px solid #000;
   border-radius: 8px;
+}
+.list-view {
+  margin-top: 5rem;
 }
