@@ -14,15 +14,15 @@ const ListIndex = React.createClass({
 	},
 
 	componentDidMount () {
-		this.sessionStoreToken = SessionStore.addListener(this._onChange);
-		this.listStoreToken = ListStore.addListener(this.updateList);
+		this.sessionStoreToken = SessionStore.addListener(this._updateSession);
+		this.listStoreToken = ListStore.addListener(this._updateList);
 	},
 
-	_onChange () {
+	_updateSession () {
 		this.setState({ currentUser: SessionStore.currentUser() });
 	},
 
-	updateList () {
+	_updateList () {
 		this.setState({ lists: ListStore.all() });
 	},
 

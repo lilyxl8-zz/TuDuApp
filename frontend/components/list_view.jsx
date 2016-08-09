@@ -1,39 +1,35 @@
 import React from 'react';
 import TodoStore from '../stores/todo_store';
+import TodoUtil from '../util/todo_util';
 import TodoForm from './todo_form';
 
 const ListView = React.createClass({
 	getInitialState () {
 		return {
-			todos: TodoStore.all()
+			todos: this.props.list.todos
 		};
 	},
 
-	componentDidMount () {
-		this.todoStoreToken = TodoStore.addListener(this._onChange);
-	},
-
-	_onChange () {
-		this.setState({ todos: TodoStore.all() });
-	},
-
-	componentWillUnmount() {
-		this.todoStoreToken.remove();
-	},
+	// componentDidMount () {
+	// 	// TodoUtil.fetchTodosByListId(this.props.list.id);
+	// 	// this.todoStoreToken = TodoStore.addListener(this._onChange);
+	// },
+	//
+	// _onChange () {
+	// 	// this.setState({ todos: TodoStore.all() });
+	// },
+	//
+	// componentWillUnmount() {
+	// 	// this.todoStoreToken.remove();
+	// },
 
   render () {
     let todoList = () => {
-			if (this.state.isLoggedIn) {
-				return (
-					<div>
-						<TodoForm />
-					</div>
-				);
-			} else {
-				return (
-					<h1>u w0t m8</h1>
-				);
-			}
+			this.state.todos.map(todo =>
+				<div>
+					<TodoForm name={todo.name} />
+				</div>
+			);
 
 		};
 
@@ -41,6 +37,7 @@ const ListView = React.createClass({
     return (
       <div className="list-view">
         {todoList()}
+				<TodoForm />
       </div>
     );
   }

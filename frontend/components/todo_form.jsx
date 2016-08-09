@@ -3,8 +3,12 @@ import TodoUtil from '../util/todo_util';
 
 const TodoForm = React.createClass({
   getInitialState () {
+		let name = '';
+		if (this.props.name) {
+			name = this.props.name;
+		}
     return {
-      name: ''
+      name: name
     };
   },
 
