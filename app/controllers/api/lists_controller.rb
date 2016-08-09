@@ -38,8 +38,8 @@ class Api::ListsController < ApplicationController
   end
 
   def show
-    @list = list.find(params[:id])
-		render json: @list
+    @list = List.find(params[:id])
+		render :show
   end
 
   private

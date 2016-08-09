@@ -13,6 +13,16 @@ const TodoUtil = {
     });
   },
 
+	fetchTodosByListId: (listId) => {
+		$.ajax({
+      type: 'GET',
+      url: '/api/lists/{$listId}',
+      dataType: 'json',
+      success: (todo) => {
+        TodoActions.todoReceived(todo);
+      }
+    });
+	}
 };
 
 export default TodoUtil;
