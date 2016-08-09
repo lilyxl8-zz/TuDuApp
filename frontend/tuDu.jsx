@@ -5,7 +5,7 @@ import { Router, Route, browserHistory } from 'react-router';
 import SignupForm from './components/signup_form';
 import SigninForm from './components/signin_form';
 import NavBar from './components/navbar';
-import ListView from './components/list_view';
+import ListIndex from './components/list_index';
 
 const TuDuApp = React.createClass({
   render () {
@@ -13,7 +13,7 @@ const TuDuApp = React.createClass({
       <div>
         <NavBar />
         { this.props.children }
-        <ListView />
+        <ListIndex />
       </div>
     );
   }

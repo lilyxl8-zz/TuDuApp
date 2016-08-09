@@ -31,6 +31,7 @@ ListStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
     case ListConstants.LISTS_RECEIVED:
 			_lists = payload.lists;
+			ListStore.__emitChange();
 			break;
 		case ListConstants.LIST_RECEIVED:
       this.replaceList(payload.list);

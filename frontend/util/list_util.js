@@ -1,7 +1,7 @@
 import ListActions from '../actions/list_actions';
 
 const ListUtil = {
-	fetchAll: () => {
+	fetchUserLists: () => {
 		$.ajax({
 			type: 'GET',
 			url: '/api/lists',
