@@ -1,4 +1,4 @@
-import TodoActions from '../actions/todo_actions'
+import TodoActions from '../actions/todo_actions';
 
 const TodoUtil = {
   createTodo: (name) => {
@@ -10,9 +10,9 @@ const TodoUtil = {
       success: (todo) => {
         TodoActions.todoReceived(todo);
       }
-    })
+    });
   },
 
-}
+};
 
-export default TodoUtil
+export default TodoUtil;

@@ -21,8 +21,17 @@ class Api::UsersController < ApplicationController
   end
 
 	def show
-		@user = User.find(params[:id])
-		render :show
+		if params[:id].to_i == current_user.id
+			@user = User.find(params[:id])
+			render :show
+		else
+			if logged_in?
+				render json: nil, status: 403
+			else
+				render json: nil, status: 401
+			end
+		end
+
 	end
 
   private
