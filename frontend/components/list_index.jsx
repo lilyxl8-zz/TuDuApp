@@ -1,8 +1,9 @@
 import React from 'react';
 import SessionStore from '../stores/session_store';
 import ListStore from '../stores/list_store';
+import ListUtil from '../util/list_util';
 
-import ListView from './components/list_view';
+import ListView from './list_view';
 
 const ListIndex = React.createClass({
 
@@ -14,6 +15,7 @@ const ListIndex = React.createClass({
 	},
 
 	componentDidMount () {
+		ListUtil.fetchUserLists();
 		this.sessionStoreToken = SessionStore.addListener(this._updateSession);
 		this.listStoreToken = ListStore.addListener(this._updateList);
 	},
@@ -32,15 +34,17 @@ const ListIndex = React.createClass({
 	},
 
   render () {
-		let lists = () => {
-			this.state.lists.map (list =>
-				<ListView list={list} />
+		let ourLists = () => {
+			return (
+				this.state.lists.map (list =>
+					<ListView key={list.id} list={list} />
+				)
 			);
 		};
 
     return (
       <div className="list-index">
-				{ lists() }
+				{ ourLists() }
       </div>
     );
   }
