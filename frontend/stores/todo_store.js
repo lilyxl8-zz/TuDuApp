@@ -23,6 +23,10 @@ TodoStore.replaceTodo = (todo) => {
   }
 };
 
+TodoStore.all = () => {
+  return _todos;
+};
+
 TodoStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
     case TodoConstants.TODO_RECEIVED:
@@ -30,10 +34,6 @@ TodoStore.__onDispatch = (payload) => {
 			TodoStore.__emitChange();
 			break;
   }
-};
-
-TodoStore.all = () => {
-  return _todos;
 };
 
 export default TodoStore;

@@ -1,5 +1,5 @@
-import AppDispatcher from '../dispatcher/dispatcher'
-import TodoConstants from '../constants/todo_constants'
+import AppDispatcher from '../dispatcher/dispatcher';
+import TodoConstants from '../constants/todo_constants';
 
 const TodoActions = {
   todoReceived (todo) {
@@ -8,6 +8,6 @@ const TodoActions = {
 			todo: todo
 		});
 	}
-}
+};
 
-export default TodoActions
+export default TodoActions;

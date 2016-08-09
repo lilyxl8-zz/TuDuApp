@@ -1,16 +1,13 @@
 import ListActions from '../actions/list_actions';
-import SessionStore from '../stores/session_store';
 
 const ListUtil = {
 	fetchAll: () => {
-		const userId = SessionStore.currentUser().id;
-
 		$.ajax({
 			type: 'GET',
-			url: '/api/users/${userId}',
+			url: '/api/lists',
 			dataType: 'json',
-			success: (user) => {
-
+			success: (lists) => {
+				ListActions.listsReceived(lists);
 			}
 		});
 	},
