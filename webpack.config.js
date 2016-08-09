@@ -1,9 +1,9 @@
 module.exports = {
   context: __dirname,
-  entry: "./frontend/tuDu.jsx",
+  entry: './frontend/tuDu.jsx',
   output: {
-    path: "./app/assets/javascripts",
-    filename: "bundle.js"
+    path: './app/assets/javascripts',
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
@@ -14,11 +14,14 @@ module.exports = {
         query: {
           presets: ['react', 'es2015']
         }
-      }
+      }, {
+				test: /\.styl$/,
+				loader: 'css-loader!stylus-loader?paths=node_modules/bootstrap-stylus/stylus/'
+			}
     ]
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ["", ".js", ".jsx"]
+    extensions: ['', '.js', '.jsx']
   }
-}
+};

@@ -25,6 +25,8 @@
   },
   "devDependencies": {
     "eslint": "^3.2.2",
-    "eslint-plugin-react": "^6.0.0"
+    "eslint-plugin-react": "^6.0.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^2.1.2"
   }
 }
