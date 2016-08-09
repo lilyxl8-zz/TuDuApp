@@ -1,3 +1,6 @@
+// handles only Calendar todos TODO write scope
+// List todos are handled under ListStore
+
 import { Store } from 'flux/utils';
 import TodoConstants from '../constants/session_constants';
 import AppDispatcher from '../dispatcher/dispatcher';
@@ -27,10 +30,16 @@ TodoStore.all = () => {
   return _todos;
 };
 
+
+
 TodoStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
     case TodoConstants.TODO_RECEIVED:
       this.replaceTodo(payload.todo);
+			TodoStore.__emitChange();
+			break;
+		case TodoConstants.TODOS_RECEIVED:
+      _todos = payload.todos;
 			TodoStore.__emitChange();
 			break;
   }

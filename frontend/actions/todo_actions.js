@@ -7,6 +7,13 @@ const TodoActions = {
 			actionType: TodoConstants.TODO_RECEIVED,
 			todo: todo
 		});
+	},
+
+	todosReceived (todos) {
+		AppDispatcher.dispatch({
+			actionType: TodoConstants.TODOS_RECEIVED,
+			todos: todos
+		});
 	}
 };
 

@@ -18,8 +18,8 @@ const TodoUtil = {
       type: 'GET',
       url: '/api/lists/{$listId}',
       dataType: 'json',
-      success: (todo) => {
-        TodoActions.todoReceived(todo);
+      success: (list) => {
+        TodoActions.todosReceived(list.todos);
       }
     });
 	}
