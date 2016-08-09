@@ -1,7 +1,6 @@
-import React, { PropTypes } from 'react'
-import UserUtil from '../util/user_util'
-import SessionUtil from '../util/session_util'
-import { Link } from 'react-router'
+import React from 'react';
+import UserUtil from '../util/user_util';
+import SessionUtil from '../util/session_util';
 
 const SignupForm = React.createClass({
 
@@ -11,8 +10,8 @@ const SignupForm = React.createClass({
 
   getInitialState () {
     return {
-      username: "",
-      password: ""
+      username: '',
+      password: ''
     };
   },
 
@@ -40,7 +39,7 @@ const SignupForm = React.createClass({
 
         </form>
       </div>
-    )
+    );
   },
 
   executeSubmit (e) {
@@ -62,6 +61,6 @@ const SignupForm = React.createClass({
     this.setState({ password: e.currentTarget.value });
   }
 
-})
+});
 
-export default SignupForm
+export default SignupForm;

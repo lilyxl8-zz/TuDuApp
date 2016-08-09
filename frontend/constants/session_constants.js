@@ -3,4 +3,4 @@ const SessionConstants = {
   LOGOUT: 'LOGOUT'
 };
 
-export default SessionConstants
+export default SessionConstants;
