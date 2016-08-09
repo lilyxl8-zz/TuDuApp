@@ -4,8 +4,8 @@ import TodoUtil from '../util/todo_util';
 const TodoForm = React.createClass({
   getInitialState () {
     return {
-      name: ""
-    }
+      name: ''
+    };
   },
 
 
@@ -30,6 +30,6 @@ const TodoForm = React.createClass({
       </div>
     );
   }
-})
+});
 
-export default TodoForm
+export default TodoForm;

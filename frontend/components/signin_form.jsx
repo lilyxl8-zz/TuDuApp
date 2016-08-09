@@ -1,5 +1,4 @@
-import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
+import React from 'react';
 import SessionUtil from '../util/session_util';
 import SessionStore from '../stores/session_store';
 
@@ -11,18 +10,18 @@ const SigninForm = React.createClass({
 
   getInitialState () {
     return {
-      username: "",
-      password: ""
+      username: '',
+      password: ''
     };
   },
 
   componentDidMount () {
-    this.SessionStoreToken = SessionStore.addListener(this._checkUser)
+    this.SessionStoreToken = SessionStore.addListener(this._checkUser);
   },
 
   _checkUser () {
-    if (SessionStore.currentUser()) {
-      this.context.router.push("/");
+		if (SessionStore.currentUser()) {
+      this.context.router.push('');
     }
   },
 
@@ -50,14 +49,13 @@ const SigninForm = React.createClass({
 
         </form>
       </div>
-    )
+    );
   },
 
   executeSubmit (e) {
     e.preventDefault();
-    let router = this.context.router;
 
-    SessionUtil.login(this.state)
+    SessionUtil.login(this.state);
   },
 
   updateUsername (e) {
@@ -68,6 +66,6 @@ const SigninForm = React.createClass({
     this.setState({ password: e.currentTarget.value });
   }
 
-})
+});
 
-export default SigninForm
+export default SigninForm;
