@@ -1,4 +1,4 @@
-import SessionActions from '../actions/session_actions'
+import SessionActions from '../actions/session_actions';
 
 const SessionUtil = {
   login: (credentials, callback) => {
@@ -11,14 +11,14 @@ const SessionUtil = {
         SessionActions.currentUserReceived(currentUser);
         callback && callback();
       }
-    })
+    });
   },
 
   logout: function() {
 		$.ajax({
-			type: "DELETE",
-			url: "/api/session",
-			dataType: "json",
+			type: 'DELETE',
+			url: '/api/session',
+			dataType: 'json',
 			success: function() {
 				SessionActions.logout();
 			}
@@ -28,8 +28,8 @@ const SessionUtil = {
   fetchCurrentUser: function(completion) {
 		$.ajax({
 			type: 'GET',
-			url: "/api/session",
-			dataType: "json",
+			url: '/api/session',
+			dataType: 'json',
 			success: function(currentUser) {
 				SessionActions.currentUserReceived(currentUser);
 			},
@@ -38,6 +38,6 @@ const SessionUtil = {
 			}
 		});
 	}
-}
+};
 
-export default SessionUtil
+export default SessionUtil;

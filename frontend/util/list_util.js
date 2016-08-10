@@ -1,4 +1,5 @@
 import ListActions from '../actions/list_actions';
+import SessionStore from '../stores/session_store';
 
 const ListUtil = {
 	fetchUserLists: () => {

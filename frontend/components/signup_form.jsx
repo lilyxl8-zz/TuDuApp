@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router';
+import ListUtil from '../util/list_util';
 import UserUtil from '../util/user_util';
 import SessionUtil from '../util/session_util';
 
@@ -48,6 +50,7 @@ const SignupForm = React.createClass({
 
     UserUtil.createAccount(this.state, (credentials) => {
       SessionUtil.login(credentials, () => {
+				ListUtil.fetchUserLists();
         router.push('/');
       });
     });

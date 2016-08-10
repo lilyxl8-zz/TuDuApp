@@ -2,6 +2,7 @@ import React from 'react';
 import SessionStore from '../stores/session_store';
 import ListStore from '../stores/list_store';
 import ListUtil from '../util/list_util';
+import SessionUtil from '../util/session_util';
 
 import ListView from './list_view';
 
@@ -15,13 +16,14 @@ const ListIndex = React.createClass({
 	},
 
 	componentDidMount () {
-		ListUtil.fetchUserLists();
+		SessionUtil.fetchCurrentUser();
 		this.sessionStoreToken = SessionStore.addListener(this._updateSession);
 		this.listStoreToken = ListStore.addListener(this._updateList);
 	},
 
 	_updateSession () {
 		this.setState({ currentUser: SessionStore.currentUser() });
+		ListUtil.fetchUserLists();
 	},
 
 	_updateList () {
