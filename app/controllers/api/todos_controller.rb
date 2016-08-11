@@ -1,5 +1,4 @@
-class TodosController < ApplicationController
-
+class Api::TodosController < ApplicationController
   def index
     @todos = Todo.all
     render :index
@@ -12,7 +11,7 @@ class TodosController < ApplicationController
   def create
     @todo = current_user.todos.new(todo_params)
 		if @todo.save
-			render :show
+			render json: @todo.list # for ListUtil to write a list.
 		else
 			render json: {errors: @todo.errors.full_messages}, status: 422
 		end
