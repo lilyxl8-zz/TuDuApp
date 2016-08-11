@@ -1,8 +1,8 @@
 import React from 'react';
-import SessionStore from '../stores/session_store';
+// import SessionStore from '../stores/session_store';
 import ListStore from '../stores/list_store';
-import ListUtil from '../util/list_util';
-import SessionUtil from '../util/session_util';
+import ListUtil from '../utils/list_util';
+// import SessionUtil from '../utils/session_util';
 
 import ListView from './list_view';
 
@@ -15,6 +15,7 @@ const ListIndex = React.createClass({
 	},
 
 	componentDidMount () {
+		ListUtil.fetchUserLists();
 		this.listStoreToken = ListStore.addListener(this._updateList);
 	},
 
@@ -24,7 +25,6 @@ const ListIndex = React.createClass({
 	},
 
 	componentWillUnmount () {
-		this.sessionStoreToken.remove();
 		this.listStoreToken.remove();
 	},
 
