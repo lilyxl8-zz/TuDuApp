@@ -14,6 +14,12 @@ const ListActions = {
 			actionType: ListConstants.LIST_RECEIVED,
 			list: list
 		});
+	},
+
+	clearLists () {
+		AppDispatcher.dispatch({
+			actionType: ListConstants.LISTS_CLEARED
+		});
 	}
 };
 

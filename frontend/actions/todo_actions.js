@@ -14,6 +14,12 @@ const TodoActions = {
 			actionType: TodoConstants.TODOS_RECEIVED,
 			todos: todos
 		});
+	},
+
+	clearTodos () {
+		AppDispatcher.dispatch({
+			actionType: TodoConstants.TODOS_CLEARED
+		});
 	}
 };
 
