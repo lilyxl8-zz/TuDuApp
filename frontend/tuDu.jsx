@@ -2,8 +2,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 
-import SessionUtil from '../util/session_util';
-import SessionStore from '../store/session_store';
+import SessionUtil from './utils/session_util';
+import SessionStore from './stores/session_store';
 
 import SignupForm from './components/signup_form';
 import SigninForm from './components/signin_form';
@@ -18,10 +18,8 @@ const TuDuApp = React.createClass({
 	},
 
 	componentDidMount () {
+		SessionUtil.fetchCurrentUser();
 		this.sessionStoreToken = SessionStore.addListener(this._updateSession);
-    SessionUtil.fetchCurrentUser( () => {
-      this.setState({ currentUser: SessionStore.currentUser() });
-    });
 	},
 
 	_updateSession () {
@@ -30,11 +28,16 @@ const TuDuApp = React.createClass({
 	},
 
   render () {
+		let listIndex = () => {
+			if (SessionStore.currentUser()) {
+				return <ListIndex /> ;
+			}
+		};
     return (
       <div>
         <NavBar />
         { this.props.children }
-        <ListIndex />
+        { listIndex() }
       </div>
     );
   }

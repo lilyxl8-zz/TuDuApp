@@ -1,5 +1,5 @@
 import React from 'react';
-import ListUtil from '../util/list_util';
+import ListUtil from '../utils/list_util';
 
 const TodoForm = React.createClass({
   getInitialState () {

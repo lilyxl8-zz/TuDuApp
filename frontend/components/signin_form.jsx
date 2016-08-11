@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
-import ListUtil from '../util/list_util';
-import SessionUtil from '../util/session_util';
+import ListUtil from '../utils/list_util';
+import SessionUtil from '../utils/session_util';
 import SessionStore from '../stores/session_store';
 
 const SigninForm = React.createClass({
@@ -56,7 +56,7 @@ const SigninForm = React.createClass({
 
   executeSubmit (e) {
     e.preventDefault();
-    SessionUtil.login(this.state, ListUtil.fetchUserLists);
+    SessionUtil.login(this.state);
   },
 
   updateUsername (e) {
