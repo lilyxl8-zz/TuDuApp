@@ -1,5 +1,5 @@
 import React from 'react';
-import TodoStore from '../stores/todo_store';
+import ListStore from '../stores/list_store';
 import TodoForm from './todo_form';
 
 const ListView = React.createClass({
@@ -9,10 +9,23 @@ const ListView = React.createClass({
 		};
 	},
 
+	componentDidMount () {
+		this.listStoreToken = ListStore.addListener(this._updateList);
+	},
+
+	_updateList () {
+		this.setState({ todos: this.props.list.todos });
+	},
+
+	componentWillUnmount () {
+		this.listStoreToken.remove();
+	},
+
   render () {
-		let newTodo = {name: '', list_id: this.props.list.id };
+		let blankTodo = {name: '', list_id: this.props.list.id };
 
     let todoList = () => {
+			console.log(blankTodo);
 			return this.state.todos.map(todo =>
 				<TodoForm key={todo.id} todo={todo} />
 			);
@@ -22,7 +35,7 @@ const ListView = React.createClass({
       <div className="list-view">
 				<h1>{this.props.list.name}</h1>
         { todoList() }
-				<TodoForm todo={newTodo}/>
+				<TodoForm todo={blankTodo}/>
       </div>
     );
   }

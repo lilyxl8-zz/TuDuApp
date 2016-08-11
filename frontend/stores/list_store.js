@@ -61,7 +61,6 @@ ListStore.__onDispatch = (payload) => {
 		case ListConstants.TODO_RECEIVED:
 			console.log('TODO_RECEIVED');
 			ListStore.replaceList(payload.todo.list);
-			console.log(_lists);
 			ListStore.__emitChange();
 			break;
   }
