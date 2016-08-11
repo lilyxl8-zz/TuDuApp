@@ -11,7 +11,7 @@ class Api::TodosController < ApplicationController
   def create
     @todo = current_user.todos.new(todo_params)
 		if @todo.save
-			render json: @todo.list # for ListUtil to write a list.
+			render :show
 		else
 			render json: {errors: @todo.errors.full_messages}, status: 422
 		end

@@ -56,7 +56,6 @@ const SigninForm = React.createClass({
 
   executeSubmit (e) {
     e.preventDefault();
-
     SessionUtil.login(this.state, ListUtil.fetchUserLists);
   },
 

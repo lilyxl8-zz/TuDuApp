@@ -3,8 +3,10 @@ json.extract!(
 	:id, :name, :user_id
 )
 
-json.todos do
-	json.array!(list.todos) do |todo|
-		json.partial!('api/todos/todo', todo: todo)
+if show_todos ||= false
+	json.todos do
+		json.array!(list.todos) do |todo|
+			json.partial!('api/todos/todo', todo: todo, show_list: false)
+		end
 	end
 end

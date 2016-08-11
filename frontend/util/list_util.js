@@ -31,7 +31,7 @@ const ListUtil = {
       dataType: 'json',
       data: { todo },
       success: (newTodo) => {
-        ListActions.listReceived(newTodo); // TODO
+        ListActions.todoReceived(newTodo); // TODO
       }
     });
 	}
