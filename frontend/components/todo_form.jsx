@@ -27,7 +27,7 @@ const TodoForm = React.createClass({
       <div>
         <form className='todo-form' onSubmit={this.executeSubmit}>
           <input
-            placeholder="mach es jetzt!"
+            placeholder="+"
             value={this.state.name}
             onChange={this.updateName} />
         </form>
