@@ -1,5 +1,4 @@
 import ListActions from '../actions/list_actions';
-import SessionStore from '../stores/session_store';
 
 const ListUtil = {
 	fetchUserLists: () => {
@@ -26,13 +25,14 @@ const ListUtil = {
   },
 
 	createTodo: (todo) => {
+		console.log(todo);
 		$.ajax({
       type: 'POST',
       url: '/api/todos',
       dataType: 'json',
-      data: { name: todo.name, list_id: todo.list_id },
-      success: (todo) => {
-        ListActions.listReceived(list); // TODO
+      data: { todo },
+      success: (newTodo) => {
+        ListActions.listReceived(newTodo); // TODO
       }
     });
 	}

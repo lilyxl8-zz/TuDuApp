@@ -34,7 +34,7 @@ ListStore.__onDispatch = (payload) => {
 			ListStore.__emitChange();
 			break;
 		case ListConstants.LIST_RECEIVED:
-      this.replaceList(payload.list);
+      ListStore.replaceList(payload.list);
 			ListStore.__emitChange();
 			break;
   }

@@ -7,6 +7,13 @@ const ListActions = {
 			actionType: ListConstants.LISTS_RECEIVED,
 			lists: lists
 		});
+	},
+
+	listReceived (list) {
+		AppDispatcher.dispatch({
+			actionType: ListConstants.LIST_RECEIVED,
+			list: list
+		});
 	}
 };
 
