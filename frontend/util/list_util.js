@@ -18,13 +18,24 @@ const ListUtil = {
       type: 'POST',
       url: '/api/lists',
       dataType: 'json',
-      data: { name: name, list_id: 1 }, //TODO make lists a thing
+      data: { name: name },
       success: (list) => {
         ListActions.listReceived(list);
       }
     });
   },
 
+	createTodo: (todo) => {
+		$.ajax({
+      type: 'POST',
+      url: '/api/todos',
+      dataType: 'json',
+      data: { name: todo.name, list_id: todo.list_id },
+      success: (todo) => {
+        ListActions.listReceived(list); // TODO
+      }
+    });
+	}
 };
 
 export default ListUtil;
