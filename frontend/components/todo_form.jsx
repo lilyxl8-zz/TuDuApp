@@ -3,10 +3,6 @@ import ListUtil from '../utils/list_util';
 
 const TodoForm = React.createClass({
   getInitialState () {
-		let name = '';
-		if (this.props.todo.name) {
-			name = this.props.todo.name;
-		}
     return {
       todo: this.props.todo
     };
@@ -21,6 +17,9 @@ const TodoForm = React.createClass({
   handleSubmit (e) {
     e.preventDefault();
     ListUtil.createTodo(this.state.todo);
+		let newTodo = this.state.todo;
+		newTodo.name = '';
+    this.setState({todo: newTodo});
   },
 
   render () {

@@ -23,7 +23,6 @@ const TuDuApp = React.createClass({
 	},
 
 	_updateSession () {
-		console.log('hi');
 		this.setState({ currentUser: SessionStore.currentUser() });
 	},
 
