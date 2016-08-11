@@ -16,7 +16,6 @@ const ListView = React.createClass({
 			);
 		};
 
-		// console.log(this.state.todos);
 		let todo = {name: '', list_id: this.props.list.id };
     return (
       <div className="list-view">

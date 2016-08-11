@@ -25,7 +25,6 @@ const ListUtil = {
   },
 
 	createTodo: (todo) => {
-		console.log(todo);
 		$.ajax({
       type: 'POST',
       url: '/api/todos',

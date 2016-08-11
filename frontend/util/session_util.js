@@ -1,4 +1,6 @@
 import SessionActions from '../actions/session_actions';
+import ListActions from '../actions/list_actions';
+import TodoActions from '../actions/todo_actions';
 
 const SessionUtil = {
   login: (credentials, callback) => {
@@ -14,26 +16,30 @@ const SessionUtil = {
     });
   },
 
-  logout: function() {
+  logout: () => {
 		$.ajax({
 			type: 'DELETE',
 			url: '/api/session',
 			dataType: 'json',
-			success: function() {
+			success: () => {
 				SessionActions.logout();
+			},
+			complete: () => {
+				ListActions.clearLists();
+				TodoActions.clearTodos();
 			}
 		});
 	},
 
-  fetchCurrentUser: function(completion) {
+  fetchCurrentUser: (completion) => {
 		$.ajax({
 			type: 'GET',
 			url: '/api/session',
 			dataType: 'json',
-			success: function(currentUser) {
+			success: (currentUser) => {
 				SessionActions.currentUserReceived(currentUser);
 			},
-			complete: function() {
+			complete: () => {
 				completion && completion();
 			}
 		});

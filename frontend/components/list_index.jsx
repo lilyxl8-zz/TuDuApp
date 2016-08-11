@@ -36,7 +36,6 @@ const ListIndex = React.createClass({
 	},
 
   render () {
-		console.log(this.state.lists);
 		let ourLists = () => {
 			return (
 				this.state.lists.map (list =>

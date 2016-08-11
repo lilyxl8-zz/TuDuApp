@@ -23,6 +23,10 @@ ListStore.replaceList = (list) => {
   }
 };
 
+ListStore.clearLists = () => {
+	_lists = [];
+};
+
 ListStore.all = () => {
   return _lists;
 };
@@ -35,6 +39,10 @@ ListStore.__onDispatch = (payload) => {
 			break;
 		case ListConstants.LIST_RECEIVED:
       ListStore.replaceList(payload.list);
+			ListStore.__emitChange();
+			break;
+		case ListConstants.LISTS_CLEARED:
+			ListStore.clearLists();
 			ListStore.__emitChange();
 			break;
   }
