@@ -10,23 +10,16 @@ const ListIndex = React.createClass({
 
 	getInitialState () {
 		return {
-			currentUser: SessionStore.currentUser(),
 			lists: ListStore.all()
 		};
 	},
 
 	componentDidMount () {
-		SessionUtil.fetchCurrentUser();
-		this.sessionStoreToken = SessionStore.addListener(this._updateSession);
 		this.listStoreToken = ListStore.addListener(this._updateList);
 	},
 
-	_updateSession () {
-		this.setState({ currentUser: SessionStore.currentUser() });
-		if (SessionStore.currentUser()) { ListUtil.fetchUserLists(); }
-	},
-
 	_updateList () {
+		console.log(ListStore.all());
 		this.setState({ lists: ListStore.all() });
 	},
 

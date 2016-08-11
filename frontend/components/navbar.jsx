@@ -14,9 +14,6 @@ const NavBar = React.createClass({
 
   componentDidMount () {
     this.SessionStoreToken = SessionStore.addListener(this._onChange);
-    SessionUtil.fetchCurrentUser( () => {
-      this.setState({ currentUser: SessionStore.currentUser() });
-    });
   },
 
   _onChange () {

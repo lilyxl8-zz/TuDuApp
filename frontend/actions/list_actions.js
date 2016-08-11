@@ -16,6 +16,13 @@ const ListActions = {
 		});
 	},
 
+	todoReceived (todo) {
+		AppDispatcher.dispatch({
+			actionType: ListConstants.TODO_RECEIVED,
+			todo: todo
+		});
+	},
+
 	clearLists () {
 		AppDispatcher.dispatch({
 			actionType: ListConstants.LISTS_CLEARED
