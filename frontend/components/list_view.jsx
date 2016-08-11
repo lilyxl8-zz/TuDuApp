@@ -11,15 +11,16 @@ const ListView = React.createClass({
 
   render () {
     let todoList = () => {
-			this.state.todos.map(todo =>
-				<TodoForm name={todo.name} />
+			return this.state.todos.map(todo =>
+				<TodoForm key={todo.id} name={todo.name} />
 			);
 		};
+		console.log(todoList());
 
     return (
       <div className="list-view">
 				<h1>{this.props.list.name}</h1>
-        {todoList()}
+        { todoList() }
 				<TodoForm />
       </div>
     );

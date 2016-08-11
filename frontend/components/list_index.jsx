@@ -23,7 +23,7 @@ const ListIndex = React.createClass({
 
 	_updateSession () {
 		this.setState({ currentUser: SessionStore.currentUser() });
-		ListUtil.fetchUserLists();
+		if (SessionStore.currentUser()) { ListUtil.fetchUserLists(); }
 	},
 
 	_updateList () {
