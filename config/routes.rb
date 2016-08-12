@@ -7,5 +7,4 @@ Rails.application.routes.draw do
     resources :days, only:  [:create, :show]
     resource :session, only: [:new, :show, :create, :destroy]
   end
-
 end
