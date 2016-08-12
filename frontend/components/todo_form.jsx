@@ -17,12 +17,17 @@ const TodoForm = React.createClass({
     this.setState({todo: newTodo});
   },
 
+	toggleEditable (e) {
+		e.preventDefault();
+		this.setState({ editable: !this.state.editable });
+	},
+
   handleSubmit (e) {
     e.preventDefault();
     ListUtil.createTodo(this.state.todo);
 		let newTodo = this.state.todo;
 		newTodo.name = '';
-    this.setState({todo: newTodo});
+    this.setState({todo: newTodo, editable: false });
   },
 
   render () {
@@ -35,14 +40,15 @@ const TodoForm = React.createClass({
           <input
             placeholder="+"
             value={this.state.todo.name}
-            onChange={this.updateName} />
+            onChange={this.updateName}
+						onBlur={this.toggleEditable} />
         </form>
 				);
 			};
 		} else {
 			todoEl = () => {
 				return (
-					<div>{this.state.todo.name}</div>
+					<div>{this.state.todo.name} <a onClick={this.toggleEditable}>x</a></div>
 				);
 			};
 		}
