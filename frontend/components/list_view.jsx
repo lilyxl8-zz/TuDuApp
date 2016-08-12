@@ -1,5 +1,6 @@
 import React from 'react';
 import ListStore from '../stores/list_store';
+import TodoItem from './todo_item';
 import TodoForm from './todo_form';
 
 const ListView = React.createClass({
@@ -26,7 +27,7 @@ const ListView = React.createClass({
 
     let todoList = () => {
 			return this.state.todos.map(todo =>
-				<TodoForm key={todo.id} todo={todo} />
+				<TodoItem key={todo.id} todo={todo} />
 			);
 		};
 
