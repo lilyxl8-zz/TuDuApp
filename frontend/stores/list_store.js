@@ -7,30 +7,27 @@ const ListStore = new Store(AppDispatcher);
 let _lists = [];
 
 ListStore.replaceList = (list) => {
-  // let replaced = false;
-
-  // _lists = _lists.map( (el) => {
-  //   if (el.id === list.id) {
-  //     replaced = true;
-  //     return list;
-  //   } else {
-  //     return el;
-  //   }
-  // });
-
 	for (let i = 0; i < _lists.length; i++) {
 		if (_lists[i].id === list.id) {
-			// replaced = true;
 			_lists[i] = list;
 			return;
 		}
 	}
 
 	_lists.push(list);
+};
 
-  // if (!replaced) {
-  //
-  // }
+ListStore.removeTodo = (todo) => {
+	for (let i = 0; i < _lists.length; i++) {
+		if (_lists[i].id === todo.list_id) {
+			for (let j = 0; j < _lists[i].todos.length; j++) {
+				if (_lists[i].todos[j].id === todo.id) {
+					_lists[i].todos.splice(j, 1);
+					return;
+				}
+			}
+		}
+	}
 };
 
 ListStore.clearLists = () => {
@@ -61,6 +58,11 @@ ListStore.__onDispatch = (payload) => {
 		case ListConstants.TODO_RECEIVED:
 			console.log('TODO_RECEIVED');
 			ListStore.replaceList(payload.todo.list);
+			ListStore.__emitChange();
+			break;
+		case ListConstants.TODO_DELETED:
+			console.log('TODO_DELETED');
+			ListStore.removeTodo(payload.todo);
 			ListStore.__emitChange();
 			break;
   }

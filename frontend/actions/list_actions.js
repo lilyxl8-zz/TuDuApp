@@ -23,6 +23,13 @@ const ListActions = {
 		});
 	},
 
+	todoDeleted (todo) {
+		AppDispatcher.dispatch({
+			actionType: ListConstants.TODO_DELETED,
+			todo: todo
+		});
+	},
+
 	clearLists () {
 		AppDispatcher.dispatch({
 			actionType: ListConstants.LISTS_CLEARED
