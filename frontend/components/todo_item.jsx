@@ -39,9 +39,8 @@ const TodoItem = React.createClass({
 	},
 
   render () {
-		let todoEl;
-		let doneClass='todo-item';
-		if (this.state.todo.done) { doneClass += ' done'; }
+		let todoEl, doneClass;
+		if (this.state.todo.done) { doneClass = 'done'; }
 
 		if (this.state.editing) {
 			todoEl = () => {
@@ -59,8 +58,8 @@ const TodoItem = React.createClass({
 		} else {
 			todoEl = () => {
 				return (
-					<div className={doneClass}>
-						<a onClick={this.toggleDone}>{this.state.todo.name}</a>
+					<div className='todo-item'>
+						<a onClick={this.toggleDone} className={doneClass}>{this.state.todo.name}</a>
 						<a onClick={this.toggleEditing}>ed</a>
 						<a onClick={this.deleteTodo}>X</a>
 					</div>

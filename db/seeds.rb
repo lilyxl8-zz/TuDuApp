@@ -15,6 +15,7 @@ list0 = List.create!(name: "Dat list", user_id: user0.id)
 list1 = List.create!(name: "Dat list", user_id: user1.id)
 list2 = List.create!(name: "Dat list", user_id: user2.id)
 list3 = List.create!(name: "Dat list", user_id: user3.id)
+list4 = List.create!(name: "Die Liste", user_id: user1.id)
 
 
 Todo.destroy_all
@@ -26,5 +27,6 @@ Todo.create!(name:"don't buy code", user_id: user0.id, list_id: list0.id)
 Todo.create!(name:"please help", user_id: user2.id, list_id: list2.id)
 Todo.create!(name:"I'm so sad", user_id: user3.id, list_id: list3.id)
 Todo.create!(name:"Oh god they're coming", user_id: user3.id, list_id: list3.id)
+Todo.create!(name:"Startle Lily", user_id: user1.id, list_id: list4.id)
 
 print "seeded!"

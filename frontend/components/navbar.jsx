@@ -30,8 +30,8 @@ const NavBar = React.createClass({
     if (this.state.currentUser) {
       authText = () => {
         return (
-          <div>
-            { this.state.currentUser.username }
+          <div className='auth-btns group'>
+            Welcome, { this.state.currentUser.username }!
             <Link to='/' onClick={ SessionUtil.logout }>Log out</Link>
           </div>
         );
@@ -39,7 +39,7 @@ const NavBar = React.createClass({
     } else {
       authText = () => {
         return (
-          <div>
+          <div className='auth-btns group'>
             <Link to='/signup'>Sign up</Link>
             <Link to='/signin'>Sign in</Link>
           </div>
@@ -48,7 +48,7 @@ const NavBar = React.createClass({
     }
 
     return (
-      <div className='navbar group'>
+      <div className='navbar'>
         { authText() }
       </div>
     );
