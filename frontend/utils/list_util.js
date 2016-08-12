@@ -34,6 +34,18 @@ const ListUtil = {
         ListActions.todoReceived(newTodo); // TODO
       }
     });
+	},
+
+	updateTodo: (todo) => {
+		$.ajax({
+      type: 'PATCH',
+      url: '/api/todos/' + todo.id,
+      dataType: 'json',
+      data: { todo },
+      success: (updatedTodo) => {
+        ListActions.todoReceived(updatedTodo); // TODO
+      }
+    });
 	}
 };
 

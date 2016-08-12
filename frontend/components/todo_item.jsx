@@ -24,6 +24,7 @@ const TodoItem = React.createClass({
   handleSubmit (e) {
     e.preventDefault();
     ListUtil.updateTodo(this.state.todo);
+		this.toggleEditable(e);
   },
 
   render () {
