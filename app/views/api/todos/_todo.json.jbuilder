@@ -1,6 +1,6 @@
 json.extract!(
 	todo,
-	:id, :name, :list_id, :user_id, :date
+	:id, :name, :list_id, :user_id, :done, :date
 )
 
 if show_list ||= false
