@@ -20,7 +20,6 @@ const ListIndex = React.createClass({
 	},
 
 	_updateList () {
-		console.log("update");
 		this.setState({ lists: ListStore.all() });
 	},
 
