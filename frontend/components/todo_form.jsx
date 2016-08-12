@@ -3,10 +3,15 @@ import ListUtil from '../utils/list_util';
 
 const TodoForm = React.createClass({
   getInitialState () {
-		let editState = false;
-		if (!this.props.todo.name) { editState = true; }
+		let editState, newState = false;
+		console.log(this.props.todo);
+		if (!this.props.todo.name) {
+			newState = true;
+			editState = true;
+		}
     return {
       todo: this.props.todo,
+			newForm: newState,
 			editable: editState
     };
   },
@@ -19,6 +24,7 @@ const TodoForm = React.createClass({
 
 	toggleEditable (e) {
 		e.preventDefault();
+		if (this.state.newForm) { return; }
 		this.setState({ editable: !this.state.editable });
 	},
 

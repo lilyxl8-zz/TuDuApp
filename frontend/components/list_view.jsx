@@ -25,7 +25,6 @@ const ListView = React.createClass({
 		let blankTodo = {name: '', list_id: this.props.list.id };
 
     let todoList = () => {
-			console.log(blankTodo);
 			return this.state.todos.map(todo =>
 				<TodoForm key={todo.id} todo={todo} />
 			);
