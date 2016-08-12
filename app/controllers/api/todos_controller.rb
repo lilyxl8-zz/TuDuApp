@@ -10,6 +10,7 @@ class Api::TodosController < ApplicationController
 
   def create
     @todo = current_user.todos.new(todo_params)
+		byebug
 		if @todo.save
 			render :show
 		else
@@ -43,7 +44,7 @@ class Api::TodosController < ApplicationController
   private
 
   def todo_params
-    params.require(:todo).permit(:name, :list_id, :date)
+    params.require(:todo).permit(:name, :list_id, :date, :done)
   end
 
 end

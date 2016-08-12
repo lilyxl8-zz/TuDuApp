@@ -3,6 +3,7 @@ class CreateTodos < ActiveRecord::Migration
     create_table :todos do |t|
       t.string :name, null: false
       t.integer :user_id, null: false
+			t.boolean :done, :default => false
       t.date :date
       t.integer :list_id, null: false
 

@@ -6,7 +6,7 @@ const TodoItem = React.createClass({
 		console.log(this.props.todo);
     return {
       todo: this.props.todo,
-			editable: false
+			editing: false
     };
   },
 
@@ -16,21 +16,31 @@ const TodoItem = React.createClass({
     this.setState({todo: newTodo});
   },
 
-	toggleEditable (e) {
+	toggleDone (e) {
 		e.preventDefault();
-		this.setState({ editable: !this.state.editable });
+		console.log(this.state.todo);
+		let newTodo = this.state.todo;
+		newTodo.done = !newTodo.done;
+		ListUtil.updateTodo(newTodo);
+	},
+
+	toggleEditing (e) {
+		e.preventDefault();
+		this.setState({ editing: !this.state.editing });
 	},
 
   handleSubmit (e) {
     e.preventDefault();
     ListUtil.updateTodo(this.state.todo);
-		this.toggleEditable(e);
+		this.toggleEditing(e);
   },
 
   render () {
 		let todoEl;
+		let doneClass='todo-item';
+		if (this.state.todo.done) { doneClass += ' done'; }
 
-		if (this.state.editable) {
+		if (this.state.editing) {
 			todoEl = () => {
 				return (
 				<form className='todo-form' onSubmit={this.handleSubmit}>
@@ -38,7 +48,7 @@ const TodoItem = React.createClass({
             placeholder="+"
             value={this.state.todo.name}
             onChange={this.updateName}
-						onBlur={this.toggleEditable}
+						onBlur={this.toggleEditing}
 						autoFocus />
         </form>
 				);
@@ -46,7 +56,7 @@ const TodoItem = React.createClass({
 		} else {
 			todoEl = () => {
 				return (
-					<div>{this.state.todo.name} <a onClick={this.toggleEditable}>x</a></div>
+					<div className={doneClass}><a onClick={this.toggleDone}>{this.state.todo.name}</a> <a onClick={this.toggleEditing}>ed</a></div>
 				);
 			};
 		}

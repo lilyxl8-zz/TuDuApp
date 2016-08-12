@@ -62,3 +62,10 @@ img {
 .list-view {
   margin-top: 5rem;
 }
+.todo-item {
+  cursor: default;
+}
+.todo-item:hover,
+.done {
+  text-decoration: line-through;
+}

@@ -19,7 +19,7 @@ list3 = List.create!(name: "Dat list", user_id: user3.id)
 
 Todo.destroy_all
 
-Todo.create!(name:"buy milk", user_id: user0.id, list_id: list1.id)
+Todo.create!(name:"buy milk", user_id: user0.id, list_id: list0.id)
 Todo.create!(name:"don't buy milk", user_id: user0.id, list_id: list0.id)
 Todo.create!(name:"buy cheese", user_id: user1.id, list_id: list1.id)
 Todo.create!(name:"don't buy code", user_id: user0.id, list_id: list0.id)
