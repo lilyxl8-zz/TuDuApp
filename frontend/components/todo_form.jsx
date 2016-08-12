@@ -3,16 +3,8 @@ import ListUtil from '../utils/list_util';
 
 const TodoForm = React.createClass({
   getInitialState () {
-		let editState, newState = false;
-		console.log(this.props.todo);
-		if (!this.props.todo.name) {
-			newState = true;
-			editState = true;
-		}
     return {
       todo: this.props.todo,
-			newForm: newState,
-			editable: editState
     };
   },
 
@@ -21,12 +13,6 @@ const TodoForm = React.createClass({
 		newTodo.name = e.currentTarget.value;
     this.setState({todo: newTodo});
   },
-
-	toggleEditable (e) {
-		e.preventDefault();
-		if (this.state.newForm) { return; }
-		this.setState({ editable: !this.state.editable });
-	},
 
   handleSubmit (e) {
     e.preventDefault();
@@ -37,31 +23,14 @@ const TodoForm = React.createClass({
   },
 
   render () {
-		let todoEl;
-
-		if (this.state.editable) {
-			todoEl = () => {
-				return (
+    return (
+      <div>
 				<form className='todo-form' onSubmit={this.handleSubmit}>
           <input
             placeholder="+"
             value={this.state.todo.name}
-            onChange={this.updateName}
-						onBlur={this.toggleEditable} />
+            onChange={this.updateName} />
         </form>
-				);
-			};
-		} else {
-			todoEl = () => {
-				return (
-					<div>{this.state.todo.name} <a onClick={this.toggleEditable}>x</a></div>
-				);
-			};
-		}
-
-    return (
-      <div>
-        { todoEl() }
       </div>
     );
   }
