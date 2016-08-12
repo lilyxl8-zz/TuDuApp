@@ -3,8 +3,11 @@ import ListUtil from '../utils/list_util';
 
 const TodoForm = React.createClass({
   getInitialState () {
+		let editState = false;
+		if (!this.props.todo.name) { editState = true; }
     return {
-      todo: this.props.todo
+      todo: this.props.todo,
+			editable: editState
     };
   },
 
@@ -23,14 +26,30 @@ const TodoForm = React.createClass({
   },
 
   render () {
-    return (
-      <div>
-        <form className='todo-form' onSubmit={this.handleSubmit}>
+		let todoEl;
+
+		if (this.state.editable) {
+			todoEl = () => {
+				return (
+				<form className='todo-form' onSubmit={this.handleSubmit}>
           <input
             placeholder="+"
             value={this.state.todo.name}
             onChange={this.updateName} />
         </form>
+				);
+			};
+		} else {
+			todoEl = () => {
+				return (
+					<div>{this.state.todo.name}</div>
+				);
+			};
+		}
+
+    return (
+      <div>
+        { todoEl() }
       </div>
     );
   }
