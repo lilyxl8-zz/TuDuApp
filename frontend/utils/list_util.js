@@ -43,9 +43,20 @@ const ListUtil = {
       dataType: 'json',
       data: { todo },
       success: (updatedTodo) => {
-        ListActions.todoReceived(updatedTodo); // TODO
+        ListActions.todoReceived(updatedTodo);
       }
     });
+	},
+
+	deleteTodo: (todo) => {
+		$.ajax({
+			type: 'DELETE',
+			url: '/api/todos/' + todo.id,
+			dataType: 'json',
+			success: () => {
+				ListActions.todoDeleted(todo);
+			}
+		});
 	}
 };
 

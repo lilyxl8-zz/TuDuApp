@@ -3,7 +3,6 @@ import ListUtil from '../utils/list_util';
 
 const TodoItem = React.createClass({
   getInitialState () {
-		console.log(this.props.todo);
     return {
       todo: this.props.todo,
 			editing: false
@@ -18,7 +17,6 @@ const TodoItem = React.createClass({
 
 	toggleDone (e) {
 		e.preventDefault();
-		console.log(this.state.todo);
 		let newTodo = this.state.todo;
 		newTodo.done = !newTodo.done;
 		ListUtil.updateTodo(newTodo);
@@ -34,6 +32,11 @@ const TodoItem = React.createClass({
     ListUtil.updateTodo(this.state.todo);
 		this.toggleEditing(e);
   },
+
+	deleteTodo (e) {
+		e.preventDefault();
+		ListUtil.deleteTodo(this.state.todo);
+	},
 
   render () {
 		let todoEl;
@@ -56,7 +59,11 @@ const TodoItem = React.createClass({
 		} else {
 			todoEl = () => {
 				return (
-					<div className={doneClass}><a onClick={this.toggleDone}>{this.state.todo.name}</a> <a onClick={this.toggleEditing}>ed</a></div>
+					<div className={doneClass}>
+						<a onClick={this.toggleDone}>{this.state.todo.name}</a>
+						<a onClick={this.toggleEditing}>ed</a>
+						<a onClick={this.deleteTodo}>X</a>
+					</div>
 				);
 			};
 		}

@@ -10,7 +10,6 @@ class Api::TodosController < ApplicationController
 
   def create
     @todo = current_user.todos.new(todo_params)
-		byebug
 		if @todo.save
 			render :show
 		else
@@ -30,7 +29,7 @@ class Api::TodosController < ApplicationController
   def destroy
     @todo = current_user.todos.find(params[:id])
 		if @todo.destroy
-			render :index
+			render json: { message: 'destroyed' }
 		else
 			render json: {errors: @todo.errors.full_messages}, status: 422
 		end
