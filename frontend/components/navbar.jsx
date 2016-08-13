@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 
 import SessionUtil from '../utils/session_util';
 import SessionStore from '../stores/session_store';
-import ListActions from '../actions/list_actions';
 
 const NavBar = React.createClass({
   getInitialState () {
