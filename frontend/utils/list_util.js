@@ -24,6 +24,18 @@ const ListUtil = {
     });
   },
 
+	updateList: (list) => {
+		$.ajax({
+			type: 'PATCH',
+			url: '/api/lists/' + list.id,
+			dataType: 'json',
+			data: { list: list },
+			success: (newList) => {
+				ListActions.listReceived(newList);
+			}
+		});
+	},
+
 	createTodo: (todo) => {
 		$.ajax({
       type: 'POST',

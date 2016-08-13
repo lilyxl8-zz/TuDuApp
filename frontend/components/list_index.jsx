@@ -16,10 +16,10 @@ const ListIndex = React.createClass({
 
 	componentDidMount () {
 		ListUtil.fetchUserLists();
-		this.listStoreToken = ListStore.addListener(this._updateList);
+		this.listStoreToken = ListStore.addListener(this._updateLists);
 	},
 
-	_updateList () {
+	_updateLists () {
 		this.setState({ lists: ListStore.all() });
 	},
 
