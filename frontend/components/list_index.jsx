@@ -1,10 +1,10 @@
 import React from 'react';
-// import SessionStore from '../stores/session_store';
+
 import ListStore from '../stores/list_store';
 import ListUtil from '../utils/list_util';
-// import SessionUtil from '../utils/session_util';
 
 import ListView from './list_view';
+import ListForm from './list_form';
 
 const ListIndex = React.createClass({
 
@@ -28,6 +28,8 @@ const ListIndex = React.createClass({
 	},
 
   render () {
+		let blankList = { name: '' };
+
 		let ourLists = () => {
 			return (
 				this.state.lists.map (list =>
@@ -39,6 +41,7 @@ const ListIndex = React.createClass({
     return (
       <div className="list-index">
 				{ ourLists() }
+				<ListForm list={blankList} />
       </div>
     );
   }

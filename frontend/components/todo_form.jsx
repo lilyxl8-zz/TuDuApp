@@ -19,7 +19,7 @@ const TodoForm = React.createClass({
     ListUtil.createTodo(this.state.todo);
 		let newTodo = this.state.todo;
 		newTodo.name = '';
-    this.setState({todo: newTodo, editable: false });
+    this.setState({todo: newTodo });
   },
 
   render () {

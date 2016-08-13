@@ -12,14 +12,14 @@ const ListUtil = {
 		});
 	},
 
-  createList: (name) => {
+  createList: (list) => {
     $.ajax({
       type: 'POST',
       url: '/api/lists',
       dataType: 'json',
-      data: { name: name },
-      success: (list) => {
-        ListActions.listReceived(list);
+      data: { list: list },
+      success: (newList) => {
+        ListActions.listReceived(newList);
       }
     });
   },
