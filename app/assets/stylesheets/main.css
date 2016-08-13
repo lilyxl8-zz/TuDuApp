@@ -47,7 +47,7 @@ img {
 }
 /* NAVBAR */
 .navbar {
-  width: auto;
+  width: 100%;
   height: 1.1rem;
   padding: 15px;
   color: #fff;
