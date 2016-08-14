@@ -38,9 +38,9 @@ const TuDuApp = React.createClass({
 		};
     return (
       <div>
-        <NavBar />
         { this.props.children }
         { listIndex() }
+				<NavBar />
       </div>
     );
   }

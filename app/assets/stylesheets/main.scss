@@ -38,13 +38,18 @@ img {
 /* NAVBAR */
 
 .navbar {
-  width: auto;
+  width: 100%;
   height: 1.1rem;
-  padding: 15px;
   color: #fff;
+	position: absolute;
 }
 .auth-btns {
   float: right;
+	font-weight: 700;
+	margin: 20px;
+	a {
+		padding-left: 20px;
+	}
 }
 
 /* JUMBOTRON */
