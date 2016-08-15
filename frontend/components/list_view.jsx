@@ -63,9 +63,10 @@ const ListView = React.createClass({
 				);
 			} else {
 				return (
-					<div>
-						<h1 onClick={this.toggleEditing}>{this.state.list.name}</h1>
-						<a onClick={this.deleteList}>X</a>
+					<div className='list-name'>
+						<h1 onClick={this.toggleEditing}>
+							{this.state.list.name} <a onClick={this.deleteList}>X</a>
+						</h1>
 					</div>
 				);
 			}
@@ -78,10 +79,12 @@ const ListView = React.createClass({
 		};
 
     return (
-      <div className="list-view">
+      <div className='list-view'>
 				{ nameForm() }
-        { todoList() }
-				<TodoForm todo={blankTodo}/>
+				<div className='list-todos'>
+					{ todoList() }
+					<TodoForm todo={blankTodo}/>
+				</div>
       </div>
     );
   }

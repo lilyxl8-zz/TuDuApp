@@ -25,7 +25,7 @@ const ListForm = React.createClass({
   render () {
     return (
       <div className="list-view">
-				<form className='name-form' onSubmit={this.handleSubmit}>
+				<form className='list-name' onSubmit={this.handleSubmit}>
 				  <input
 						placeholder='+'
 						value={this.state.list.name}
