@@ -26,46 +26,45 @@ img {
   display: block; }
 
 /* NAVBAR */
-.navbar {
-  z-index: 1; }
-
-.navbar, .navbar-bg {
-  width: 100%;
-  height: 60px;
-  color: #fff;
-  position: absolute; }
-
-.navbar-bg {
-  background: linear-gradient(90deg, #032555, #00CFDD); }
-
-.auth-btns {
-  float: right;
+.nav-overlay {
   font-weight: 700;
-  margin: 20px; }
-  .auth-btns a {
-    padding-left: 20px; }
+  margin: 20px;
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  color: #fefefe; }
+  .nav-overlay a {
+    margin-left: 20px; }
 
-/* JUMBOTRON */
-.jumbotron {
+.app-logo {
+  margin: 12px 20px;
+  position: absolute; }
+  .app-logo img {
+    height: 60%; }
+
+/* bg-overlay */
+.bg-overlay {
+  z-index: -1;
   background: linear-gradient(90deg, #032555, #00CFDD);
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   position: absolute; }
-  .jumbotron .title {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    color: #eee; }
-    .jumbotron .title img {
-      margin: 0 auto 20px; }
-    .jumbotron .title h3 {
-      font-size: 1.5rem;
-      font-weight: 300;
-      text-align: center;
-      letter-spacing: 3px; }
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  color: #fefefe; }
+  .title img {
+    margin: 0 auto 20px; }
+  .title h3 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: 3px; }
 
 /* SIGN IN/UP */
 .auth-form {
@@ -75,7 +74,7 @@ img {
   z-index: 1;
   transform: translateY(-50%) translateX(-50%); }
   .auth-form input {
-    background: #eee;
+    background: #fefefe;
     width: 18rem;
     padding: 10px 12px;
     letter-spacing: 1px; }
@@ -92,7 +91,7 @@ img {
     display: block;
     margin: 10px 0; }
   .auth-form button {
-    color: #eee;
+    color: #fefefe;
     background: #00D5A3;
     border-radius: 12px;
     margin: 36px auto 0;
@@ -104,14 +103,24 @@ img {
     cursor: pointer; }
 
 /* LIST INDEX */
+.bg-app {
+  margin-top: 3.9rem;
+  background: white;
+  position: absolute;
+  width: 100%;
+  height: 100%; }
+
 .list-index {
+  margin: 3.9rem 20px 0; }
+
+.lists-container {
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  margin: 0 20px; }
 
 .list-view {
   padding: 0 3px;
-  flex-basis: 14%;
-  margin-top: 5rem; }
+  flex-basis: 14%; }
 
 .todo-item {
   cursor: default;

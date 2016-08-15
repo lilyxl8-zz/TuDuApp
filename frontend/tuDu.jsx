@@ -5,7 +5,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import SessionUtil from './utils/session_util';
 import SessionStore from './stores/session_store';
 
-import NavBar from './components/navbar';
+import NavOverlay from './components/nav_overlay';
 import SignupForm from './components/signup_form';
 import SigninForm from './components/signin_form';
 
@@ -31,7 +31,7 @@ const TuDuApp = React.createClass({
   render () {
     return (
       <div>
-				<NavBar />
+				<NavOverlay />
 				{ this.props.children }
       </div>
     );

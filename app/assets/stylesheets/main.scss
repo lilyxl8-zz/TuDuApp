@@ -2,11 +2,15 @@
 
 $black-color: #000;
 $gray-color: #bbb;
-$white-color: #eee;
+$white-color: #fefefe;
 $teal-color: #00D5A3;
 $tudu-gradient: linear-gradient(90deg, #032555, #00CFDD);
+
+
+$padding: 20px;
 $border-radius: 12px;
 $button-padding: 5px;
+
 $small-font-size: .9rem;
 $letter-spacing: 2px;
 
@@ -39,52 +43,52 @@ img {
 
 /* NAVBAR */
 
-.navbar {
-	z-index: 1;
-}
-
-.navbar, .navbar-bg {
-  width: 100%;
-  height: 60px;
-  color: #fff;
-	position: absolute;
-}
-.navbar-bg{
-	background: $tudu-gradient;
-}
-.auth-btns {
-  float: right;
+.nav-overlay {
 	font-weight: 700;
-	margin: 20px;
+	margin: $padding;
+	z-index: 1;
+	position: absolute;
+	right: 0;
+	color: $white-color;
 	a {
-		padding-left: 20px;
+		margin-left: $padding;
 	}
 }
 
-/* JUMBOTRON */
+.app-logo {
+	margin: 12px $padding;
+	position: absolute;
+	img {
+		height: 60%;
+	}
+}
 
-.jumbotron {
+/* bg-overlay */
+
+.bg-overlay {
+	z-index: -1;
   background: $tudu-gradient;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   position: absolute;
-	.title {
-		position: absolute;
-	  top: 50%;
-	  left: 50%;
-	  transform: translateY(-50%) translateX(-50%);
-		color: $white-color;
-		img {
-			margin: 0 auto 20px;
-		}
-		h3 {
-			font-size: 1.5rem;
-			font-weight: 300;
-			text-align: center;
-			letter-spacing: 3px;
-		}
+}
+
+.title {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+	color: $white-color;
+	img {
+		margin: 0 auto 20px;
+	}
+	h3 {
+		font-size: 1.5rem;
+		font-weight: 300;
+		text-align: center;
+		letter-spacing: 3px;
 	}
 }
 
@@ -133,23 +137,43 @@ img {
 
 /* LIST INDEX */
 
-.list-index {
-  display: flex;
-  flex-wrap: wrap;
+.bg-app {
+	margin-top: 3.9rem;
+	background: white;
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }
+
+.list-index {
+	margin: 3.9rem $padding 0;
+}
+
+.nav-arrow {
+	
+}
+
+.lists-container {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 $padding;
+}
+
 .list-view {
   padding: 0 3px;
   flex-basis: 14%;
-  margin-top: 5rem;
 }
+
 .todo-item {
   cursor: default;
   border-top: 1px solid $gray-color;
   padding: 4px 0;
 }
+
 .todo-item > a {
   padding-right: 10px;
 }
+
 .todo-item:hover,
 .done {
   text-decoration: line-through;

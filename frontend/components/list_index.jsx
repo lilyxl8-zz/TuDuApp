@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import ListStore from '../stores/list_store';
 import ListUtil from '../utils/list_util';
@@ -27,6 +28,8 @@ const ListIndex = React.createClass({
 		this.listStoreToken.remove();
 	},
 
+// <Link to='' className='app-logo'><img src='images/logo.png'></img></Link>
+
   render () {
 		let blankList = { name: '' };
 
@@ -39,13 +42,22 @@ const ListIndex = React.createClass({
 		};
 
     return (
-			<div>
-				<div className='navbar-bg'></div>
-	      <div className='list-index'>
-					{ ourLists() }
-					<ListForm list={blankList} />
-	      </div>
-			</div>
+      <div className='bg-app'>
+				<div className='list-index'>
+					<div className='nav-arrow'>
+						<img src='images/arrow.svg'></img>
+					</div>
+
+					<div className='lists-container'>
+						{ ourLists() }
+						<ListForm list={blankList} />
+					</div>
+
+					<div className='nav-arrow'>
+						<img src='images/arrow.svg'></img>
+					</div>
+				</div>
+      </div>
     );
   }
 });

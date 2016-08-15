@@ -38,7 +38,7 @@ const SignupForm = React.createClass({
 
   render () {
     return (
-			<div className='jumbotron'>
+			<div className='bg-overlay'>
 	      <div className='auth-form'>
 	        <form onSubmit={this.executeSubmit}>
 	          <input onChange={this.updateUsername}
