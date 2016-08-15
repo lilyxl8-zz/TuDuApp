@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import SessionUtil from './utils/session_util';
 import SessionStore from './stores/session_store';
@@ -29,18 +29,10 @@ const TuDuApp = React.createClass({
 	},
 
   render () {
-		let listIndex = () => {
-			if (SessionStore.currentUser()) {
-				return <ListIndex /> ;
-			} else {
-				return <Landing /> ;
-			}
-		};
     return (
       <div>
-        { this.props.children }
-        { listIndex() }
 				<NavBar />
+				{ this.props.children }
       </div>
     );
   }
@@ -50,6 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
   render(
 		<Router history={browserHistory}>
 			<Route path= '/' component={TuDuApp}>
+				<IndexRoute component={Landing} />
+				<Route path= '/app' component={ListIndex} />
 				<Route path= '/signup' component={SignupForm} />
 				<Route path='/signin' component={SigninForm}/>
 			</Route>

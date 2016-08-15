@@ -30,7 +30,7 @@ const NavBar = React.createClass({
       authText = () => {
         return (
           <div className='auth-btns group'>
-            Welcome, { this.state.currentUser.username }!
+            <Link to='/app'>Welcome, { this.state.currentUser.username }</Link>!
             <Link to='/' onClick={ SessionUtil.logout }>Log out</Link>
           </div>
         );

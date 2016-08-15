@@ -27,32 +27,13 @@ const SigninForm = React.createClass({
     }
   },
 
-  render () {
-    return (
-      <div className='auth-form'>
-        <form onSubmit={this.executeSubmit}>
-          <input onChange={this.updateUsername}
-            type="text"
-            value={this.state.username}
-            placeholder='Username' />
-          <br />
-          <input onChange={this.updatePassword}
-            type="password"
-            value={this.state.password}
-            placeholder='Password' />
-          <Link
-            to="/signup" className='auth-text'>Need an account?
-          </Link>
-          <button>Sign in</button>
-
-        </form>
-      </div>
-    );
-  },
-
   executeSubmit (e) {
     e.preventDefault();
-    SessionUtil.login(this.state);
+		let router = this.context.router;
+
+    SessionUtil.login(this.state, () => {
+			router.push('/app');
+		});
   },
 
   updateUsername (e) {
@@ -61,8 +42,33 @@ const SigninForm = React.createClass({
 
   updatePassword (e) {
     this.setState({ password: e.currentTarget.value });
-  }
+  },
 
+  render () {
+    return (
+			<div className='jumbotron'>
+	      <div className='auth-form'>
+	        <form onSubmit={this.executeSubmit}>
+	          <input onChange={this.updateUsername}
+	            type="text"
+	            value={this.state.username}
+	            placeholder='Username' />
+	          <br />
+	          <input onChange={this.updatePassword}
+	            type="password"
+	            value={this.state.password}
+	            placeholder='Password' />
+						<div className='auth-text'>
+		          <Link
+		            to="/signup" className='auth-text'>Need an account?
+		          </Link>
+						</div>
+	          <button>Sign in</button>
+	        </form>
+	      </div>
+			</div>
+    );
+  }
 });
 
 export default SigninForm;
