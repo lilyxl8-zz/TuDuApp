@@ -60,8 +60,8 @@ const TodoItem = React.createClass({
 				return (
 					<div className='todo-item'>
 						<a onClick={this.toggleDone} className={doneClass}>{this.state.todo.name}</a>
-						<a onClick={this.toggleEditing}>ed</a>
 						<a onClick={this.deleteTodo}>X</a>
+						<a onClick={this.toggleEditing} className='edit-todo'></a>
 					</div>
 				);
 			};

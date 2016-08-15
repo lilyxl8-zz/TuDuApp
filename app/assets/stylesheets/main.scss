@@ -2,6 +2,8 @@
 
 $black-color: #000;
 $gray-color: #bbb;
+$light-gray-color: #e2e2e2;
+$dark-gray-color: #6B6B6B;
 $white-color: #fefefe;
 $teal-color: #00D5A3;
 $tudu-gradient: linear-gradient(90deg, #032555, #00CFDD);
@@ -11,8 +13,10 @@ $border-radius: 12px;
 $button-padding: 5px;
 
 $list-top-padding: 3.9rem;
+$list-name-padding: 2rem;
 $list-padding: 8px;
 $todo-height: 22px;
+$todo-item-padding: 8px;
 
 $small-font-size: .9rem;
 $letter-spacing: 2px;
@@ -193,37 +197,59 @@ img {
 	display: inline;
 	position: relative;
 	width: 20%;
-  border-right: 1px solid #bbb;
+  border-right: 1px solid $light-gray-color;
 }
 
 .list-name {
 	margin: 0 $list-padding;
 	h1 {
 		text-align: center;
-		margin-bottom: 1.5rem;
+		margin-bottom: $list-name-padding;
+		font-size: 1.2rem;
+		text-transform: uppercase;
 	}
 }
 
 .list-todos {
-	margin: 0 $list-padding;
+	margin: 0 10px;
 }
 
 .todo-item {
   cursor: default;
-  border-bottom: 1px solid $gray-color;
-  padding: 4px 0;
+  border-bottom: 1px solid $light-gray-color;
+  padding: $todo-item-padding 0;
 	position: relative;
   height: $todo-height;
 	overflow: hidden;
+	font-size: .8rem;
 }
 
-.todo-item > a {
-  padding-right: 10px;
+.todo-form {
+	font-size: .8rem;
+	margin: $todo-item-padding 0;
+	width: 100%;
 }
 
-.todo-item:hover,
+.todo-item:hover {
+  color: $dark-gray-color;
+	.edit-todo {
+		display: block;
+	}
+}
+
+.edit-todo {
+	display: none;
+	float: right;
+	width: 20px;
+	height: 25px;
+	margin: -1px -3px;
+	background-color: $dark-gray-color;
+  -webkit-mask-image: url('../images/pencil.svg');
+  mask-image: url('../images/pencil.svg');
+}
+
 .done {
-  text-decoration: line-through;
+	text-decoration: line-through;
 }
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
