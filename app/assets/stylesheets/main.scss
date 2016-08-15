@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
-
 /* MIXINS */
 
-$red-color: #f00;
 $black-color: #000;
 $gray-color: #bbb;
-$white-color: #fff;
+$white-color: #eee;
+$teal-color: #00D5A3;
 $tudu-gradient: linear-gradient(90deg, #032555, #00CFDD);
+$border-radius: 12px;
+$button-padding: 5px;
+$small-font-size: .9rem;
+$letter-spacing: 2px;
 
 /* RESET */
 
@@ -83,13 +85,43 @@ img {
 
 .auth-form {
   position: absolute;
-  width: 20rem;
   top: 50%;
   left: 50%;
+	z-index: 1;
   transform: translateY(-50%) translateX(-50%);
-  padding: 20px;
-  border: 1px solid $black-color;
-  border-radius: 8px;
+	input {
+		background: $white-color;
+    width: 18rem;
+		padding: 10px 12px;
+    letter-spacing: 1px;
+	}
+	input:first-of-type {
+		border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+	}
+	input:last-of-type {
+		border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+		border-bottom: 1px solid $gray-color;
+	}
+	.auth-text {
+		color: $gray-color;
+		font-size: $small-font-size;
+		display: block;
+		margin: 10px 0;
+	}
+	button {
+		color: $white-color;
+		background: $teal-color;
+    border-radius: $border-radius;
+		margin: 36px auto 0;
+    font-size: 1.2rem;
+    font-weight: 300;
+		padding: 10px 30px;
+		letter-spacing: $letter-spacing;
+		display: block;
+		cursor: pointer;
+	}
 }
 
 /* LIST INDEX */
@@ -115,3 +147,5 @@ img {
 .done {
   text-decoration: line-through;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');

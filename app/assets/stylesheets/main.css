@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
 /* MIXINS */
 /* RESET */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
 section, img, div, h2, p, form,
@@ -52,7 +52,7 @@ img {
     top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
-    color: #fff; }
+    color: #eee; }
     .jumbotron .title img {
       margin: 0 auto 20px; }
     .jumbotron .title h3 {
@@ -64,13 +64,38 @@ img {
 /* SIGN IN/UP */
 .auth-form {
   position: absolute;
-  width: 20rem;
   top: 50%;
   left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  padding: 20px;
-  border: 1px solid #000;
-  border-radius: 8px; }
+  z-index: 1;
+  transform: translateY(-50%) translateX(-50%); }
+  .auth-form input {
+    background: #eee;
+    width: 18rem;
+    padding: 10px 12px;
+    letter-spacing: 1px; }
+  .auth-form input:first-of-type {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px; }
+  .auth-form input:last-of-type {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-bottom: 1px solid #bbb; }
+  .auth-form .auth-text {
+    color: #bbb;
+    font-size: 0.9rem;
+    display: block;
+    margin: 10px 0; }
+  .auth-form button {
+    color: #eee;
+    background: #00D5A3;
+    border-radius: 12px;
+    margin: 36px auto 0;
+    font-size: 1.2rem;
+    font-weight: 300;
+    padding: 10px 30px;
+    letter-spacing: 2px;
+    display: block;
+    cursor: pointer; }
 
 /* LIST INDEX */
 .list-index {
