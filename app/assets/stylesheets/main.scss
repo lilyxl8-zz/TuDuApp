@@ -188,8 +188,10 @@ img {
 }
 
 .list-view {
-  padding: 0 3px;
-  flex-basis: 14%;
+	float: left;
+	display: inline;
+	position: relative;
+	width: 20%;
 }
 
 .todo-item {
