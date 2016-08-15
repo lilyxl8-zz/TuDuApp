@@ -16,6 +16,11 @@ span, article, footer, time, small, h3 {
   border: 0;
   background: transparent; }
 
+.group:after {
+  content: "";
+  display: block;
+  clear: both; }
+
 body {
   font-family: 'open sans', sans-serif, 'helvetica'; }
 
@@ -113,10 +118,31 @@ img {
 .list-index {
   margin: 3.9rem 20px 0; }
 
+.nav-arrow {
+  position: absolute;
+  top: 2px;
+  bottom: 0px;
+  margin-top: 3.9rem;
+  width: 64px; }
+
+.nav-left {
+  left: 0px;
+  margin-left: 20px;
+  padding-right: 20px; }
+
+.nav-right {
+  right: 0px;
+  padding-left: 20px;
+  margin-right: 20px;
+  text-align: right; }
+  .nav-right img {
+    transform: rotate(180deg); }
+
 .lists-container {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 20px; }
+  margin: 0 60px;
+  overflow: hidden; }
 
 .list-view {
   padding: 0 3px;

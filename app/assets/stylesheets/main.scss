@@ -11,6 +11,8 @@ $padding: 20px;
 $border-radius: 12px;
 $button-padding: 5px;
 
+$list-top-padding: 3.9rem;
+
 $small-font-size: .9rem;
 $letter-spacing: 2px;
 
@@ -31,6 +33,13 @@ span, article, footer, time, small, h3 {
   border: 0;
   background: transparent;
 }
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 body {
   font-family: 'open sans', sans-serif, 'helvetica';
 }
@@ -146,17 +155,37 @@ img {
 }
 
 .list-index {
-	margin: 3.9rem $padding 0;
+	margin: $list-top-padding $padding 0;
 }
 
 .nav-arrow {
-	
+	position: absolute;
+	top: 2px;
+	bottom: 0px;
+	margin-top: $list-top-padding;
+	width: 64px;
+}
+
+.nav-left {
+	left: 0px;
+	margin-left: $padding;
+	padding-right: $padding;
+}
+.nav-right {
+	right: 0px;
+	padding-left: $padding;
+	margin-right: $padding;
+	text-align: right;
+	img {
+    transform: rotate(180deg);
+	}
 }
 
 .lists-container {
 	display: flex;
 	flex-wrap: wrap;
-	margin: 0 $padding;
+	margin: 0 ($padding * 3);
+  overflow: hidden;
 }
 
 .list-view {

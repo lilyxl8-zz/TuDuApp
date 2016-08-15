@@ -44,17 +44,16 @@ const ListIndex = React.createClass({
     return (
       <div className='bg-app'>
 				<div className='list-index'>
-					<div className='nav-arrow'>
+					<div className='nav-arrow nav-left'>
+						<img src='images/arrow.svg'></img>
+					</div>
+					<div className='nav-arrow nav-right'>
 						<img src='images/arrow.svg'></img>
 					</div>
 
 					<div className='lists-container'>
 						{ ourLists() }
 						<ListForm list={blankList} />
-					</div>
-
-					<div className='nav-arrow'>
-						<img src='images/arrow.svg'></img>
 					</div>
 				</div>
       </div>
