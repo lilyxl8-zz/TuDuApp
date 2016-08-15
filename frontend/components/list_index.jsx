@@ -39,10 +39,13 @@ const ListIndex = React.createClass({
 		};
 
     return (
-      <div className="list-index">
-				{ ourLists() }
-				<ListForm list={blankList} />
-      </div>
+			<div>
+				<div className='navbar-bg'></div>
+	      <div className='list-index'>
+					{ ourLists() }
+					<ListForm list={blankList} />
+	      </div>
+			</div>
     );
   }
 });

@@ -39,6 +39,7 @@ const NavBar = React.createClass({
       authText = () => {
         return (
           <div className='auth-btns group'>
+            <Link to='/'>Home</Link>
             <Link to='/signup'>Sign up</Link>
             <Link to='/signin'>Sign in</Link>
           </div>

@@ -49,7 +49,7 @@ const SignupForm = React.createClass({
 	          <input onChange={this.updatePassword}
 	            type="password"
 	            value={this.state.password}
-	            placeholder='Password (7 char min)' />
+	            placeholder='Password (minimum 7 chars)' />
 						<div className='auth-text'>
 							<Link
 		            to="/signin">
