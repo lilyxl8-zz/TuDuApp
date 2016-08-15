@@ -41,6 +41,11 @@ const ListView = React.createClass({
 		this.toggleEditing(e);
 	},
 
+	deleteList (e) {
+		e.preventDefault();
+		ListUtil.deleteList(this.state.list);
+	}
+
   render () {
 		let blankTodo = {name: '', list_id: this.props.list.id };
 		let nameForm;
@@ -58,7 +63,10 @@ const ListView = React.createClass({
 				);
 			} else {
 				return (
-				<h1 onClick={this.toggleEditing}>{this.state.list.name}</h1>
+					<div>
+						<h1 onClick={this.toggleEditing}>{this.state.list.name}</h1>
+						<a onClick={this.deleteList}>X</a>
+					</div>
 				);
 			}
 		};
