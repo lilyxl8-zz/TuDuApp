@@ -5,6 +5,7 @@ $gray-color: #bbb;
 $light-gray-color: #e2e2e2;
 $dark-gray-color: #6B6B6B;
 $white-color: #fefefe;
+$red-color: #D30000;
 $teal-color: #00D5A3;
 $tudu-gradient: linear-gradient(90deg, #032555, #00CFDD);
 
@@ -201,12 +202,14 @@ img {
 }
 
 .list-name {
-	margin: 0 $list-padding;
+	margin: 0 $list-padding $list-name-padding;
 	h1 {
 		text-align: center;
-		margin-bottom: $list-name-padding;
 		font-size: 1.2rem;
 		text-transform: uppercase;
+	}
+	input {
+		margin: 1px 0 4px;
 	}
 }
 
@@ -226,7 +229,6 @@ img {
 
 .todo-form {
 	font-size: .8rem;
-	margin: $todo-item-padding 0;
 	width: 100%;
 }
 
@@ -248,8 +250,28 @@ img {
   mask-image: url('../images/pencil.svg');
 }
 
+.delete-todo {
+	display: none;
+	float: right;
+  width: 13px;
+  height: 12px;
+  margin: 2px -1px;
+  background-color: $red-color;
+  -webkit-mask-image: url("../images/xsm.svg");
+  mask-image: url("../images/xsm.svg");
+}
+
 .done {
 	text-decoration: line-through;
+}
+
+.done:hover {
+	.delete-todo {
+		display: block;
+	}
+	.edit-todo {
+		display: none;
+	}
 }
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
