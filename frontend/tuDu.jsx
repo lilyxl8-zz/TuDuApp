@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import SessionUtil from './utils/session_util';
@@ -38,14 +38,14 @@ const TuDuApp = React.createClass({
   }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  render(
+$(document).ready( () => {
+  ReactDOM.render(
 		<Router history={browserHistory}>
 			<Route path= '/' component={TuDuApp}>
 				<IndexRoute component={Landing} />
-				<Route path= '/app' component={ListIndex} />
-				<Route path= '/signup' component={SignupForm} />
-				<Route path='/signin' component={SigninForm}/>
+				<Route path= 'app' name='app' component={ListIndex} />
+				<Route path= 'signup' name='signup' component={SignupForm} />
+				<Route path='signin' name='signin' component={SigninForm}/>
 			</Route>
 		</Router>,
 		document.getElementById('main')

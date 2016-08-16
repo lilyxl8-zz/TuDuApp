@@ -18,7 +18,7 @@ const TodoForm = React.createClass({
     e.preventDefault();
 		if (this.state.todo.name === '') { return; }
     ListUtil.createTodo(this.state.todo);
-		
+
 		let newTodo = this.state.todo;
 		newTodo.name = '';
     this.setState({todo: newTodo });
@@ -26,12 +26,12 @@ const TodoForm = React.createClass({
 
   render () {
     return (
-			<form className='todo-form' onSubmit={this.handleSubmit}>
-        <input
-          placeholder="+"
-          value={this.state.todo.name}
-          onChange={this.updateName} />
-      </form>
+				<form className='todo-form todo-item' onSubmit={this.handleSubmit}>
+					<input
+						placeholder="+"
+						value={this.state.todo.name}
+						onChange={this.updateName} />
+				</form>
     );
   }
 });

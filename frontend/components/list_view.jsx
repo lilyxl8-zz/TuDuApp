@@ -47,7 +47,6 @@ const ListView = React.createClass({
 	},
 
   render () {
-		let blankTodo = {name: '', list_id: this.props.list.id };
 		let nameForm;
 
 		nameForm = () => {
@@ -81,14 +80,31 @@ const ListView = React.createClass({
 			);
 		};
 
+		let blankTodos = () => {
+			if (this.state.list.todos.length > 9) {	return; }
+			const blankTodo = {name: '', list_id: this.props.list.id };
+
+			let _blankTodos = [
+				<TodoForm todo={blankTodo} />
+			];
+			for (let i = 0; i < 9 - this.state.list.todos.length; i++) {
+				_blankTodos.push(
+					<div className='todo-item'>
+						<div className='todo-form'>
+							<input />
+						</div>
+					</div>
+				);
+			}
+			return _blankTodos;
+		};
+
     return (
       <div className='list-view'>
 				{ nameForm() }
 				<div className='list-todos'>
 					{ todoList() }
-					<div className='todo-item'>
-						<TodoForm todo={blankTodo}/>
-					</div>
+					{ blankTodos() }
 				</div>
       </div>
     );
