@@ -24,7 +24,9 @@ const NavOverlay = React.createClass({
   },
 
   render () {
-    let authText;
+    let authText, logo;
+
+
 
     if (this.state.currentUser) {
       authText = () => {
@@ -49,6 +51,7 @@ const NavOverlay = React.createClass({
 
     return (
 			<div className='bg-overlay'>
+				<Link to='/'><img src='images/logo.png' className='app-logo'></img></Link>
 				<div className='nav-overlay group'>
 	      	{ authText() }
 				</div>

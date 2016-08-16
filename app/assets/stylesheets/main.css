@@ -32,20 +32,17 @@ img {
 
 /* NAVBAR */
 .nav-overlay {
-  font-weight: 700;
-  margin: 20px;
   z-index: 1;
-  position: absolute;
-  right: 0;
+  float: right;
+  padding-top: 1px;
+  font-weight: 700;
   color: #fefefe; }
   .nav-overlay a {
     margin-left: 20px; }
 
 .app-logo {
-  margin: 12px 20px;
-  position: absolute; }
-  .app-logo img {
-    height: 60%; }
+  height: 25px;
+  float: left; }
 
 /* bg-overlay */
 .bg-overlay {
@@ -55,7 +52,8 @@ img {
   bottom: 0;
   left: 0;
   right: 0;
-  position: absolute; }
+  position: absolute;
+  padding: 20px; }
 
 .title {
   position: absolute;
@@ -151,6 +149,7 @@ img {
   border-right: 1px solid #e2e2e2; }
 
 .list-name {
+  cursor: default;
   margin: 0 8px 2rem; }
   .list-name h1 {
     text-align: center;
@@ -158,6 +157,21 @@ img {
     text-transform: uppercase; }
   .list-name input {
     margin: 1px 0 4px; }
+
+.delete-list {
+  display: none;
+  position: absolute;
+  right: 9px;
+  top: 8px;
+  width: 13px;
+  height: 13px;
+  z-index: 1;
+  background-color: #D30000;
+  -webkit-mask-image: url("../images/x.svg");
+  mask-image: url("../images/x.svg"); }
+
+.list-name:hover .delete-list {
+  display: block; }
 
 .list-todos {
   margin: 0 10px; }

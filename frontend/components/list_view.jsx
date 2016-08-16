@@ -53,19 +53,24 @@ const ListView = React.createClass({
 		nameForm = () => {
 			if (this.state.editing) {
 				return (
-				<form className='name-form' onSubmit={this.handleSubmit}>
-				  <input
-				    value={this.state.list.name}
-				    onChange={this.updateName}
-						onBlur={this.toggleEditing}
-						autoFocus />
-				</form>
+					<div className='list-name'>
+						<form className='name-form' onSubmit={this.handleSubmit}>
+						  <input
+						    value={this.state.list.name}
+						    onChange={this.updateName}
+								onBlur={this.toggleEditing}
+								autoFocus />
+						</form>
+					</div>
 				);
 			} else {
 				return (
-					<h1 onClick={this.toggleEditing}>
-						{this.state.list.name} <a onClick={this.deleteList}>X</a>
-					</h1>
+					<div className='list-name'>
+						<h1 onClick={this.toggleEditing}>
+							{this.state.list.name}
+						</h1>
+						<a onClick={this.deleteList} className='delete-list'></a>
+					</div>
 				);
 			}
 		};
@@ -78,12 +83,12 @@ const ListView = React.createClass({
 
     return (
       <div className='list-view'>
-				<div className='list-name'>
-					{ nameForm() }
-				</div>
+				{ nameForm() }
 				<div className='list-todos'>
 					{ todoList() }
-					<TodoForm todo={blankTodo}/>
+					<div className='todo-item'>
+						<TodoForm todo={blankTodo}/>
+					</div>
 				</div>
       </div>
     );

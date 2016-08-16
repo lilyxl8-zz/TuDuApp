@@ -59,11 +59,10 @@ img {
 /* NAVBAR */
 
 .nav-overlay {
-	font-weight: 700;
-	margin: $padding;
 	z-index: 1;
-	position: absolute;
-	right: 0;
+	float: right;
+	padding-top: 1px;
+	font-weight: 700;
 	color: $white-color;
 	a {
 		margin-left: $padding;
@@ -71,11 +70,8 @@ img {
 }
 
 .app-logo {
-	margin: 12px $padding;
-	position: absolute;
-	img {
-		height: 60%;
-	}
+	height: 25px;
+	float:left;
 }
 
 /* bg-overlay */
@@ -88,6 +84,7 @@ img {
   left: 0;
   right: 0;
   position: absolute;
+	padding: $padding;
 }
 
 .title {
@@ -202,6 +199,7 @@ img {
 }
 
 .list-name {
+	cursor: default;
 	margin: 0 $list-padding $list-name-padding;
 	h1 {
 		text-align: center;
@@ -210,6 +208,25 @@ img {
 	}
 	input {
 		margin: 1px 0 4px;
+	}
+}
+
+.delete-list {
+	display: none;
+	position: absolute;
+	right: 9px;
+	top: 8px;
+  width: 13px;
+  height: 13px;
+	z-index: 1;
+  background-color: $red-color;
+  -webkit-mask-image: url("../images/x.svg");
+  mask-image: url("../images/x.svg");
+}
+
+.list-name:hover {
+	.delete-list {
+		display: block;
 	}
 }
 

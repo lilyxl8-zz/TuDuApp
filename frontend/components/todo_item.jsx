@@ -29,7 +29,11 @@ const TodoItem = React.createClass({
 
   handleSubmit (e) {
     e.preventDefault();
-    ListUtil.updateTodo(this.state.todo);
+		if (this.state.todo.name === '') {
+			ListUtil.deleteTodo(this.state.todo);
+		} else {
+			ListUtil.updateTodo(this.state.todo);
+		}
 		this.toggleEditing(e);
   },
 
@@ -48,7 +52,6 @@ const TodoItem = React.createClass({
 				return (
 				<form className='todo-form' onSubmit={this.handleSubmit}>
           <input
-            placeholder="+"
             value={this.state.todo.name}
             onChange={this.updateName}
 						onBlur={this.toggleEditing}
