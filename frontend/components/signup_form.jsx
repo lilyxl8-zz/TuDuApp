@@ -4,7 +4,6 @@ import UserUtil from '../utils/user_util';
 import SessionUtil from '../utils/session_util';
 
 const SignupForm = React.createClass({
-
   contextTypes : {
     router: React.PropTypes.object.isRequired
   },

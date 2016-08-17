@@ -1,13 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router';
-
+import { Router, Link } from 'react-router';
 import SessionUtil from '../utils/session_util';
 import SessionStore from '../stores/session_store';
 
-import Landing from './landing';
-import ListIndex from './list_index';
-
 const NavOverlay = React.createClass({
+
   getInitialState () {
     return {
       currentUser: SessionStore.currentUser(),
@@ -23,54 +20,34 @@ const NavOverlay = React.createClass({
     this.setState({ currentUser: SessionStore.currentUser() });
   },
 
-	setAppView (boolean) {
-		this.state.appView = boolean;
-	},
-
   componentWillUnmount () {
     this.SessionStoreToken.remove();
   },
 
   render () {
-    let authText, logo, componentView;
+    let authText, logo;
 
-		if (this.state.appView) {
+		console.log(this.props.location.pathname);
+
+		if (this.props.location.pathname != '/') {
 			logo = () => {
 				return (
-					<Link to='/' onClick={ () =>
-						{ this.setAppView(false); } }>
+					<Link to='/'>
 						<img src='images/logo.png' className='app-logo'></img>
 					</Link>
 				);
 			};
-
-			componentView = () => {
-				return (
-					<ListIndex />
-				);
-			};
 		} else {
 			logo = () => {};
-			if ('/') {
-				componentView = () => {
-					return (
-						<Landing />
-					);
-				};
-			} else {
-				componentView = () => {};
-			}
 		}
 
     if (this.state.currentUser) {
       authText = () => {
         return (
 					<div>
-	          <Link to='/' onClick={ () =>
-							{ this.setAppView(true); } }>
+	          <Link to='/app'>
 							Welcome, { this.state.currentUser.username }</Link>
-						<Link to='/' onClick={
-							SessionUtil.logout(this.setAppView(false)) }>
+						<Link to='/' onClick={ SessionUtil.logout }>
 							Log out</Link>
 					</div>
         );
@@ -79,11 +56,7 @@ const NavOverlay = React.createClass({
       authText = () => {
         return (
 					<div>
-	          <Link to='/'
-							onClick={ () =>
-								{ this.setAppView(false); }
-							}>
-							Home</Link>
+	          <Link to='/'>Home</Link>
 	          <Link to='/signup'>Sign up</Link>
 	          <Link to='/signin'>Sign in</Link>
 					</div>
@@ -99,7 +72,6 @@ const NavOverlay = React.createClass({
 		      	{ authText() }
 					</div>
 				</div>
-				{ componentView() }
 			</div>
     );
   }

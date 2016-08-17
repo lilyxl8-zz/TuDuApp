@@ -21,7 +21,7 @@ const SigninForm = React.createClass({
 
   _checkUser () {
 		if (SessionStore.currentUser()) {
-      this.context.router.push('');
+      this.context.router.push('/');
     }
   },
 
@@ -30,7 +30,7 @@ const SigninForm = React.createClass({
 		let router = this.context.router;
 
     SessionUtil.login(this.state, () => {
-			router.push('/');
+			router.push('/app');
 		});
   },
 

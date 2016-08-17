@@ -16,14 +16,13 @@ const SessionUtil = {
     });
   },
 
-  logout: (callback) => {
+  logout: () => {
 		$.ajax({
 			type: 'DELETE',
 			url: '/api/session',
 			dataType: 'json',
 			success: () => {
 				SessionActions.logout();
-				callback && callback();
 			},
 			complete: () => {
 				ListActions.clearLists();
