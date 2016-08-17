@@ -235,7 +235,7 @@ img {
 }
 
 .todo-item {
-  cursor: default;
+  cursor: text;
   border-bottom: 1px solid $light-gray-color;
   padding: $todo-item-padding 0;
 	position: relative;
