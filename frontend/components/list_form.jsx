@@ -14,6 +14,11 @@ const ListForm = React.createClass({
     this.setState({ list: newList });
   },
 
+	focusListForm (e) {
+		e.preventDefault();
+		document.getElementById('0').focus();
+	},
+
   handleSubmit (e) {
     e.preventDefault();
     ListUtil.createList(this.state.list);
@@ -23,16 +28,29 @@ const ListForm = React.createClass({
   },
 
   render () {
+
+		let blankTodos = () => {
+			let _blankTodos = [];
+			for (let i = 0; i < 11; i++) {
+				_blankTodos.push(
+					<div className='todo-item todo-form' key={i} onClick={this.focusListForm}></div>
+				);
+			}
+			return _blankTodos;
+		};
+
     return (
-      <div className="list-view">
+      <div className='list-view'>
 				<form className='list-name' onSubmit={this.handleSubmit}>
 				  <input
-						placeholder='+'
+						id='0'
 						value={this.state.list.name}
 				    onChange={this.updateName}
-						onBlur={this.toggleEditing}
-						autoFocus />
+						onBlur={this.toggleEditing} />
 				</form>
+				<div className='list-todos'>
+					{ blankTodos() }
+				</div>
       </div>
     );
   }

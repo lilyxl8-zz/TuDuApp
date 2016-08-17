@@ -31,7 +31,7 @@ const ListView = React.createClass({
 		this.setState({ editing: !this.state.editing });
 	},
 
-	focusForm (e) {
+	focusTodoForm (e) {
 		e.preventDefault();
 		document.getElementById(this.props.list.id).firstChild.firstChild.focus();
 	},
@@ -91,22 +91,30 @@ const ListView = React.createClass({
 			let _blankTodos = [];
 			for (let i = 0; i < 9 - this.state.list.todos.length; i++) {
 				_blankTodos.push(
-					<div className='todo-item' key={i} onClick={this.focusForm}></div>
+					<div className='todo-item' key={i} onClick={this.focusTodoForm}></div>
 				);
 			}
 			return _blankTodos;
 		};
 
-		const blankTodo = {name: '', list_id: this.props.list.id };
+
+		let newTodo = () => {
+			if (this.state.list.todos.length < 10) {
+				const blankTodo = {name: '', list_id: this.props.list.id };
+				return (
+					<div id={this.props.list.id}>
+						<TodoForm todo={blankTodo} className='hi'/>
+					</div>
+				);
+			}
+		};
 
     return (
       <div className='list-view'>
 				{ nameForm() }
 				<div className='list-todos'>
 					{ todoList() }
-					<div id={this.props.list.id}>
-						<TodoForm todo={blankTodo} className='hi'/>
-					</div>
+					{ newTodo() }
 					{ blankTodos() }
 				</div>
       </div>

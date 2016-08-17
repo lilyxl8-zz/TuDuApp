@@ -28,7 +28,6 @@ const TodoForm = React.createClass({
     return (
 				<form className='todo-form todo-item' onSubmit={this.handleSubmit}>
 					<input
-						placeholder="+"
 						value={this.state.todo.name}
 						onChange={this.updateName} />
 				</form>
