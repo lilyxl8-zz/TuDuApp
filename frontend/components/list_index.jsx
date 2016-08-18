@@ -27,9 +27,7 @@ const ListIndex = React.createClass({
 	componentWillUnmount () {
 		this.listStoreToken.remove();
 	},
-
-// <Link to='' className='app-logo'><img src='images/logo.png'></img></Link>
-
+	
   render () {
 		let blankList = { name: '' };
 
