@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 
 import ListStore from '../stores/list_store';
 import ListUtil from '../utils/list_util';
@@ -27,7 +26,7 @@ const ListIndex = React.createClass({
 	componentWillUnmount () {
 		this.listStoreToken.remove();
 	},
-	
+
   render () {
 		let blankList = { name: '' };
 
