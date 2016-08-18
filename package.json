@@ -6,9 +6,14 @@
   "directories": {
     "test": "test"
   },
+	"engines": {
+		"node": "5.9.0",
+		"npm": "3.7.3"
+	},
   "scripts": {
     "webpack": "webpack",
-		"start": "--history-api-fallback"
+		"start": "--history-api-fallback",
+		"postinstall": "./node_modules/.bin/webpack"
   },
   "keywords": [],
   "author": "",
