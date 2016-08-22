@@ -37,28 +37,26 @@ const SignupForm = React.createClass({
 
   render () {
     return (
-			<div className='bg-overlay'>
-	      <div className='auth-form'>
-	        <form onSubmit={this.executeSubmit}>
-	          <input onChange={this.updateUsername}
-	            type="text"
-	            value={this.state.username}
-	            placeholder='Username' />
-	          <br />
-	          <input onChange={this.updatePassword}
-	            type="password"
-	            value={this.state.password}
-	            placeholder='Password (minimum 7 chars)' />
-						<div className='auth-text'>
-							<Link
-		            to="/signin">
-								Already have an account?
-		          </Link>
-						</div>
-	          <button>Sign up</button>
-	        </form>
-	      </div>
-			</div>
+      <div className='auth-form'>
+        <form onSubmit={this.executeSubmit}>
+          <input onChange={this.updateUsername}
+            type="text"
+            value={this.state.username}
+            placeholder='Username' />
+          <br />
+          <input onChange={this.updatePassword}
+            type="password"
+            value={this.state.password}
+            placeholder='Password (minimum 7 chars)' />
+					<div className='auth-text'>
+						<Link
+	            to="/signin">
+							Already have an account?
+	          </Link>
+					</div>
+          <button>Sign up</button>
+        </form>
+      </div>
     );
   }
 });

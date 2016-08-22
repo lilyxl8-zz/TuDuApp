@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
-import ListUtil from '../utils/list_util';
 import SessionUtil from '../utils/session_util';
 import SessionStore from '../stores/session_store';
 
 const SigninForm = React.createClass({
-
   contextTypes : {
     router: React.PropTypes.object.isRequired
   },
@@ -32,7 +30,7 @@ const SigninForm = React.createClass({
 		let router = this.context.router;
 
     SessionUtil.login(this.state, () => {
-			router.push('/app');
+			router.push('/');
 		});
   },
 
@@ -46,27 +44,25 @@ const SigninForm = React.createClass({
 
   render () {
     return (
-			<div className='bg-overlay'>
-	      <div className='auth-form'>
-	        <form onSubmit={this.executeSubmit}>
-	          <input onChange={this.updateUsername}
-	            type="text"
-	            value={this.state.username}
-	            placeholder='Username' />
-	          <br />
-	          <input onChange={this.updatePassword}
-	            type="password"
-	            value={this.state.password}
-	            placeholder='Password' />
-						<div className='auth-text'>
-		          <Link
-		            to="/signup" className='auth-text'>Need an account?
-		          </Link>
-						</div>
-	          <button>Sign in</button>
-	        </form>
-	      </div>
-			</div>
+      <div className='auth-form'>
+        <form onSubmit={this.executeSubmit}>
+          <input onChange={this.updateUsername}
+            type="text"
+            value={this.state.username}
+            placeholder='Username' />
+          <br />
+          <input onChange={this.updatePassword}
+            type="password"
+            value={this.state.password}
+            placeholder='Password' />
+					<div className='auth-text'>
+	          <Link
+	            to="/signup" className='auth-text'>Need an account?
+	          </Link>
+					</div>
+          <button>Sign in</button>
+        </form>
+      </div>
     );
   }
 });

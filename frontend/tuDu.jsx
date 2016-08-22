@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 
 import SessionUtil from './utils/session_util';
 import SessionStore from './stores/session_store';
@@ -42,8 +42,6 @@ $(document).ready( () => {
   ReactDOM.render(
 		<Router history={browserHistory}>
 			<Route path= '/' component={TuDuApp}>
-				<IndexRoute component={Landing} />
-				<Route path= 'app' name='app' component={ListIndex} />
 				<Route path= 'signup' name='signup' component={SignupForm} />
 				<Route path='signin' name='signin' component={SigninForm}/>
 			</Route>
