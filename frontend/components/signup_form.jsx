@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import ListUtil from '../utils/list_util';
 import UserUtil from '../utils/user_util';
 import SessionUtil from '../utils/session_util';
 
