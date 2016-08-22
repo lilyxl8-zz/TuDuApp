@@ -39,6 +39,8 @@ img {
   color: #fefefe; }
   .nav-overlay a {
     margin-left: 20px; }
+  .nav-overlay a:hover {
+    color: #bbb; }
 
 .app-logo {
   height: 25px;
@@ -117,6 +119,7 @@ img {
   margin: 3.9rem 20px; }
 
 .nav-arrow {
+  display: none;
   position: absolute;
   top: 2px;
   padding: 196px 0;

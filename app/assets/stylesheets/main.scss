@@ -67,6 +67,9 @@ img {
 	a {
 		margin-left: $padding;
 	}
+	a:hover {
+		color: $gray-color;
+	}
 }
 
 .app-logo {
@@ -162,6 +165,7 @@ img {
 }
 
 .nav-arrow {
+	display: none;
 	position: absolute;
 	top: 2px;
 	padding: 196px 0;
