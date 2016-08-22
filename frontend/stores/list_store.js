@@ -17,6 +17,15 @@ ListStore.replaceList = (list) => {
 	_lists.push(list);
 };
 
+ListStore.deleteList = (list) => {
+	for (let i = 0; i < _lists.length; i++) {
+		if (_lists[i].id === list.id) {
+			_lists.splice(i,1);
+			return;
+		}
+	}
+};
+
 ListStore.removeTodo = (todo) => {
 	for (let i = 0; i < _lists.length; i++) {
 		if (_lists[i].id === todo.list_id) {
@@ -48,6 +57,11 @@ ListStore.__onDispatch = (payload) => {
 		case ListConstants.LIST_RECEIVED:
 			console.log('LIST_RECEIVED');
       ListStore.replaceList(payload.list);
+			ListStore.__emitChange();
+			break;
+		case ListConstants.LIST_DELETED:
+			console.log('LIST_DELETED');
+			ListStore.deleteList(payload.list);
 			ListStore.__emitChange();
 			break;
 		case ListConstants.LISTS_CLEARED:

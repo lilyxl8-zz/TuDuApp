@@ -16,6 +16,13 @@ const ListActions = {
 		});
 	},
 
+	listDeleted (list) {
+		AppDispatcher.dispatch({
+			actionType: ListConstants.LIST_DELETED,
+			list: list
+		});
+	},
+
 	todoReceived (todo) {
 		AppDispatcher.dispatch({
 			actionType: ListConstants.TODO_RECEIVED,
