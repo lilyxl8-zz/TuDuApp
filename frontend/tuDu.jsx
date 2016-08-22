@@ -5,9 +5,11 @@ import { Router, Route, browserHistory } from 'react-router';
 import SessionUtil from './utils/session_util';
 import SessionStore from './stores/session_store';
 
+import NavBar from './components/navbar';
 import SignupForm from './components/signup_form';
 import SigninForm from './components/signin_form';
-import NavBar from './components/navbar';
+
+import Landing from './components/landing';
 import ListIndex from './components/list_index';
 
 const TuDuApp = React.createClass({
@@ -30,6 +32,8 @@ const TuDuApp = React.createClass({
 		let listIndex = () => {
 			if (SessionStore.currentUser()) {
 				return <ListIndex /> ;
+			} else {
+				return <Landing /> ;
 			}
 		};
     return (

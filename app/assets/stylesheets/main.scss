@@ -1,5 +1,13 @@
 /* MIXINS */
+
+$red-color: #f00;
+$black-color: #000;
+$gray-color: #bbb;
+$white-color: #fff;
+$tudu-gradient: linear-gradient(90deg, #032555, #00CFDD);
+
 /* RESET */
+
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
 section, img, div, h2, p, form,
@@ -13,43 +21,50 @@ span, article, footer, time, small {
   margin: 0;
   padding: 0;
   border: 0;
-  background: transparent; }
-
+  background: transparent;
+}
 body {
-  font-family: 'arial'; }
-
+  font-family: 'arial';
+}
 ul {
-  list-style: none; }
-
+  list-style: none;
+}
 img {
-  display: block; }
+  display: block;
+}
 
 /* NAVBAR */
+
 .navbar {
   width: auto;
   height: 1.1rem;
   padding: 15px;
-  color: #fff; }
-
+  color: #fff;
+}
 .auth-btns {
-  float: right; }
+  float: right;
+}
 
 /* JUMBOTRON */
+
 .jumbotron {
-  background: linear-gradient(90deg, #032555, #00CFDD);
+  background: $tudu-gradient;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  position: absolute; }
-  .jumbotron .title {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    color: #fff; }
+  position: absolute;
+	.title {
+		position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  transform: translateY(-50%) translateX(-50%);
+		color: $white-color;
+	}
+}
 
 /* SIGN IN/UP */
+
 .auth-form {
   position: absolute;
   width: 20rem;
@@ -57,29 +72,30 @@ img {
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
   padding: 20px;
-  border: 1px solid #000;
-  border-radius: 8px; }
+  border: 1px solid $black-color;
+  border-radius: 8px;
+}
 
 /* LIST INDEX */
+
 .list-index {
   display: flex;
-  flex-wrap: wrap; }
-
+  flex-wrap: wrap;
+}
 .list-view {
   padding: 0 3px;
   flex-basis: 14%;
-  margin-top: 5rem; }
-
+  margin-top: 5rem;
+}
 .todo-item {
   cursor: default;
-  border-top: 1px solid #bbb;
-  padding: 4px 0; }
-
+  border-top: 1px solid $gray-color;
+  padding: 4px 0;
+}
 .todo-item > a {
-  padding-right: 10px; }
-
+  padding-right: 10px;
+}
 .todo-item:hover,
 .done {
-  text-decoration: line-through; }
-
-/*# sourceMappingURL=main.css.map */
+  text-decoration: line-through;
+}
