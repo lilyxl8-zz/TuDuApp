@@ -1,10 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
 /* MIXINS */
 /* RESET */
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
 section, img, div, h2, p, form,
 fieldset, label, input, textarea,
-span, article, footer, time, small {
+span, article, footer, time, small, h3 {
   font-size: inherit;
   color: inherit;
   font-family: inherit;
@@ -16,7 +17,7 @@ span, article, footer, time, small {
   background: transparent; }
 
 body {
-  font-family: 'arial'; }
+  font-family: 'open sans', sans-serif, 'helvetica'; }
 
 ul {
   list-style: none; }
@@ -48,6 +49,13 @@ img {
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
     color: #fff; }
+    .jumbotron .title img {
+      margin: 0 auto 20px; }
+    .jumbotron .title h3 {
+      font-size: 1.5rem;
+      font-weight: 300;
+      text-align: center;
+      letter-spacing: 3px; }
 
 /* SIGN IN/UP */
 .auth-form {

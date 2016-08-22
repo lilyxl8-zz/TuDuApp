@@ -5,7 +5,7 @@ const Landing = React.createClass({
 		return (
 			<div className='jumbotron'>
 				<div className='title'>
-					<img src='/app/assets/images/logo.png' />
+					<img src='images/logo.png' />
 					<h3>Just to-dos. No filler.</h3>
 				</div>
 			</div>
