@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "webpack": "webpack"
+    "webpack": "webpack",
+		"start": "--history-api-fallback"
   },
   "keywords": [],
   "author": "",

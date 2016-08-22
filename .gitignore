@@ -16,5 +16,9 @@ node_modules
 app/assets/javascripts/bundle.js*
 test
 .DS_Store
+<<<<<<< HEAD
 .byebug_history
 .sass_cache
+=======
+.sass-cache
+>>>>>>> babc5c3... style
