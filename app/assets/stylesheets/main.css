@@ -151,7 +151,7 @@ img {
   float: left;
   display: inline;
   position: relative;
-  width: 19.87%;
+  width: 19.79%;
   border-right: 1px solid #e2e2e2; }
 
 .list-view:first-of-type {
@@ -159,6 +159,7 @@ img {
 
 .list-name {
   cursor: default;
+  height: 54px;
   margin: 0 8px 2rem; }
   .list-name h1 {
     text-align: center;

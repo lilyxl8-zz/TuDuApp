@@ -12,6 +12,20 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+			@user.lists.create!(name: "Edit me!")
+			@user.lists.first.todos.create!(
+				name: "Add your todos here!", user_id: @user.id)
+			@user.lists.first.todos.create!(
+				name: "Click to mark me done!", user_id: @user.id)
+			@user.lists.first.todos.create!(
+				name: "Hover to edit me!", user_id: @user.id)
+			@user.lists.first.todos.create!(
+				name: "Hover to delete me!", done: true, user_id: @user.id)
+
+			@user.lists.create!(name: "Groceries")
+			@user.lists.last.todos.create!(name: "Buy milk", user_id: @user.id)
+			@user.lists.last.todos.create!(name: "Buy cheese", user_id: @user.id)
+
       login!(@user)
       render json: @user
     else

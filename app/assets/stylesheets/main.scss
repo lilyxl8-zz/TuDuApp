@@ -202,7 +202,7 @@ img {
 	float: left;
 	display: inline;
 	position: relative;
-	width: 19.87%;
+	width: 19.79%;
   border-right: 1px solid $light-gray-color;
 }
 
@@ -212,6 +212,7 @@ img {
 
 .list-name {
 	cursor: default;
+	height: 54px;
 	margin: 0 $list-padding $list-name-padding;
 	h1 {
 		text-align: center;

@@ -27,8 +27,6 @@ const NavOverlay = React.createClass({
   render () {
     let authText, logo;
 
-		console.log(this.props.location.pathname);
-
 		if (this.props.location.pathname != '/') {
 			logo = () => {
 				return (
