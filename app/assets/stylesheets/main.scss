@@ -194,7 +194,7 @@ img {
 .lists-container {
 	display: block;
 	margin: 0 ($padding * 3);
-	height: 450px;
+	height: 480px;
   overflow: hidden;
 }
 
@@ -261,6 +261,13 @@ img {
 	font-size: .8rem;
 }
 
+.text-wrapper {
+	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 25px;
+}
+
 .todo-form {
 	cursor: text;
 	font-size: .8rem;
@@ -276,10 +283,11 @@ img {
 
 .edit-todo {
 	display: none;
-	float: right;
+	position: absolute;
+	right: -1px;
+	top: 8px;
 	width: 20px;
 	height: 25px;
-	margin: -1px -3px;
 	background-color: $dark-gray-color;
   -webkit-mask-image: url('../images/pencil.svg');
   mask-image: url('../images/pencil.svg');
@@ -287,10 +295,11 @@ img {
 
 .delete-todo {
 	display: none;
-	float: right;
   width: 13px;
   height: 12px;
-  margin: 2px -1px;
+	position: absolute;
+  right: -1px;
+  top: 12px;
   background-color: $red-color;
   -webkit-mask-image: url("../images/xsm.svg");
   mask-image: url("../images/xsm.svg");
