@@ -192,6 +192,7 @@ img {
   font-size: .8rem; }
 
 .todo-form {
+  cursor: text;
   font-size: .8rem;
   width: 100%; }
 

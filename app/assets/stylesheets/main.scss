@@ -243,7 +243,11 @@ img {
 }
 
 .todo-item {
+<<<<<<< HEAD
   cursor: text;
+=======
+	cursor: default;
+>>>>>>> 3375e7e... default cursor over lists
   border-bottom: 1px solid $light-gray-color;
   padding: $todo-item-padding 0;
 	position: relative;
@@ -253,6 +257,7 @@ img {
 }
 
 .todo-form {
+	cursor: text;
 	font-size: .8rem;
 	width: 100%;
 }
