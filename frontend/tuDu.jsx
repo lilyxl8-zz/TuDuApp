@@ -31,8 +31,8 @@ const TuDuApp = React.createClass({
   render () {
     return (
       <div>
-				<NavOverlay location={this.props.location}/>
-				{ this.props.children }
+        <NavOverlay location={this.props.location}/>
+        { this.props.children }
       </div>
     );
   }
