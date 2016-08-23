@@ -24,12 +24,12 @@ SessionStore.__onDispatch = (payload) => {
     case SessionConstants.CURRENT_USER_RECEIVED:
       _currentUser = payload.currentUser;
       _currentUserHasBeenFetched = true;
-			SessionStore.__emitChange();
-			break;
-		case SessionConstants.LOGOUT:
-			_currentUser = null;
-			SessionStore.__emitChange();
-			break;
+      SessionStore.__emitChange();
+      break;
+    case SessionConstants.LOGOUT:
+      _currentUser = null;
+      SessionStore.__emitChange();
+      break;
   }
 };
 

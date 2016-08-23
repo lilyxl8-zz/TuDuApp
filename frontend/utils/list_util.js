@@ -1,16 +1,16 @@
 import ListActions from '../actions/list_actions';
 
 const ListUtil = {
-	fetchUserLists: () => {
-		$.ajax({
-			type: 'GET',
-			url: '/api/lists',
-			dataType: 'json',
-			success: (lists) => {
-				ListActions.listsReceived(lists);
-			}
-		});
-	},
+  fetchUserLists: () => {
+    $.ajax({
+      type: 'GET',
+      url: '/api/lists',
+      dataType: 'json',
+      success: (lists) => {
+        ListActions.listsReceived(lists);
+      }
+    });
+  },
 
   createList: (list) => {
     $.ajax({
@@ -24,32 +24,32 @@ const ListUtil = {
     });
   },
 
-	updateList: (list) => {
-		$.ajax({
-			type: 'PATCH',
-			url: '/api/lists/' + list.id,
-			dataType: 'json',
-			data: { list: list },
-			success: (newList) => {
-				ListActions.listReceived(newList);
-			}
-		});
-	},
+  updateList: (list) => {
+    $.ajax({
+      type: 'PATCH',
+      url: '/api/lists/' + list.id,
+      dataType: 'json',
+      data: { list: list },
+      success: (newList) => {
+        ListActions.listReceived(newList);
+      }
+    });
+  },
 
-	deleteList: (list) => {
-		$.ajax({
-			type: 'DELETE',
-			url: 'api/lists' + list.id,
-			dataType: 'json',
-			data: {list: list},
-			success: (deletedList) => {
-				ListActions.removeList(deletedList);
-			}
-		});
-	},
+  deleteList: (list) => {
+    $.ajax({
+      type: 'DELETE',
+      url: 'api/lists' + list.id,
+      dataType: 'json',
+      data: {list: list},
+      success: (deletedList) => {
+        ListActions.removeList(deletedList);
+      }
+    });
+  },
 
-	createTodo: (todo) => {
-		$.ajax({
+  createTodo: (todo) => {
+    $.ajax({
       type: 'POST',
       url: '/api/todos',
       dataType: 'json',
@@ -58,10 +58,10 @@ const ListUtil = {
         ListActions.todoReceived(newTodo); // TODO
       }
     });
-	},
+  },
 
-	updateTodo: (todo) => {
-		$.ajax({
+  updateTodo: (todo) => {
+    $.ajax({
       type: 'PATCH',
       url: '/api/todos/' + todo.id,
       dataType: 'json',
@@ -70,18 +70,18 @@ const ListUtil = {
         ListActions.todoReceived(updatedTodo);
       }
     });
-	},
+  },
 
-	deleteTodo: (todo) => {
-		$.ajax({
-			type: 'DELETE',
-			url: '/api/todos/' + todo.id,
-			dataType: 'json',
-			success: () => {
-				ListActions.todoDeleted(todo);
-			}
-		});
-	}
+  deleteTodo: (todo) => {
+    $.ajax({
+      type: 'DELETE',
+      url: '/api/todos/' + todo.id,
+      dataType: 'json',
+      success: () => {
+        ListActions.todoDeleted(todo);
+      }
+    });
+  }
 };
 
 export default ListUtil;

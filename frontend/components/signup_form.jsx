@@ -47,12 +47,12 @@ const SignupForm = React.createClass({
             type="password"
             value={this.state.password}
             placeholder='Password (minimum 7 chars)' />
-					<div className='auth-text'>
-						<Link
-	            to="/signin">
-							Already have an account?
-	          </Link>
-					</div>
+          <div className='auth-text'>
+            <Link
+              to="/signin">
+              Already have an account?
+            </Link>
+          </div>
           <button>Sign up</button>
         </form>
       </div>

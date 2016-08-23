@@ -13,20 +13,20 @@ import Landing from './components/landing';
 import ListIndex from './components/list_index';
 
 const TuDuApp = React.createClass({
-	getInitialState () {
-		return {
-			currentUser: SessionStore.currentUser()
-		};
-	},
+  getInitialState () {
+    return {
+      currentUser: SessionStore.currentUser()
+    };
+  },
 
-	componentDidMount () {
-		SessionUtil.fetchCurrentUser();
-		this.sessionStoreToken = SessionStore.addListener(this._updateSession);
-	},
+  componentDidMount () {
+    SessionUtil.fetchCurrentUser();
+    this.sessionStoreToken = SessionStore.addListener(this._updateSession);
+  },
 
-	_updateSession () {
-		this.setState({ currentUser: SessionStore.currentUser() });
-	},
+  _updateSession () {
+    this.setState({ currentUser: SessionStore.currentUser() });
+  },
 
   render () {
     return (
@@ -39,13 +39,13 @@ const TuDuApp = React.createClass({
 });
 
 ReactDOM.render(
-	<Router history={browserHistory}>
-		<Route path= '/' component={TuDuApp}>
-			<IndexRoute component={Landing} />
-			<Route path= 'app' name='app' component={ListIndex} />
-			<Route path= 'signup' name='signup' component={SignupForm} />
-			<Route path='signin' name='signin' component={SigninForm}/>
-		</Route>
-	</Router>,
-	document.getElementById('main')
+  <Router history={browserHistory}>
+    <Route path= '/' component={TuDuApp}>
+      <IndexRoute component={Landing} />
+      <Route path= 'app' name='app' component={ListIndex} />
+      <Route path= 'signup' name='signup' component={SignupForm} />
+      <Route path='signin' name='signin' component={SigninForm}/>
+    </Route>
+  </Router>,
+  document.getElementById('main')
 );

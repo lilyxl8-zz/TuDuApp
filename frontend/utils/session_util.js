@@ -17,33 +17,33 @@ const SessionUtil = {
   },
 
   logout: () => {
-		$.ajax({
-			type: 'DELETE',
-			url: '/api/session',
-			dataType: 'json',
-			success: () => {
-				SessionActions.logout();
-			},
-			complete: () => {
-				ListActions.clearLists();
-				TodoActions.clearTodos();
-			}
-		});
-	},
+    $.ajax({
+      type: 'DELETE',
+      url: '/api/session',
+      dataType: 'json',
+      success: () => {
+        SessionActions.logout();
+      },
+      complete: () => {
+        ListActions.clearLists();
+        TodoActions.clearTodos();
+      }
+    });
+  },
 
   fetchCurrentUser: (completion) => {
-		$.ajax({
-			type: 'GET',
-			url: '/api/session',
-			dataType: 'json',
-			success: (currentUser) => {
-				SessionActions.currentUserReceived(currentUser);
-			},
-			complete: () => {
-				completion && completion();
-			}
-		});
-	}
+    $.ajax({
+      type: 'GET',
+      url: '/api/session',
+      dataType: 'json',
+      success: (currentUser) => {
+        SessionActions.currentUserReceived(currentUser);
+      },
+      complete: () => {
+        completion && completion();
+      }
+    });
+  }
 };
 
 export default SessionUtil;

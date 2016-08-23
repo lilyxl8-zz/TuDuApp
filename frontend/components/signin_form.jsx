@@ -20,18 +20,18 @@ const SigninForm = React.createClass({
   },
 
   _checkUser () {
-		if (SessionStore.currentUser()) {
+    if (SessionStore.currentUser()) {
       this.context.router.push('/');
     }
   },
 
   executeSubmit (e) {
     e.preventDefault();
-		let router = this.context.router;
+    let router = this.context.router;
 
     SessionUtil.login(this.state, () => {
-			router.push('/app');
-		});
+      router.push('/app');
+    });
   },
 
   updateUsername (e) {
@@ -55,11 +55,11 @@ const SigninForm = React.createClass({
             type="password"
             value={this.state.password}
             placeholder='Password' />
-					<div className='auth-text'>
-	          <Link
-	            to="/signup" className='auth-text'>Need an account?
-	          </Link>
-					</div>
+          <div className='auth-text'>
+            <Link
+              to="/signup" className='auth-text'>Need an account?
+            </Link>
+          </div>
           <button>Sign in</button>
         </form>
       </div>

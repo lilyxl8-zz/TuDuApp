@@ -36,12 +36,12 @@ TodoStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
     case TodoConstants.TODO_RECEIVED:
       this.replaceTodo(payload.todo);
-			TodoStore.__emitChange();
-			break;
-		case TodoConstants.TODOS_RECEIVED:
+      TodoStore.__emitChange();
+      break;
+    case TodoConstants.TODOS_RECEIVED:
       _todos = payload.todos;
-			TodoStore.__emitChange();
-			break;
+      TodoStore.__emitChange();
+      break;
   }
 };
 

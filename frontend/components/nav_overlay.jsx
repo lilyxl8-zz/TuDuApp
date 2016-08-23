@@ -8,7 +8,7 @@ const NavOverlay = React.createClass({
   getInitialState () {
     return {
       currentUser: SessionStore.currentUser(),
-			appView: !!SessionStore.currentUser()
+      appView: !!SessionStore.currentUser()
     };
   },
 
@@ -27,50 +27,50 @@ const NavOverlay = React.createClass({
   render () {
     let authText, logo;
 
-		if (this.props.location.pathname != '/') {
-			logo = () => {
-				return (
-					<Link to='/'>
-						<img src='images/logo.png' className='app-logo'></img>
-					</Link>
-				);
-			};
-		} else {
-			logo = () => {};
-		}
+    if (this.props.location.pathname != '/') {
+      logo = () => {
+        return (
+          <Link to='/'>
+            <img src='images/logo.png' className='app-logo'></img>
+          </Link>
+        );
+      };
+    } else {
+      logo = () => {};
+    }
 
     if (this.state.currentUser) {
       authText = () => {
         return (
-					<div>
-	          <Link to='/app'>
-							Welcome, { this.state.currentUser.username }</Link>
-						<Link to='/' onClick={ SessionUtil.logout }>
-							Log out</Link>
-					</div>
+          <div>
+            <Link to='/app'>
+              Welcome, { this.state.currentUser.username }</Link>
+            <Link to='/' onClick={ SessionUtil.logout }>
+              Log out</Link>
+          </div>
         );
       };
     } else {
       authText = () => {
         return (
-					<div>
-	          <Link to='/'>Home</Link>
-	          <Link to='/signup'>Sign up</Link>
-	          <Link to='/signin'>Sign in</Link>
-					</div>
+          <div>
+            <Link to='/'>Home</Link>
+            <Link to='/signup'>Sign up</Link>
+            <Link to='/signin'>Sign in</Link>
+          </div>
         );
       };
     }
 
     return (
-			<div>
-				<div className='bg-overlay'>
-					{ logo() }
-					<div className='nav-overlay group'>
-		      	{ authText() }
-					</div>
-				</div>
-			</div>
+      <div>
+        <div className='bg-overlay'>
+          { logo() }
+          <div className='nav-overlay group'>
+            { authText() }
+          </div>
+        </div>
+      </div>
     );
   }
 });

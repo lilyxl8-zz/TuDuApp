@@ -13,8 +13,8 @@ const TodoUtil = {
     });
   },
 
-	fetchTodosByListId: (listId) => {
-		$.ajax({
+  fetchTodosByListId: (listId) => {
+    $.ajax({
       type: 'GET',
       url: '/api/lists/{$listId}',
       dataType: 'json',
@@ -22,7 +22,7 @@ const TodoUtil = {
         TodoActions.todosReceived(list.todos);
       }
     });
-	}
+  }
 };
 
 export default TodoUtil;

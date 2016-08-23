@@ -5,118 +5,118 @@ import TodoItem from './todo_item';
 import TodoForm from './todo_form';
 
 const ListView = React.createClass({
-	getInitialState () {
-		return {
-			list: this.props.list,
-			editing: false
-		};
-	},
+  getInitialState () {
+    return {
+      list: this.props.list,
+      editing: false
+    };
+  },
 
-	componentDidMount () {
-		this.listStoreToken = ListStore.addListener(this._updateList);
-	},
+  componentDidMount () {
+    this.listStoreToken = ListStore.addListener(this._updateList);
+  },
 
-	_updateList () {
-		this.setState({ list: this.props.list });
-	},
+  _updateList () {
+    this.setState({ list: this.props.list });
+  },
 
-	updateName (e) {
-		let newList = this.state.list;
-		newList.name = e.currentTarget.value;
+  updateName (e) {
+    let newList = this.state.list;
+    newList.name = e.currentTarget.value;
     this.setState({ list: newList });
-	},
+  },
 
-	toggleEditing (e) {
-		e.preventDefault();
-		this.setState({ editing: !this.state.editing });
-	},
+  toggleEditing (e) {
+    e.preventDefault();
+    this.setState({ editing: !this.state.editing });
+  },
 
-	focusTodoForm (e) {
-		e.preventDefault();
-		document.getElementById(this.props.list.id).firstChild.firstChild.focus();
-	},
+  focusTodoForm (e) {
+    e.preventDefault();
+    document.getElementById(this.props.list.id).firstChild.firstChild.focus();
+  },
 
-	componentWillUnmount () {
-		this.listStoreToken.remove();
-	},
+  componentWillUnmount () {
+    this.listStoreToken.remove();
+  },
 
-	handleSubmit (e) {
-		e.preventDefault();
-		ListUtil.updateList(this.state.list);
-		this.toggleEditing(e);
-	},
+  handleSubmit (e) {
+    e.preventDefault();
+    ListUtil.updateList(this.state.list);
+    this.toggleEditing(e);
+  },
 
-	deleteList (e) {
-		e.preventDefault();
-		ListUtil.deleteList(this.state.list);
-	},
+  deleteList (e) {
+    e.preventDefault();
+    ListUtil.deleteList(this.state.list);
+  },
 
   render () {
-		let nameForm;
+    let nameForm;
 
-		nameForm = () => {
-			if (this.state.editing) {
-				return (
-					<div className='list-name'>
-						<form className='name-form' onSubmit={this.handleSubmit}>
-						  <input
-						    value={this.state.list.name}
-						    onChange={this.updateName}
-								onBlur={this.toggleEditing}
-								autoFocus />
-						</form>
-					</div>
-				);
-			} else {
-				return (
-					<div className='list-name'>
-						<h1 onClick={this.toggleEditing}>
-							{this.state.list.name}
-						</h1>
-						<a onClick={this.deleteList} className='delete-list'></a>
-					</div>
-				);
-			}
-		};
+    nameForm = () => {
+      if (this.state.editing) {
+        return (
+          <div className='list-name'>
+            <form className='name-form' onSubmit={this.handleSubmit}>
+              <input
+                value={this.state.list.name}
+                onChange={this.updateName}
+                onBlur={this.toggleEditing}
+                autoFocus />
+            </form>
+          </div>
+        );
+      } else {
+        return (
+          <div className='list-name'>
+            <h1 onClick={this.toggleEditing}>
+              {this.state.list.name}
+            </h1>
+            <a onClick={this.deleteList} className='delete-list'></a>
+          </div>
+        );
+      }
+    };
 
     let todoList = () => {
-			return this.state.list.todos.map(todo =>
-				<TodoItem key={todo.id} todo={todo} />
-			);
-		};
+      return this.state.list.todos.map(todo =>
+        <TodoItem key={todo.id} todo={todo} />
+      );
+    };
 
-		let blankTodos = () => {
-			if (this.state.list.todos.length > 9) {	return; }
+    let blankTodos = () => {
+      if (this.state.list.todos.length > 9) {  return; }
 
-			let _blankTodos = [];
-			for (let i = 0; i < 9 - this.state.list.todos.length; i++) {
-				_blankTodos.push(
-					<div className='todo-item' key={i} onClick={this.focusTodoForm}></div>
-				);
-			}
-			return _blankTodos;
-		};
+      let _blankTodos = [];
+      for (let i = 0; i < 9 - this.state.list.todos.length; i++) {
+        _blankTodos.push(
+          <div className='todo-item' key={i} onClick={this.focusTodoForm}></div>
+        );
+      }
+      return _blankTodos;
+    };
 
 
-		let newTodo = () => {
-			if (this.state.list.todos.length < 10) {
-				const blankTodo = {name: '', list_id: this.props.list.id };
-				return (
-					<div id={this.props.list.id}>
-						<TodoForm todo={blankTodo} className='hi'/>
-					</div>
-				);
-			}
-		};
+    let newTodo = () => {
+      if (this.state.list.todos.length < 10) {
+        const blankTodo = {name: '', list_id: this.props.list.id };
+        return (
+          <div id={this.props.list.id}>
+            <TodoForm todo={blankTodo} className='hi'/>
+          </div>
+        );
+      }
+    };
 
     return (
       <div className='list-view'>
-				{ nameForm() }
-				<div className='list-todos'>
-					{ todoList() }
-					{ newTodo() }
-					{ blankTodos() }
-				</div>
+        { nameForm() }
+        <div className='list-todos'>
+          { todoList() }
+          { newTodo() }
+          { blankTodos() }
+        </div>
       </div>
     );
   }
