@@ -38,16 +38,14 @@ const TuDuApp = React.createClass({
   }
 });
 
-$(document).ready( () => {
-  ReactDOM.render(
-		<Router history={browserHistory}>
-			<Route path= '/' component={TuDuApp}>
-				<IndexRoute component={Landing} />
-				<Route path= 'app' name='app' component={ListIndex} />
-				<Route path= 'signup' name='signup' component={SignupForm} />
-				<Route path='signin' name='signin' component={SigninForm}/>
-			</Route>
-		</Router>,
-		document.getElementById('main')
-	);
-});
+ReactDOM.render(
+	<Router history={browserHistory}>
+		<Route path= '/' component={TuDuApp}>
+			<IndexRoute component={Landing} />
+			<Route path= 'app' name='app' component={ListIndex} />
+			<Route path= 'signup' name='signup' component={SignupForm} />
+			<Route path='signin' name='signin' component={SigninForm}/>
+		</Route>
+	</Router>,
+	document.getElementById('main')
+);

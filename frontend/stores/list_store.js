@@ -17,11 +17,7 @@ ListStore.replaceList = (list) => {
 	_lists.push(list);
 };
 
-<<<<<<< HEAD
-ListStore.deleteList = (list) => {
-=======
 ListStore.removeList = (list) => {
->>>>>>> cad347f... clean console statements
 	for (let i = 0; i < _lists.length; i++) {
 		if (_lists[i].id === list.id) {
 			_lists.splice(i,1);
@@ -62,12 +58,7 @@ ListStore.__onDispatch = (payload) => {
 			ListStore.__emitChange();
 			break;
 		case ListConstants.LIST_DELETED:
-<<<<<<< HEAD
-			console.log('LIST_DELETED');
-			ListStore.deleteList(payload.list);
-=======
 			ListStore.removeList(payload.list);
->>>>>>> cad347f... clean console statements
 			ListStore.__emitChange();
 			break;
 		case ListConstants.LISTS_CLEARED:
