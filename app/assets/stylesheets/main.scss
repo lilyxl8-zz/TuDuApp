@@ -59,52 +59,52 @@ img {
 /* NAVBAR */
 
 .nav-overlay {
-	z-index: 1;
-	float: right;
-	padding-top: 1px;
-	font-weight: 700;
-	color: $white-color;
-	a {
-		margin-left: $padding;
-	}
-	a:hover {
-		color: $light-gray-color;
-	}
+  z-index: 1;
+  float: right;
+  padding-top: 1px;
+  font-weight: 700;
+  color: $white-color;
+  a {
+    margin-left: $padding;
+  }
+  a:hover {
+    color: $light-gray-color;
+  }
 }
 
 .app-logo {
-	height: 25px;
-	float:left;
+  height: 25px;
+  float:left;
 }
 
 /* bg-overlay */
 
 .bg-overlay {
-	z-index: -1;
+  z-index: -1;
   background: $tudu-gradient;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   position: absolute;
-	padding: $padding;
+  padding: $padding;
 }
 
 .title {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translateY(-50%) translateX(-50%);
-	color: $white-color;
-	img {
-		margin: 0 auto 20px;
-	}
-	h3 {
-		font-size: 1.5rem;
-		font-weight: 300;
-		text-align: center;
-		letter-spacing: 3px;
-	}
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  color: $white-color;
+  img {
+    margin: 0 auto 20px;
+  }
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: 3px;
+  }
 }
 
 /* SIGN IN/UP */
@@ -113,191 +113,188 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-	z-index: 1;
+  z-index: 1;
   transform: translateY(-50%) translateX(-50%);
-	input {
-		background: $white-color;
+  input {
+    background: $white-color;
     width: 18rem;
-		padding: 10px 12px;
+    padding: 10px 12px;
     letter-spacing: 1px;
-	}
-	input:first-of-type {
-		border-top-left-radius: $border-radius;
+  }
+  input:first-of-type {
+    border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
-	}
-	input:last-of-type {
-		border-bottom-left-radius: $border-radius;
+  }
+  input:last-of-type {
+    border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
-		border-bottom: 1px solid $gray-color;
-	}
-	.auth-text {
-		color: $gray-color;
-		font-size: $small-font-size;
-		display: block;
-		margin: 10px 0;
-	}
-	button {
-		color: $white-color;
-		background: $teal-color;
+    border-bottom: 1px solid $gray-color;
+  }
+  .auth-text {
+    color: $gray-color;
+    font-size: $small-font-size;
+    display: block;
+    margin: 10px 0;
+  }
+  button {
+    color: $white-color;
+    background: $teal-color;
     border-radius: $border-radius;
-		margin: 36px auto 0;
+    margin: 36px auto 0;
     font-size: 1.2rem;
     font-weight: 300;
-		padding: 10px 30px;
-		letter-spacing: $letter-spacing;
-		display: block;
-		cursor: pointer;
-	}
+    padding: 10px 30px;
+    letter-spacing: $letter-spacing;
+    display: block;
+    cursor: pointer;
+  }
 }
 
 /* LIST INDEX */
 
 .bg-app {
-	top: $list-top-padding;
-	background: white;
-	position: absolute;
-	width: 100%;
-	bottom: 0;
+  top: $list-top-padding;
+  background: white;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 
 .list-index {
-	margin: $list-top-padding $padding;
+  margin: $list-top-padding $padding;
 }
 
 .nav-arrow {
-	display: none;
-	position: absolute;
-	top: 2px;
-	padding: 196px 0;
-	margin-top: $list-top-padding;
+  display: none;
+  position: absolute;
+  top: 2px;
+  padding: 196px 0;
+  margin-top: $list-top-padding;
 }
 
 .nav-arrow:hover {
-	opacity: 0.5;
+  opacity: 0.5;
 }
 
 .nav-left {
-	left: 0px;
-	margin-left: $padding;
-	padding-right: $padding;
+  left: 0px;
+  margin-left: $padding;
+  padding-right: $padding;
 }
 .nav-right {
-	right: 0px;
-	padding-left: $padding;
-	margin-right: $padding;
-	text-align: right;
-	img {
+  right: 0px;
+  padding-left: $padding;
+  margin-right: $padding;
+  text-align: right;
+  img {
     transform: rotate(180deg);
-	}
+  }
 }
 
 .lists-container {
-	display: block;
-	margin: 0 ($padding * 3);
-	height: 480px;
+  display: block;
+  margin: 0 ($padding * 3);
+  height: 480px;
   overflow: hidden;
 }
 
 .list-view {
-	float: left;
-	display: inline;
-	position: relative;
-	width: 19.79%;
+  float: left;
+  display: inline;
+  position: relative;
+  width: 19.79%;
   border-right: 1px solid $light-gray-color;
 }
 
 .list-view:first-of-type {
-	border-left: 1px solid $light-gray-color;
+  border-left: 1px solid $light-gray-color;
 }
 
 .list-name {
-	cursor: default;
-	height: 54px;
-	margin: 0 $list-padding $list-name-padding;
-	h1 {
-		text-align: center;
-		font-size: 1.2rem;
-		text-transform: uppercase;
-	}
-	input {
-		margin: 1px 0 4px;
-	}
+  cursor: default;
+  height: 54px;
+  margin: 0 $list-padding $list-name-padding;
+  h1 {
+    text-align: center;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+  input {
+    margin: 1px 0 4px;
+  }
 }
 
 .delete-list {
-	display: none;
-	position: absolute;
-	right: 9px;
-	top: 8px;
+  display: none;
+  position: absolute;
+  right: 9px;
+  top: 8px;
   width: 13px;
   height: 13px;
-	z-index: 1;
+  z-index: 1;
   background-color: $red-color;
   -webkit-mask-image: url("../images/x.svg");
   mask-image: url("../images/x.svg");
 }
 
 .list-name:hover {
-	.delete-list {
-		display: block;
-	}
+  .delete-list {
+    display: block;
+  }
 }
 
 .list-todos {
-	margin: 0 10px;
+  margin: 0 10px;
 }
 
 .todo-item {
-<<<<<<< HEAD
   cursor: text;
-=======
-	cursor: default;
->>>>>>> 3375e7e... default cursor over lists
+  cursor: default;
   border-bottom: 1px solid $light-gray-color;
   padding: $todo-item-padding 0;
-	position: relative;
+  position: relative;
   height: $todo-height;
-	overflow: hidden;
-	font-size: .8rem;
+  overflow: hidden;
+  font-size: .8rem;
 }
 
 .text-wrapper {
-	white-space: nowrap;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   padding-right: 25px;
 }
 
 .todo-form {
-	cursor: text;
-	font-size: .8rem;
-	width: 100%;
+  cursor: text;
+  font-size: .8rem;
+  width: 100%;
 }
 
 .todo-item:hover {
   color: $dark-gray-color;
-	.edit-todo {
-		display: block;
-	}
+  .edit-todo {
+    display: block;
+  }
 }
 
 .edit-todo {
-	display: none;
-	position: absolute;
-	right: -1px;
-	top: 8px;
-	width: 20px;
-	height: 25px;
-	background-color: $dark-gray-color;
+  display: none;
+  position: absolute;
+  right: -1px;
+  top: 8px;
+  width: 20px;
+  height: 25px;
+  background-color: $dark-gray-color;
   -webkit-mask-image: url('../images/pencil.svg');
   mask-image: url('../images/pencil.svg');
 }
 
 .delete-todo {
-	display: none;
+  display: none;
   width: 13px;
   height: 12px;
-	position: absolute;
+  position: absolute;
   right: -1px;
   top: 12px;
   background-color: $red-color;
@@ -306,16 +303,16 @@ img {
 }
 
 .done {
-	text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 .done:hover {
-	.delete-todo {
-		display: block;
-	}
-	.edit-todo {
-		display: none;
-	}
+  .delete-todo {
+    display: block;
+  }
+  .edit-todo {
+    display: none;
+  }
 }
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');

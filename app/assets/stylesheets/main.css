@@ -188,6 +188,7 @@ img {
 
 .todo-item {
   cursor: text;
+  cursor: default;
   border-bottom: 1px solid #e2e2e2;
   padding: 8px 0;
   position: relative;
