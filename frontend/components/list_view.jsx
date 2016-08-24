@@ -1,7 +1,7 @@
 import React from 'react';
 import ListUtil from '../utils/list_util';
 import ListStore from '../stores/list_store';
-import TodoItem from './todo_item';
+import TodoList from './todo_list';
 import TodoForm from './todo_form';
 
 const ListView = React.createClass({
@@ -79,12 +79,6 @@ const ListView = React.createClass({
       }
     };
 
-    let todoList = () => {
-      return this.state.list.todos.map(todo =>
-        <TodoItem key={todo.id} todo={todo} />
-      );
-    };
-
     let blankTodos = () => {
       if (this.state.list.todos.length > 9) {  return; }
 
@@ -97,13 +91,12 @@ const ListView = React.createClass({
       return _blankTodos;
     };
 
-
     let newTodo = () => {
       if (this.state.list.todos.length < 10) {
         const blankTodo = {name: '', list_id: this.props.list.id };
         return (
           <div id={this.props.list.id}>
-            <TodoForm todo={blankTodo} className='hi'/>
+            <TodoForm todo={blankTodo} />
           </div>
         );
       }
@@ -113,7 +106,7 @@ const ListView = React.createClass({
       <div className='list-view'>
         { nameForm() }
         <div className='list-todos'>
-          { todoList() }
+          <TodoList todos={this.state.list.todos} />
           { newTodo() }
           { blankTodos() }
         </div>
