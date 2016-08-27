@@ -63,12 +63,10 @@ const NavOverlay = React.createClass({
     }
 
     return (
-      <div>
-        <div className='bg-overlay'>
-          { logo() }
-          <div className='nav-overlay group'>
-            { authText() }
-          </div>
+      <div className='bg-overlay'>
+        { logo() }
+        <div className='nav-overlay group'>
+          { authText() }
         </div>
       </div>
     );

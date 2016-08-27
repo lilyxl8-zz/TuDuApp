@@ -52,9 +52,7 @@ const ListView = React.createClass({
   },
 
   render () {
-    let nameForm;
-
-    nameForm = () => {
+    let nameForm = () => {
       if (this.state.editing) {
         return (
           <div className='list-name'>

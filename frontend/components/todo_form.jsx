@@ -21,7 +21,7 @@ const TodoForm = React.createClass({
 
     let newTodo = this.state.todo;
     newTodo.name = '';
-    this.setState({todo: newTodo });
+    this.setState({ todo: newTodo });
   },
 
   render () {
