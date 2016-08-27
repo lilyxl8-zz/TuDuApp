@@ -80,9 +80,7 @@ const ListView = React.createClass({
           <div className='todo-item' key={i} onClick={this.focusTodoForm}></div>
         );
       }
-    }
-
-    if (this.state.list.todos.length < 10) {
+      
       const blankTodo = {name: '', list_id: this.props.list.id };
       newTodo = (
         <div id={this.props.list.id}>
