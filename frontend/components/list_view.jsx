@@ -52,61 +52,52 @@ const ListView = React.createClass({
   },
 
   render () {
-    let nameForm = () => {
-      if (this.state.editing) {
-        return (
-          <div className='list-name'>
-            <form className='name-form' onSubmit={this.handleSubmit}>
-              <input
-                value={this.state.list.name}
-                onChange={this.updateName}
-                onBlur={this.toggleEditing}
-                autoFocus />
-            </form>
-          </div>
-        );
-      } else {
-        return (
-          <div className='list-name'>
-            <h1 onClick={this.toggleEditing}>
-              {this.state.list.name}
-            </h1>
-            <a onClick={this.deleteList} className='delete-list'></a>
-          </div>
-        );
-      }
-    };
+    let newTodo, nameForm;
+    let blankTodos = [];
 
-    let blankTodos = () => {
-      if (this.state.list.todos.length > 9) {  return; }
+    nameForm = (this.state.editing) ? (
+      <div className='list-name'>
+        <form className='name-form' onSubmit={this.handleSubmit}>
+          <input
+            value={this.state.list.name}
+            onChange={this.updateName}
+            onBlur={this.toggleEditing}
+            autoFocus />
+        </form>
+      </div>
+    ) : (
+      <div className='list-name'>
+        <h1 onClick={this.toggleEditing}>
+          {this.state.list.name}
+        </h1>
+        <a onClick={this.deleteList} className='delete-list'></a>
+      </div>
+    );
 
-      let _blankTodos = [];
+    if (this.state.list.todos.length < 10) {
       for (let i = 0; i < 9 - this.state.list.todos.length; i++) {
-        _blankTodos.push(
+        blankTodos.push(
           <div className='todo-item' key={i} onClick={this.focusTodoForm}></div>
         );
       }
-      return _blankTodos;
-    };
+    }
 
-    let newTodo = () => {
-      if (this.state.list.todos.length < 10) {
-        const blankTodo = {name: '', list_id: this.props.list.id };
-        return (
-          <div id={this.props.list.id}>
-            <TodoForm todo={blankTodo} />
-          </div>
-        );
-      }
-    };
+    if (this.state.list.todos.length < 10) {
+      const blankTodo = {name: '', list_id: this.props.list.id };
+      newTodo = (
+        <div id={this.props.list.id}>
+          <TodoForm todo={blankTodo} />
+        </div>
+      );
+    }
 
     return (
       <div className='list-view'>
-        { nameForm() }
+        { nameForm }
         <div className='list-todos'>
           <TodoList todos={this.state.list.todos} />
-          { newTodo() }
-          { blankTodos() }
+          { newTodo }
+          { blankTodos }
         </div>
       </div>
     );
