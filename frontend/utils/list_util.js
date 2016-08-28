@@ -39,11 +39,11 @@ const ListUtil = {
   deleteList: (list) => {
     $.ajax({
       type: 'DELETE',
-      url: 'api/lists' + list.id,
+      url: 'api/lists/' + list.id,
       dataType: 'json',
       data: {list: list},
-      success: (deletedList) => {
-        ListActions.removeList(deletedList);
+      success: () => {
+        ListActions.listDeleted(list);
       }
     });
   },

@@ -165,7 +165,7 @@ img {
 }
 
 .nav-arrow {
-  display: none;
+  // display: none;
   position: absolute;
   top: 2px;
   padding: 196px 0;
@@ -191,7 +191,7 @@ img {
   }
 }
 
-.lists-container {
+.lists-container-scroll {
   display: block;
   margin: 0 ($padding * 3);
   height: 480px;

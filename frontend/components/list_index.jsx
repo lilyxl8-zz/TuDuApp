@@ -21,6 +21,7 @@ const ListIndex = React.createClass({
 
   _updateLists () {
     this.setState({ lists: ListStore.all() });
+    // console.log(this.state.lists);
   },
 
   componentWillUnmount () {
@@ -48,7 +49,7 @@ const ListIndex = React.createClass({
             <img src='images/arrow.svg'></img>
           </div>
 
-          <div className='lists-container'>
+          <div className='lists-container-scroll'>
             { ourLists() }
             <ListForm list={blankList} />
           </div>

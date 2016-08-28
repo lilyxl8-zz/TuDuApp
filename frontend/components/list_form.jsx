@@ -29,15 +29,12 @@ const ListForm = React.createClass({
 
   render () {
 
-    let blankTodos = () => {
-      let _blankTodos = [];
-      for (let i = 0; i < 11; i++) {
-        _blankTodos.push(
-          <div className='todo-item todo-form' key={i} onClick={this.focusListForm}></div>
-        );
-      }
-      return _blankTodos;
-    };
+    let blankTodos = [];
+    for (let i = 0; i < 11; i++) {
+      blankTodos.push(
+        <div className='todo-item todo-form' key={i} onClick={this.focusListForm}></div>
+      );
+    }
 
     return (
       <div className='list-view'>
@@ -49,7 +46,7 @@ const ListForm = React.createClass({
             onBlur={this.toggleEditing} />
         </form>
         <div className='list-todos'>
-          { blankTodos() }
+          { blankTodos }
         </div>
       </div>
     );

@@ -18,9 +18,11 @@ ListStore.replaceList = (list) => {
 };
 
 ListStore.removeList = (list) => {
+  console.log(list);
   for (let i = 0; i < _lists.length; i++) {
     if (_lists[i].id === list.id) {
-      _lists.splice(i,1);
+      _lists.splice(i, 1);
+      console.log(_lists);
       return;
     }
   }
