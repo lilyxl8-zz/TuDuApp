@@ -28,7 +28,6 @@ const ListForm = React.createClass({
   },
 
   render () {
-
     let blankTodos = [];
     for (let i = 0; i < 11; i++) {
       blankTodos.push(
