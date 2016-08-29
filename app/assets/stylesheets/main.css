@@ -119,6 +119,7 @@ img {
   margin: 3.9rem 20px; }
 
 .nav-arrow {
+  display: none;
   position: absolute;
   top: 2px;
   padding: 196px 0;
