@@ -8,6 +8,7 @@ const ListView = React.createClass({
   getInitialState () {
     return {
       list: this.props.list,
+      style: this.props.listStyle,
       editing: false
     };
   },
@@ -80,7 +81,7 @@ const ListView = React.createClass({
           <div className='todo-item' key={i} onClick={this.focusTodoForm}></div>
         );
       }
-      
+
       const blankTodo = {name: '', list_id: this.props.list.id };
       newTodo = (
         <div id={this.props.list.id}>
@@ -90,7 +91,7 @@ const ListView = React.createClass({
     }
 
     return (
-      <div className='list-view'>
+      <div className='list-view' style={ this.props.style }>
         { nameForm }
         <div className='list-todos'>
           <TodoList todos={this.state.list.todos} />
