@@ -3,6 +3,7 @@ import ListUtil from '../utils/list_util';
 import ListStore from '../stores/list_store';
 import TodoList from './todo_list';
 import TodoForm from './todo_form';
+import NameForm from './name_form';
 
 const ListView = React.createClass({
   getInitialState () {
@@ -53,27 +54,8 @@ const ListView = React.createClass({
   },
 
   render () {
-    let newTodo, nameForm;
+    let newTodo;
     let blankTodos = [];
-
-    nameForm = (this.state.editing) ? (
-      <div className='list-name'>
-        <form className='name-form' onSubmit={this.handleSubmit}>
-          <input
-            value={this.state.list.name}
-            onChange={this.updateName}
-            onBlur={this.toggleEditing}
-            autoFocus />
-        </form>
-      </div>
-    ) : (
-      <div className='list-name'>
-        <h1 onClick={this.toggleEditing}>
-          {this.state.list.name}
-        </h1>
-        <a onClick={this.deleteList} className='delete-list'></a>
-      </div>
-    );
 
     if (this.state.list.todos.length < 10) {
       for (let i = 0; i < 9 - this.state.list.todos.length; i++) {
@@ -92,9 +74,10 @@ const ListView = React.createClass({
 
     return (
       <div className='list-view' style={ this.props.style }>
-        { nameForm }
+        <NameForm editing={ this.state.editing }
+          name={ this.props.list.name } />
         <div className='list-todos'>
-          <TodoList todos={this.state.list.todos} />
+          <TodoList todos={ this.props.list.todos } />
           { newTodo }
           { blankTodos }
         </div>
