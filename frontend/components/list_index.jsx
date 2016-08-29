@@ -21,7 +21,6 @@ const ListIndex = React.createClass({
 
   _updateLists () {
     this.setState({ lists: ListStore.all() });
-    // console.log(this.state.lists);
   },
 
   componentWillUnmount () {
@@ -31,12 +30,14 @@ const ListIndex = React.createClass({
   render () {
     let blankList = { name: '' };
 
-    let ourLists = () => {
-      return (
-        this.state.lists.map (list =>
-          <ListView key={list.id} list={list} />
-        )
-      );
+    let ourLists = (
+      this.state.lists.map (list =>
+        <ListView key={list.id} list={list} />
+      )
+    );
+
+    const divStyle = {
+      width: this.state.lists.length / 5 * 100 + '%'
     };
 
     return (
@@ -50,8 +51,11 @@ const ListIndex = React.createClass({
           </div>
 
           <div className='lists-container-scroll'>
-            { ourLists() }
-            <ListForm list={blankList} />
+            <div className='lists-container'
+              style={divStyle}>
+              { ourLists }
+              <ListForm list={blankList} />
+            </div>
           </div>
         </div>
       </div>

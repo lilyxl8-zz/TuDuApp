@@ -144,7 +144,12 @@ img {
   display: block;
   margin: 0 60px;
   height: 480px;
-  overflow: hidden; }
+  overflow-x: scroll; }
+
+.lists-container {
+  position: relative;
+  overflow: hidden;
+  height: 480px; }
 
 .list-view {
   float: left;

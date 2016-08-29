@@ -29,7 +29,7 @@ const ListForm = React.createClass({
 
   render () {
     let blankTodos = [];
-    for (let i = 0; i < 11; i++) {
+    for (let i = 0; i < 10; i++) {
       blankTodos.push(
         <div className='todo-item todo-form' key={i} onClick={this.focusListForm}></div>
       );
