@@ -16,7 +16,7 @@ const ListForm = React.createClass({
 
   focusListForm (e) {
     e.preventDefault();
-    document.getElementById('0').focus();
+    this.refs.listForm.focus();
   },
 
   handleSubmit (e) {
@@ -36,10 +36,10 @@ const ListForm = React.createClass({
     }
 
     return (
-      <div className='list-view'>
+      <div className='list-view' style={ this.props.style }>
         <form className='list-name' onSubmit={this.handleSubmit}>
           <input
-            id='0'
+            ref='listForm'
             placeholder='New List...'
             value={this.state.list.name}
             onChange={this.updateName}
