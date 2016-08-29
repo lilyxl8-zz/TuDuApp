@@ -40,6 +40,7 @@ const ListForm = React.createClass({
         <form className='list-name' onSubmit={this.handleSubmit}>
           <input
             id='0'
+            placeholder='New List...'
             value={this.state.list.name}
             onChange={this.updateName}
             onBlur={this.toggleEditing} />

@@ -198,6 +198,10 @@ img {
   overflow-x: scroll;
 }
 
+.lists-container-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 .lists-container {
   position: relative;
   overflow: hidden;

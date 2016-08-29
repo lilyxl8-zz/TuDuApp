@@ -146,6 +146,9 @@ img {
   height: 480px;
   overflow-x: scroll; }
 
+.lists-container-scroll::-webkit-scrollbar {
+  display: none; }
+
 .lists-container {
   position: relative;
   overflow: hidden;
