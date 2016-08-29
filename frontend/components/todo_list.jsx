@@ -17,6 +17,10 @@ const TodoList = React.createClass({
     this.setState({ todos: this.props.todos });
   },
 
+  componentWillUnmount () {
+    this.listStoreToken.remove();
+  },
+
   render () {
     let todoItems = this.props.todos.map(todo =>
       <TodoItem key={todo.id} todo={todo} />

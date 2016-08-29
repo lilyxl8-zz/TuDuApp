@@ -28,15 +28,21 @@ const ListIndex = React.createClass({
   },
 
   render () {
-    let blankList = { name: '' };
+    const blankList = { name: '' };
 
-    let ourLists = () => {
-      return (
-        this.state.lists.map (list =>
-          <ListView key={list.id} list={list} />
-        )
-      );
+    const divStyle = {
+      width: (this.state.lists.length + 1) / 5 * 100 + '%'
     };
+
+    const listStyle = {
+      width: 98 / (this.state.lists.length + 1) + '%'
+    };
+
+    const ourLists = (
+      this.state.lists.map (list =>
+        <ListView key={ list.id } list={ list } style={ listStyle } />
+      )
+    );
 
     return (
       <div className='bg-app'>
@@ -48,9 +54,11 @@ const ListIndex = React.createClass({
             <img src='images/arrow.svg'></img>
           </div>
 
-          <div className='lists-container'>
-            { ourLists() }
-            <ListForm list={blankList} />
+          <div className='lists-container-scroll'>
+            <div className='lists-container' style={ divStyle }>
+              { ourLists }
+              <ListForm list={ blankList } />
+            </div>
           </div>
         </div>
       </div>
