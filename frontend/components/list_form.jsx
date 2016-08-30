@@ -1,7 +1,7 @@
 import React from 'react';
 import ListUtil from '../utils/list_util';
 
-const NameForm = React.createClass({
+const ListForm = React.createClass({
   getInitialState () {
     return {
       editing: false,
@@ -55,4 +55,4 @@ const NameForm = React.createClass({
   }
 });
 
-export default NameForm;
+export default ListForm;

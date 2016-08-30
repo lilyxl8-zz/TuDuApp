@@ -2,7 +2,7 @@ import React from 'react';
 import ListStore from '../stores/list_store';
 import TodoList from './todo_list';
 import TodoForm from './todo_form';
-import NameForm from './name_form';
+import ListForm from './list_form';
 
 const ListView = React.createClass({
   getInitialState () {
@@ -50,7 +50,7 @@ const ListView = React.createClass({
 
     return (
       <div className='list-view' style={ this.props.style }>
-        <NameForm list={this.props.list}/>
+        <ListForm list={this.props.list}/>
         <div className='list-todos'>
           <TodoList todos={ this.props.list.todos } />
           { newTodo }
