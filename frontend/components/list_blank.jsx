@@ -1,7 +1,7 @@
 import React from 'react';
 import ListUtil from '../utils/list_util';
 
-const ListForm = React.createClass({
+const ListBlank = React.createClass({
   getInitialState () {
     return {
       list: this.props.list
@@ -14,7 +14,7 @@ const ListForm = React.createClass({
     this.setState({ list: newList });
   },
 
-  focusListForm (e) {
+  focusListBlank (e) {
     e.preventDefault();
     this.refs.listForm.focus();
   },
@@ -31,7 +31,7 @@ const ListForm = React.createClass({
     let blankTodos = [];
     for (let i = 0; i < 10; i++) {
       blankTodos.push(
-        <div className='todo-item todo-form' key={i} onClick={this.focusListForm}></div>
+        <div className='todo-item todo-form' key={i} onClick={this.focusListBlank}></div>
       );
     }
 
@@ -53,4 +53,4 @@ const ListForm = React.createClass({
   }
 });
 
-export default ListForm;
+export default ListBlank;

@@ -32,6 +32,7 @@ const ListView = React.createClass({
     let newTodo;
     let blankTodos = [];
 
+    // TODO put this logic in ListStore
     if (this.props.list.todos.length < 10) {
       for (let i = 0; i < 9 - this.props.list.todos.length; i++) {
         blankTodos.push(
