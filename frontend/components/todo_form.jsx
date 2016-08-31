@@ -4,31 +4,29 @@ import ListUtil from '../utils/list_util';
 const TodoForm = React.createClass({
   getInitialState () {
     return {
-      todo: this.props.todo,
+      name: this.props.todo.name,
     };
   },
 
   updateName (e) {
-    let newTodo = this.state.todo;
-    newTodo.name = e.currentTarget.value;
-    this.setState({ todo: newTodo });
+    e.preventDefault();
+    this.setState({ name: e.currentTarget.value });
   },
 
   handleSubmit (e) {
     e.preventDefault();
-    if (this.state.todo.name === '') { return; }
+    if (this.state.name === '') { return; }
+    // TODO add list_id
     ListUtil.createTodo(this.state.todo);
 
-    let newTodo = this.state.todo;
-    newTodo.name = '';
-    this.setState({ todo: newTodo });
+    this.setState({ name: '' });
   },
 
   render () {
     return (
       <form className='todo-form todo-item' onSubmit={this.handleSubmit}>
         <input
-          value={this.state.todo.name}
+          value={this.state.name}
           onChange={this.updateName} />
       </form>
     );
