@@ -1,6 +1,11 @@
 class Api::TodosController < ApplicationController
   def index
-    @todos = Todo.all
+    two_days = 172800000
+    @todos = current_user.todos.where([
+      "date > ? and date < ?",
+      params[:date].to_i - (two_days),
+      params[:date].to_i + (two_days)
+    ])
     render :index
   end
 

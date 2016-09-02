@@ -22,6 +22,18 @@ const TodoUtil = {
         TodoActions.todosReceived(list.todos);
       }
     });
+  },
+
+  fetchTodos: (day) => {
+    $.ajax({
+      type: 'GET',
+      url: 'api/todos',
+      dataType: 'json',
+      data: {date: day},
+      success: (todos) => {
+        TodoActions.todosReceivedCalendar(todos, day);
+      }
+    });
   }
 };
 
