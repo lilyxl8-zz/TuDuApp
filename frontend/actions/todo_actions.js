@@ -19,8 +19,8 @@ const TodoActions = {
   todosReceivedCalendar (todos, day) {
     AppDispatcher.dispatch({
       actionType: TodoConstants.TODOS_RECEIVED_CALENDAR,
-      todos: todos;
-      day: day,
+      todos: todos,
+      day: day
     });
   },
 

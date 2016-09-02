@@ -24,15 +24,17 @@ const Calendar = React.createClass({
     this.setState({ todos: TodoStore.allByDate() });
   }
 
-  navigateRight() {
+  navigate(direction) {
     // 86400000 milliseconds in a day
     let oneDay = 86400000;
-    this.setState({ centerDate: this.state.centerDate + oneDay});
-  },
-
-  navigateRight() {
-    let oneDay = 86400000;
-    this.setState({ centerDate: this.state.centerDate - oneDay});
+    let newCenter;
+    if (direction === 'right') {
+      newCenter = this.state.centerDate + oneDay
+    } else {
+      newCenter = this.state.centerDate - oneDay
+    }
+    this.setState({ centerDate: newCenter });
+    TodoUtil.fetchTodos(newCenter);
   },
 
   render () {
