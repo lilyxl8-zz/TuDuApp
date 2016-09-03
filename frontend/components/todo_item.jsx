@@ -4,7 +4,6 @@ import ListUtil from '../utils/list_util';
 const TodoItem = React.createClass({
   getInitialState () {
     return {
-      // TODO swap out for Name and Done states
       todo: this.props.todo,
       editing: false
     };
@@ -43,34 +42,40 @@ const TodoItem = React.createClass({
     ListUtil.deleteTodo(this.state.todo);
   },
 
-  todoEl () {
-    return (this.state.editing) ?
-     (
-      <form className='todo-form' onSubmit={this.handleSubmit}>
-        <input
-          value={this.state.todo.name}
-          onChange={this.updateName}
-          onBlur={this.toggleEditing}
-          autoFocus />
-      </form>
-    ) : (
-      <div>
-        <div className='text-wrapper' onClick={this.toggleDone}>
-          <a>{this.state.todo.name}</a>
-        </div>
-        <a onClick={this.deleteTodo} className='delete-todo'></a>
-        <a onClick={this.toggleEditing} className='edit-todo'></a>
-      </div>
-    );
-  },
-
   render () {
+    let todoEl
     let todoDoneClass = 'todo-item';
     if (this.state.todo.done) { todoDoneClass += ' done'; }
 
+    if (this.state.editing) {
+      todoEl = () => {
+        return (
+        <form className='todo-form' onSubmit={this.handleSubmit}>
+          <input
+            value={this.state.todo.name}
+            onChange={this.updateName}
+            onBlur={this.toggleEditing}
+            autoFocus />
+        </form>
+        );
+      };
+    } else {
+      todoEl = () => {
+        return (
+          <div>
+            <div className='text-wrapper' onClick={this.toggleDone}>
+              <a>{this.state.todo.name}</a>
+            </div>
+            <a onClick={this.deleteTodo} className='delete-todo'></a>
+            <a onClick={this.toggleEditing} className='edit-todo'></a>
+          </div>
+        );
+      };
+    }
+
     return (
       <div className={todoDoneClass}>
-        { this.todoEl() }
+        { todoEl() }
       </div>
     );
   }
