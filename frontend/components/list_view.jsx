@@ -16,37 +16,34 @@ const ListView = React.createClass({
     document.getElementById(this.props.list.id).firstChild.firstChild.focus();
   },
 
-  allTodos () {
-    let _allTodos = [];
+  render () {
+    let newTodo;
+    let blankTodos = [];
 
     // TODO put this logic in ListStore
     // TODO componentize these elements
-    if (this.props.list.todos) {
-      _allTodos.push(<TodoList todos={ this.props.list.todos } />);
+    if (this.props.list.todos.length < 10) {
+      for (let i = 0; i < 9 - this.props.list.todos.length; i++) {
+        blankTodos.push(
+          <div className='todo-item' key={i} onClick={this.focusTodoForm}></div>
+        );
+      }
 
       const blankTodo = {name: '', list_id: this.props.list.id };
-      _allTodos.push(
+      newTodo = (
         <div id={this.props.list.id}>
           <TodoForm todo={blankTodo} />
         </div>
       );
-
-      if (this.props.list.todos.length < 10) {
-        for (let i = 0; i < 9 - this.props.list.todos.length; i++) {
-          _allTodos.push(
-            <div className='todo-item' key={i} onClick={this.focusTodoForm}></div>
-          );
-        }
-      }
     }
-  },
 
-  render () {
     return (
       <div className='list-view' style={ this.props.style }>
         <ListForm list={this.props.list}/>
         <div className='list-todos'>
-          { this.allTodos() }
+          <TodoList todos={ this.props.list.todos } />
+          { newTodo }
+          { blankTodos }
         </div>
       </div>
     );
