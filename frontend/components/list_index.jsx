@@ -4,7 +4,7 @@ import ListStore from '../stores/list_store';
 import ListUtil from '../utils/list_util';
 
 import ListView from './list_view';
-import ListForm from './list_form';
+import ListBlank from './list_blank';
 
 const ListIndex = React.createClass({
 
@@ -57,7 +57,8 @@ const ListIndex = React.createClass({
           <div className='lists-container-scroll'>
             <div className='lists-container' style={ divStyle }>
               { ourLists }
-              <ListForm list={ blankList } />
+              <ListView list={ {name: ''} } style={ listStyle } />
+              <ListBlank list={ blankList } style={ listStyle } />
             </div>
           </div>
         </div>

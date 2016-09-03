@@ -4,51 +4,53 @@ import ListUtil from '../utils/list_util';
 const ListForm = React.createClass({
   getInitialState () {
     return {
-      list: this.props.list
+      editing: false,
+      name: this.props.list.name
     };
   },
 
   updateName (e) {
-    let newList = this.state.list;
-    newList.name = e.currentTarget.value;
-    this.setState({ list: newList });
+    e.preventDefault();
+    this.setState({ name: e.currentTarget.value });
   },
 
-  focusListForm (e) {
+  toggleEditing (e) {
     e.preventDefault();
-    document.getElementById('0').focus();
+    this.setState({ editing: !this.state.editing });
   },
 
   handleSubmit (e) {
     e.preventDefault();
-    ListUtil.createList(this.state.list);
-    let newList = this.state.list;
-    newList.name = '';
-    this.setState({ list: newList });
+    this.props.list.name = this.state.name;
+    ListUtil.updateList(this.props.list);
+    this.toggleEditing(e);
+  },
+
+  deleteList (e) {
+    e.preventDefault();
+    ListUtil.deleteList(this.props.list);
   },
 
   render () {
-    let blankTodos = [];
-    for (let i = 0; i < 10; i++) {
-      blankTodos.push(
-        <div className='todo-item todo-form' key={i} onClick={this.focusListForm}></div>
-      );
-    }
-
     return (
-      <div className='list-view'>
-        <form className='list-name' onSubmit={this.handleSubmit}>
-          <input
-            id='0'
-            placeholder='New List...'
-            value={this.state.list.name}
-            onChange={this.updateName}
-            onBlur={this.toggleEditing} />
-        </form>
-        <div className='list-todos'>
-          { blankTodos }
+      (this.state.editing) ? (
+        <div className='list-name'>
+          <form className='name-form' onSubmit={ this.handleSubmit }>
+            <input
+              value={ this.state.name }
+              onChange={ this.updateName }
+              onBlur={ this.toggleEditing }
+              autoFocus />
+          </form>
         </div>
-      </div>
+      ) : (
+        <div className='list-name'>
+          <h1 onClick={ this.toggleEditing }>
+            { this.props.list.name }
+          </h1>
+          <a onClick={ this.deleteList } className='delete-list'></a>
+        </div>
+      )
     );
   }
 });
