@@ -48,7 +48,7 @@ const ListUtil = {
     });
   },
 
-  createTodo: (todo) => {
+  createTodo: (todo, callback) => {
     $.ajax({
       type: 'POST',
       url: '/api/todos',
@@ -56,6 +56,7 @@ const ListUtil = {
       data: { todo: todo },
       success: (newTodo) => {
         ListActions.todoReceived(newTodo); // TODO
+        callback && callback();
       }
     });
   },

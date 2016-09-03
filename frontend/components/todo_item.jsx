@@ -15,8 +15,6 @@ const TodoItem = React.createClass({
     let newTodo = this.props.todo;
     newTodo.done = !newTodo.done;
     ListUtil.updateTodo(newTodo);
-    // ListUtil.toggleDone(this.props.todo);
-    // TODO write toggle_done route
   },
 
   toggleEditing () {
@@ -28,34 +26,30 @@ const TodoItem = React.createClass({
     ListUtil.deleteTodo(this.props.todo);
   },
 
-  todoEl () {
-    return (this.state.editing) ?
-      (
-        <TodoForm todo={this.props.todo}
-          onBlur={this.toggleEditing}
-          submitCallback={ (todo) => {
-            ListUtil.updateTodo(todo);
-            this.toggleEditing();
-          }
-        } />
-      ) : (
-        <div>
-          <div className='text-wrapper' onClick={this.toggleDone}>
-            <a>{this.props.todo.name}</a>
-          </div>
-          <a onClick={this.deleteTodo} className='delete-todo'></a>
-          <a onClick={this.toggleEditing} className='edit-todo'></a>
-        </div>
-      );
+  submitAndToggleEditing () {
+    this.toggleEditing();
   },
 
   render () {
-    let todoDoneClass = 'todo-item';
-    if (this.props.todo.done) { todoDoneClass += ' done'; }
+    const todoDoneClass = this.props.todo.done ? 'todo-item done' : 'todo-item';
 
     return (
       <div className={todoDoneClass}>
-        { this.todoEl() }
+        {
+          (this.state.editing) ?
+            <TodoForm
+              todo={this.props.todo}
+              submitCb={this.submitAndToggleEditing}
+            />
+           :
+            <div>
+              <div className='text-wrapper' onClick={this.toggleDone}>
+                <a>{this.props.todo.name}</a>
+              </div>
+              <a onClick={this.deleteTodo} className='delete-todo'></a>
+              <a onClick={this.toggleEditing} className='edit-todo'></a>
+            </div>
+        }
       </div>
     );
   }
