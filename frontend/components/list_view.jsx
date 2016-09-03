@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import ListUtil from '../utils/list_util';
 import ListStore from '../stores/list_store';
 import TodoList from './todo_list';
 import TodoForm from './todo_form';
@@ -10,39 +12,36 @@ const ListView = React.createClass({
       style: this.props.listStyle
     };
   },
-
-  componentDidMount () {
-    this.listStoreToken = ListStore.addListener(this._updateList);
-  },
-
-  _updateList () {
-    this.setState({ list: this.props.list });
-  },
-
+  
   focusTodoForm (e) {
     e.preventDefault();
-    document.getElementById(this.props.list.id).firstChild.firstChild.focus();
-  },
-
-  componentWillUnmount () {
-    this.listStoreToken.remove();
+    // TODO fix
+    this.refs.todoForm.findDOMNode().focus();
   },
 
   render () {
     let newTodo;
     let blankTodos = [];
 
+    // TODO put this logic in ListStore
+    // TODO componentize these elements
     if (this.props.list.todos.length < 10) {
       for (let i = 0; i < 9 - this.props.list.todos.length; i++) {
         blankTodos.push(
-          <div className='todo-item' key={i} onClick={this.focusTodoForm}></div>
+          <div className='todo-item' key={i}></div>
         );
       }
 
       const blankTodo = {name: '', list_id: this.props.list.id };
       newTodo = (
-        <div id={this.props.list.id}>
-          <TodoForm todo={blankTodo} />
+        <div className='todo-item'>
+          <TodoForm todo={blankTodo}
+            ref='todoForm'
+            submitCallback={ (todo) => {
+              if (todo.name === '') { return; }
+              ListUtil.createTodo(todo);
+            }
+          }/>
         </div>
       );
     }
@@ -53,7 +52,9 @@ const ListView = React.createClass({
         <div className='list-todos'>
           <TodoList todos={ this.props.list.todos } />
           { newTodo }
-          { blankTodos }
+          <div onClick={this.focusTodoForm}>
+            { blankTodos }
+          </div>
         </div>
       </div>
     );

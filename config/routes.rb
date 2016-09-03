@@ -9,3 +9,8 @@ Rails.application.routes.draw do
   end
 	get "*unmatched_route", to: "static_pages#root"
 end
+# resources :calendars do
+#   member do
+#     put :toggle_done
+#   end
+# end

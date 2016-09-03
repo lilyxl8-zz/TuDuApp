@@ -12,12 +12,12 @@ const ListUtil = {
     });
   },
 
-  createList: (list) => {
+  createList: (listName) => {
     $.ajax({
       type: 'POST',
       url: '/api/lists',
       dataType: 'json',
-      data: { list: list },
+      data: { list: { name: listName } },
       success: (newList) => {
         ListActions.listReceived(newList);
       }
@@ -41,7 +41,7 @@ const ListUtil = {
       type: 'DELETE',
       url: 'api/lists/' + list.id,
       dataType: 'json',
-      data: {list: list},
+      data: { list: list },
       success: () => {
         ListActions.listDeleted(list);
       }
@@ -53,7 +53,7 @@ const ListUtil = {
       type: 'POST',
       url: '/api/todos',
       dataType: 'json',
-      data: { todo },
+      data: { todo: todo },
       success: (newTodo) => {
         ListActions.todoReceived(newTodo); // TODO
       }
@@ -65,7 +65,18 @@ const ListUtil = {
       type: 'PATCH',
       url: '/api/todos/' + todo.id,
       dataType: 'json',
-      data: { todo },
+      data: { todo: todo },
+      success: (updatedTodo) => {
+        ListActions.todoReceived(updatedTodo);
+      }
+    });
+  },
+
+  toggleDone: (todo) => {
+    $.ajax({
+      type: 'PUT',
+      url: '/api/todos/' + todo.id,
+      dataType: 'json',
       success: (updatedTodo) => {
         ListActions.todoReceived(updatedTodo);
       }

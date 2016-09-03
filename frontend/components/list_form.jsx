@@ -28,6 +28,7 @@ const ListForm = React.createClass({
   },
 
   render () {
+    // TODO componentize
     let blankTodos = [];
     for (let i = 0; i < 10; i++) {
       blankTodos.push(

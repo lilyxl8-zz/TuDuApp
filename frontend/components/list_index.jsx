@@ -43,7 +43,8 @@ const ListIndex = React.createClass({
         <ListView key={ list.id } list={ list } style={ listStyle } />
       )
     );
-
+    
+    // TODO blank ListForm to work
     return (
       <div className='bg-app'>
         <div className='list-index'>
