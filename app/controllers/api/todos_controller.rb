@@ -1,5 +1,6 @@
 class Api::TodosController < ApplicationController
   def index
+    # For this to work, the date column needs to be an integer
     two_days = 172800000
     @todos = current_user.todos.where([
       "date > ? and date < ?",

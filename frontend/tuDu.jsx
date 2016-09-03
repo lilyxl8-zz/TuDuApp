@@ -38,6 +38,8 @@ const TuDuApp = React.createClass({
   }
 });
 
+// Either the calendar will be rendered by the list index or both should be
+// contained in a larger component. I'm in favor of the latter.
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path= '/' component={TuDuApp}>

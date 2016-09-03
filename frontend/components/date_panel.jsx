@@ -1,18 +1,26 @@
-import React from 'react'
+import React from 'react';
+import TodoItem from './todo_item';
 
-const DatePanel = React.createClass({
+const DatePanel = React.createClas({
+  
+  render() {
 
-  render () {
-    let date = new Date(this.props.date)
+    let todos = (
+      this.props.todos.map(todo =>
+        <TodoItem key={todo.id} todo={todo} />
+      );
+    );
+
     return (
       <div className='calendarDay'>
-        {date}
+        {new Date(this.props.date)}
         <div className='dayContents'>
-          {this.props.todos}
+          {todos}
         </div>
       </div>
     );
   }
 })
+
 
 export default DatePanel;

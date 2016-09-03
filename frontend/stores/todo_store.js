@@ -32,7 +32,7 @@ TodoStore.all = () => {
 };
 
 TodoStore.organizeTodos = (todos, day) => {
-  let oneDay = 86400000;
+  const oneDay = 86400000;
   for (let i = 0; i < 5; i++) {
     let newDay = day.getTime() * (i - 2));
     _sortedTodos['' + newDay] = [];
