@@ -17,21 +17,16 @@ const TodoForm = React.createClass({
     let newTodo = this.props.todo;
     newTodo.name = this.state.name;
     if (this.props.todo.id) {
-      if (this.state.name === '') {
-        ListUtil.deleteTodo(newTodo);
-        return;
-      }
       ListUtil.updateTodo(newTodo);
+      this.props.toggleEditing();
     } else {
-      if (this.state.name === '') {
-        return;
-      }
       ListUtil.createTodo(newTodo, () => { this.setState({name: ''}); });
     }
   },
 
-  submitOrDeleteOnEmpty (e) {
+  deleteOnEmptySubmit (e) {
     e.preventDefault();
+    // TODO have ListUtil handle empty case
     if (this.state.name === '') {
       ListUtil.deleteTodo(this.props.todo);
     } else {
@@ -39,19 +34,20 @@ const TodoForm = React.createClass({
     }
   },
 
-  submitOrReturnOnEmpty (e) {
+  breakOnEmptySubmit (e) {
     e.preventDefault();
-    if (this.state.name === '') { return; }
-    this.handleSubmit();
+    if (this.state.name != '') { this.handleSubmit(); }
+    this.props.toggleEditing();
   },
 
+  // return when empty deletes the todo, blur when empty does nothing
   render () {
     return (
-      <form className='todo-form' onSubmit={this.submitOrDeleteOnEmpty}>
+      <form className='todo-form' onSubmit={this.deleteOnEmptySubmit}>
         <input
           value={this.state.name}
           onChange={this.updateName}
-          onBlur={this.submitOrReturnOnEmpty}
+          onBlur={this.breakOnEmptySubmit}
         />
       </form>
     );

@@ -26,10 +26,6 @@ const TodoItem = React.createClass({
     ListUtil.deleteTodo(this.props.todo);
   },
 
-  submitAndToggleEditing () {
-    this.toggleEditing();
-  },
-
   render () {
     const todoDoneClass = this.props.todo.done ? 'todo-item done' : 'todo-item';
 
@@ -39,7 +35,7 @@ const TodoItem = React.createClass({
           (this.state.editing) ?
             <TodoForm
               todo={this.props.todo}
-              submitCb={this.submitAndToggleEditing}
+              toggleEditing={this.toggleEditing}
             />
            :
             <div>
