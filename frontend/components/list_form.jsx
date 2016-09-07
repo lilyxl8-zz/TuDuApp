@@ -1,5 +1,6 @@
 import React from 'react';
 import ListUtil from '../utils/list_util';
+import TodoBlanks from './todo_blanks';
 
 const ListForm = React.createClass({
   getInitialState () {
@@ -28,14 +29,6 @@ const ListForm = React.createClass({
   },
 
   render () {
-    // TODO componentize
-    let blankTodos = [];
-    for (let i = 0; i < 10; i++) {
-      blankTodos.push(
-        <div className='todo-item todo-form' key={i} onClick={this.focusListForm}></div>
-      );
-    }
-
     return (
       <div className='list-view'>
         <form className='list-name' onSubmit={this.handleSubmit}>
@@ -47,7 +40,7 @@ const ListForm = React.createClass({
             onBlur={this.toggleEditing} />
         </form>
         <div className='list-todos'>
-          { blankTodos }
+          <TodoBlanks numBlanks='10' />
         </div>
       </div>
     );
