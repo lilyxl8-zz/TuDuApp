@@ -1,10 +1,10 @@
 import React from 'react';
-import TodoItem from './todo_item';
+import TodoView from './todo_view';
 
 const TodoList = ({ todos }) => (
   <div>
     { todos.map(todo =>
-        <TodoItem key={todo.id} todo={todo} />
+        <TodoView key={todo.id} todo={todo} />
       )
     }
   </div>

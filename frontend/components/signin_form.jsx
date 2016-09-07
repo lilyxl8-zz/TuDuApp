@@ -22,7 +22,7 @@ const SigninForm = React.createClass({
 
   _checkUser () {
     if (SessionStore.currentUser()) {
-      this.context.router.push('/');
+      this.context.router.push('/app');
     }
   },
 
@@ -48,6 +48,7 @@ const SigninForm = React.createClass({
   },
 
   render () {
+    // TODO DRY this template in signup?
     return (
       <div className='auth-form'>
         <form onSubmit={this.executeSubmit}>

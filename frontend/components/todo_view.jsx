@@ -2,7 +2,7 @@ import React from 'react';
 import ListUtil from '../utils/list_util';
 import TodoForm from './todo_form';
 
-const TodoItem = React.createClass({
+const TodoView = React.createClass({
   getInitialState () {
     return {
       name: this.props.todo.name,
@@ -52,4 +52,4 @@ const TodoItem = React.createClass({
   }
 });
 
-export default TodoItem;
+export default TodoView;

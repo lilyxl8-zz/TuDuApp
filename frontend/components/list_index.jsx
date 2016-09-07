@@ -3,6 +3,7 @@ import React from 'react';
 import ListStore from '../stores/list_store';
 import ListUtil from '../utils/list_util';
 
+import ListList from './list_list';
 import ListView from './list_view';
 
 const ListIndex = React.createClass({
@@ -26,6 +27,7 @@ const ListIndex = React.createClass({
   },
 
   render () {
+    // TODO make React carousel
     const divStyle = {
       width: (this.state.lists.length + 1) / 5 * 100 + '%'
     };
@@ -33,13 +35,6 @@ const ListIndex = React.createClass({
     const listStyle = {
       width: 98 / (this.state.lists.length + 1) + '%'
     };
-
-    // TODO componentize
-    const ourLists = (
-      this.state.lists.map (list =>
-        <ListView key={ list.id } list={ list } style={ listStyle } />
-      )
-    );
 
     const blankList = { name: '' };
 
@@ -55,7 +50,7 @@ const ListIndex = React.createClass({
 
           <div className='lists-container-scroll'>
             <div className='lists-container' style={ divStyle }>
-              { ourLists }
+              <ListList lists={this.state.lists} listStyle={listStyle}/>
               <ListView list={ blankList } style={ listStyle } />
             </div>
           </div>
