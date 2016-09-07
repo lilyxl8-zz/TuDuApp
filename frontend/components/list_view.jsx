@@ -1,7 +1,6 @@
 import React from 'react';
-import ListUtil from '../utils/list_util';
 import TodoList from './todo_list';
-import TodoForm from './todo_form';
+import TodoNew from './todo_new';
 import NameForm from './name_form';
 
 const ListView = React.createClass({
@@ -13,12 +12,10 @@ const ListView = React.createClass({
 
   focusTodoForm (e) {
     e.preventDefault();
-    // TODO fix
-    // this.refs.todoForm.findDOMNode().focus();
+    // TODO fix this.refs.todoForm.findDOMNode().focus();
   },
 
   render () {
-    let newTodo;
     let blankTodos = [];
 
     // TODO put this logic in ListStore
@@ -29,13 +26,6 @@ const ListView = React.createClass({
           <div className='todo-item' key={i}></div>
         );
       }
-
-      const blankTodo = {name: '', list_id: this.props.list.id };
-      newTodo = (
-        <div className='todo-item'>
-          <TodoForm todo={blankTodo} ref='todoForm' />
-        </div>
-      );
     }
 
     return (
@@ -43,7 +33,7 @@ const ListView = React.createClass({
         <NameForm list={this.props.list}/>
         <div className='list-todos'>
           <TodoList todos={ this.props.list.todos } />
-          { newTodo }
+          <TodoNew listId={ this.props.list.id } />
           <div onClick={this.focusTodoForm}>
             { blankTodos }
           </div>

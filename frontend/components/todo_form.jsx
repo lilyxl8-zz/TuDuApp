@@ -18,7 +18,7 @@ const TodoForm = React.createClass({
     newTodo.name = this.state.name;
     if (this.props.todo.id) {
       ListUtil.updateTodo(newTodo);
-      this.props.toggleEditing();
+      this.props.toggleEditing && this.props.toggleEditing();
     } else {
       ListUtil.createTodo(newTodo, () => { this.setState({name: ''}); });
     }
@@ -37,7 +37,7 @@ const TodoForm = React.createClass({
   breakOnEmptySubmit (e) {
     e.preventDefault();
     if (this.state.name != '') { this.handleSubmit(); }
-    this.props.toggleEditing();
+    this.props.toggleEditing && this.props.toggleEditing();
   },
 
   // return when empty deletes the todo, blur when empty does nothing

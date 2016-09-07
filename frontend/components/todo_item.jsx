@@ -14,6 +14,7 @@ const TodoItem = React.createClass({
     e.preventDefault();
     let newTodo = this.props.todo;
     newTodo.done = !newTodo.done;
+    // TODO use ListUtil.toggleDone when written
     ListUtil.updateTodo(newTodo);
   },
 
