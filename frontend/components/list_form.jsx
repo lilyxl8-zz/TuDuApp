@@ -1,9 +1,10 @@
 import React from 'react';
 import ListUtil from '../utils/list_util';
 
-const NameForm = React.createClass({
+const ListForm = React.createClass({
   getInitialState () {
     return {
+      // false for existing to-dos, true for new to-do
       editing: (this.props.list.name === ''),
       name: this.props.list.name
     };
@@ -65,4 +66,4 @@ const NameForm = React.createClass({
   }
 });
 
-export default NameForm;
+export default ListForm;

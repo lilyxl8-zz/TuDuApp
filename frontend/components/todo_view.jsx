@@ -14,7 +14,7 @@ const TodoView = React.createClass({
     e.preventDefault();
     let newTodo = this.props.todo;
     newTodo.done = !newTodo.done;
-    // TODO use ListUtil.toggleDone when written
+    // TODO write ListUtil.toggleDone and use it here
     ListUtil.updateTodo(newTodo);
   },
 
@@ -31,23 +31,21 @@ const TodoView = React.createClass({
     const todoDoneClass = this.props.todo.done ? 'todo-item done' : 'todo-item';
 
     return (
-      <div className={todoDoneClass}>
-        {
-          (this.state.editing) ?
-            <TodoForm
-              todo={this.props.todo}
-              toggleEditing={this.toggleEditing}
-            />
-           :
-            <div>
-              <div className='text-wrapper' onClick={this.toggleDone}>
-                <a>{this.props.todo.name}</a>
-              </div>
-              <a onClick={this.deleteTodo} className='delete-todo'></a>
-              <a onClick={this.toggleEditing} className='edit-todo'></a>
-            </div>
-        }
-      </div>
+      (this.state.editing) ?
+        <div className={todoDoneClass}>
+          <TodoForm
+            todo={this.props.todo}
+            toggleEditing={this.toggleEditing}
+          />
+        </div>
+       :
+        <div className={todoDoneClass}>
+          <div className='text-wrapper' onClick={this.toggleDone}>
+            <a>{this.props.todo.name}</a>
+          </div>
+          <a onClick={this.deleteTodo} className='delete-todo'></a>
+          <a onClick={this.toggleEditing} className='edit-todo'></a>
+        </div>
     );
   }
 });

@@ -50,7 +50,7 @@ const ListIndex = React.createClass({
 
           <div className='lists-container-scroll'>
             <div className='lists-container' style={ divStyle }>
-              <ListList lists={this.state.lists} listStyle={listStyle}/>
+              <ListList lists={ this.state.lists } listStyle={ listStyle }/>
               <ListView list={ blankList } style={ listStyle } />
             </div>
           </div>

@@ -1,8 +1,8 @@
 import React from 'react';
+import ListForm from './list_form';
 import TodoList from './todo_list';
 import TodoNew from './todo_new';
 import TodoBlanks from './todo_blanks';
-import NameForm from './name_form';
 
 const ListView = React.createClass({
   getInitialState () {
@@ -16,22 +16,23 @@ const ListView = React.createClass({
     // TODO fix this.refs.todoForm.findDOMNode().focus();
   },
 
-  render () {
-    // TODO refactor NameForm
-    let blob;
+  focusListForm (e) {
+    e.preventDefault();
+    // TODO
+  },
 
-    (this.props.list.name != '') ? blob = (
+  render () {
+    const newOrExistingListTodos = (this.props.list.name != '') ? (
       <div className='list-todos'>
         <TodoList todos={ this.props.list.todos } />
         <TodoNew listId={ this.props.list.id } />
-        <div onClick={this.focusTodoForm}>
+        <div onClick={ this.focusTodoForm }>
           <TodoBlanks numBlanks={ 9 - this.props.list.todos.length } />
         </div>
       </div>
-    ) :
-    blob = (
+    ) : (
       <div className='list-todos'>
-        <div onClick={this.focusTodoForm}>
+        <div onClick={this.focusListForm}>
           <TodoBlanks numBlanks='10' />
         </div>
       </div>
@@ -39,8 +40,8 @@ const ListView = React.createClass({
 
     return (
       <div className='list-view' style={ this.props.style }>
-        <NameForm list={this.props.list} />
-        { blob }
+        <ListForm list={this.props.list} />
+        { newOrExistingListTodos }
       </div>
     );
   }

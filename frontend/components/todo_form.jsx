@@ -1,6 +1,7 @@
 import React from 'react';
 import ListUtil from '../utils/list_util';
 
+// TODO put this component back in TodoView?
 const TodoForm = React.createClass({
   getInitialState () {
     return {
@@ -26,7 +27,7 @@ const TodoForm = React.createClass({
 
   deleteOnEmptySubmit (e) {
     e.preventDefault();
-    // TODO have ListUtil handle empty case
+    // TODO have ListUtil handle empty case, write updateOrDelete(todo)
     if (this.state.name === '') {
       ListUtil.deleteTodo(this.props.todo);
     } else {
