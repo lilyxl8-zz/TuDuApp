@@ -4,7 +4,7 @@ import ListUtil from '../utils/list_util';
 const NameForm = React.createClass({
   getInitialState () {
     return {
-      editing: false,
+      editing: (this.props.list.name === ''),
       name: this.props.list.name
     };
   },
@@ -16,13 +16,22 @@ const NameForm = React.createClass({
 
   toggleEditing (e) {
     e.preventDefault();
+    if (this.props.list.name === '') { return; }
     this.setState({ editing: !this.state.editing });
   },
 
   handleSubmit (e) {
     e.preventDefault();
-    this.props.list.name = this.state.name;
-    ListUtil.updateList(this.props.list);
+    let newList = this.props.list;
+    if (newList.name === '') {
+      if (this.state.name != '') {
+        ListUtil.createList(this.state.name);
+        this.setState({ name: '' });
+      }
+    } else {
+      newList.name = this.state.name;
+      ListUtil.updateList(this.props.newList);
+    }
     this.toggleEditing(e);
   },
 

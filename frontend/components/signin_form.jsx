@@ -15,8 +15,9 @@ const SigninForm = React.createClass({
     };
   },
 
+  // TODO remove since tuDu.jsx already has listener?
   componentDidMount () {
-    this.SessionStoreToken = SessionStore.addListener(this._checkUser);
+    this.sessionStoreToken = SessionStore.addListener(this._checkUser);
   },
 
   _checkUser () {
@@ -40,6 +41,10 @@ const SigninForm = React.createClass({
 
   updatePassword (e) {
     this.setState({ password: e.currentTarget.value });
+  },
+
+  componentWillUnmount() {
+    this.sessionStoreToken.remove();
   },
 
   render () {

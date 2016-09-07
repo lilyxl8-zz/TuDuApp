@@ -4,7 +4,6 @@ import ListStore from '../stores/list_store';
 import ListUtil from '../utils/list_util';
 
 import ListView from './list_view';
-import ListForm from './list_form';
 
 const ListIndex = React.createClass({
 
@@ -43,7 +42,7 @@ const ListIndex = React.createClass({
         <ListView key={ list.id } list={ list } style={ listStyle } />
       )
     );
-    
+
     // TODO blank ListForm to work
     return (
       <div className='bg-app'>
@@ -58,7 +57,7 @@ const ListIndex = React.createClass({
           <div className='lists-container-scroll'>
             <div className='lists-container' style={ divStyle }>
               { ourLists }
-              <ListForm list={ blankList } />
+              <ListView list={ blankList } />
             </div>
           </div>
         </div>
