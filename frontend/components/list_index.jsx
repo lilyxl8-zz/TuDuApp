@@ -6,7 +6,6 @@ import ListUtil from '../utils/list_util';
 import ListView from './list_view';
 
 const ListIndex = React.createClass({
-
   getInitialState () {
     return {
       lists: ListStore.all()
@@ -27,8 +26,6 @@ const ListIndex = React.createClass({
   },
 
   render () {
-    const blankList = { name: '' };
-
     const divStyle = {
       width: (this.state.lists.length + 1) / 5 * 100 + '%'
     };
@@ -37,13 +34,15 @@ const ListIndex = React.createClass({
       width: 98 / (this.state.lists.length + 1) + '%'
     };
 
+    // TODO componentize
     const ourLists = (
       this.state.lists.map (list =>
         <ListView key={ list.id } list={ list } style={ listStyle } />
       )
     );
 
-    // TODO blank ListForm to work
+    const blankList = { name: '' };
+
     return (
       <div className='bg-app'>
         <div className='list-index'>
@@ -57,7 +56,7 @@ const ListIndex = React.createClass({
           <div className='lists-container-scroll'>
             <div className='lists-container' style={ divStyle }>
               { ourLists }
-              <ListView list={ blankList } />
+              <ListView list={ blankList } style={ listStyle } />
             </div>
           </div>
         </div>

@@ -47,6 +47,7 @@ const NameForm = React.createClass({
           <form className='name-form' onSubmit={ this.handleSubmit }>
             <input
               value={ this.state.name }
+              placeholder='New list...'
               onChange={ this.updateName }
               onBlur={ this.toggleEditing }
               autoFocus />
