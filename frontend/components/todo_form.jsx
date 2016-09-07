@@ -1,35 +1,55 @@
 import React from 'react';
 import ListUtil from '../utils/list_util';
 
+// TODO put this component back in TodoView?
 const TodoForm = React.createClass({
   getInitialState () {
     return {
-      todo: this.props.todo,
+      name: this.props.todo.name
     };
   },
 
   updateName (e) {
-    let newTodo = this.state.todo;
-    newTodo.name = e.currentTarget.value;
-    this.setState({ todo: newTodo });
-  },
-
-  handleSubmit (e) {
     e.preventDefault();
-    if (this.state.todo.name === '') { return; }
-    ListUtil.createTodo(this.state.todo);
-
-    let newTodo = this.state.todo;
-    newTodo.name = '';
-    this.setState({ todo: newTodo });
+    this.setState({ name: e.currentTarget.value });
   },
 
+  handleSubmit () {
+    let newTodo = this.props.todo;
+    newTodo.name = this.state.name;
+    if (this.props.todo.id) {
+      ListUtil.updateTodo(newTodo);
+      this.props.toggleEditing && this.props.toggleEditing();
+    } else {
+      ListUtil.createTodo(newTodo, () => { this.setState({name: ''}); });
+    }
+  },
+
+  deleteOnEmptySubmit (e) {
+    e.preventDefault();
+    // TODO have ListUtil handle empty case, write updateOrDelete(todo)
+    if (this.state.name === '') {
+      ListUtil.deleteTodo(this.props.todo);
+    } else {
+      this.handleSubmit();
+    }
+  },
+
+  breakOnEmptySubmit (e) {
+    e.preventDefault();
+    if (this.state.name != '') { this.handleSubmit(); }
+    this.props.toggleEditing && this.props.toggleEditing();
+  },
+
+  // return when empty deletes the todo, blur when empty does nothing
   render () {
     return (
-      <form className='todo-form todo-item' onSubmit={this.handleSubmit}>
+      <form className='todo-form' onSubmit={this.deleteOnEmptySubmit}>
         <input
-          value={this.state.todo.name}
-          onChange={this.updateName} />
+          value={this.state.name}
+          onChange={this.updateName}
+          onBlur={this.breakOnEmptySubmit}
+        />
       </form>
     );
   }

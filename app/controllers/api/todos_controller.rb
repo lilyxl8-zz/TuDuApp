@@ -26,6 +26,15 @@ class Api::TodosController < ApplicationController
 		end
   end
 
+  def toggle_done
+    @todo = current_user.todos.find(params[:id])
+    if @todo.toggle!(:done)
+      render :show
+    else
+      render json: {errors: @todo.errors.full_messages}, status: 422
+    end
+  end
+
   def destroy
     @todo = current_user.todos.find(params[:id])
 		if @todo.destroy

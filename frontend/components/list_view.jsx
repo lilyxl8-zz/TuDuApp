@@ -1,8 +1,8 @@
 import React from 'react';
-import ListStore from '../stores/list_store';
+import ListForm from './list_form';
 import TodoList from './todo_list';
-import TodoForm from './todo_form';
-import NameForm from './name_form';
+import TodoNew from './todo_new';
+import TodoBlanks from './todo_blanks';
 
 const ListView = React.createClass({
   getInitialState () {
@@ -11,50 +11,37 @@ const ListView = React.createClass({
     };
   },
 
-  componentDidMount () {
-    this.listStoreToken = ListStore.addListener(this._updateList);
-  },
-
-  _updateList () {
-    this.setState({ list: this.props.list });
-  },
-
   focusTodoForm (e) {
     e.preventDefault();
-    document.getElementById(this.props.list.id).firstChild.firstChild.focus();
+    // TODO fix this.refs.todoForm.findDOMNode().focus();
   },
 
-  componentWillUnmount () {
-    this.listStoreToken.remove();
+  focusListForm (e) {
+    e.preventDefault();
+    // TODO
   },
 
   render () {
-    let newTodo;
-    let blankTodos = [];
-
-    if (this.props.list.todos.length < 10) {
-      for (let i = 0; i < 9 - this.props.list.todos.length; i++) {
-        blankTodos.push(
-          <div className='todo-item' key={i} onClick={this.focusTodoForm}></div>
-        );
-      }
-
-      const blankTodo = {name: '', list_id: this.props.list.id };
-      newTodo = (
-        <div id={this.props.list.id}>
-          <TodoForm todo={blankTodo} />
+    const newOrExistingListTodos = (this.props.list.name != '') ? (
+      <div className='list-todos'>
+        <TodoList todos={ this.props.list.todos } />
+        <TodoNew listId={ this.props.list.id } />
+        <div onClick={ this.focusTodoForm }>
+          <TodoBlanks numBlanks={ 9 - this.props.list.todos.length } />
         </div>
-      );
-    }
+      </div>
+    ) : (
+      <div className='list-todos'>
+        <div onClick={this.focusListForm}>
+          <TodoBlanks numBlanks='10' />
+        </div>
+      </div>
+    );
 
     return (
       <div className='list-view' style={ this.props.style }>
-        <NameForm list={this.props.list}/>
-        <div className='list-todos'>
-          <TodoList todos={ this.props.list.todos } />
-          { newTodo }
-          { blankTodos }
-        </div>
+        <ListForm list={this.props.list} />
+        { newOrExistingListTodos }
       </div>
     );
   }

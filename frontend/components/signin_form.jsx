@@ -15,13 +15,14 @@ const SigninForm = React.createClass({
     };
   },
 
+  // TODO remove since tuDu.jsx already has listener?
   componentDidMount () {
-    this.SessionStoreToken = SessionStore.addListener(this._checkUser);
+    this.sessionStoreToken = SessionStore.addListener(this._checkUser);
   },
 
   _checkUser () {
     if (SessionStore.currentUser()) {
-      this.context.router.push('/');
+      this.context.router.push('/app');
     }
   },
 
@@ -42,7 +43,12 @@ const SigninForm = React.createClass({
     this.setState({ password: e.currentTarget.value });
   },
 
+  componentWillUnmount() {
+    this.sessionStoreToken.remove();
+  },
+
   render () {
+    // TODO DRY this template in signup?
     return (
       <div className='auth-form'>
         <form onSubmit={this.executeSubmit}>

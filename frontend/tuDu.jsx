@@ -28,6 +28,10 @@ const TuDuApp = React.createClass({
     this.setState({ currentUser: SessionStore.currentUser() });
   },
 
+  componentWillUnmount() {
+    this.sessionStoreToken.remove();
+  },
+
   render () {
     return (
       <div>

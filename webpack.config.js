@@ -15,8 +15,8 @@ module.exports = {
           presets: ['react', 'es2015']
         }
       }, {
-				test: /\.styl$/,
-				loader: 'style-loader!css-loader!sass-loader'
+				test: /\.scss$/,
+				loaders: ['style', 'css', 'sass']
 			}
     ]
   },
