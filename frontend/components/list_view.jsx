@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from './todo_list';
 import TodoNew from './todo_new';
+import TodoBlanks from './todo_blanks';
 import NameForm from './name_form';
 
 const ListView = React.createClass({
@@ -16,18 +17,6 @@ const ListView = React.createClass({
   },
 
   render () {
-    let blankTodos = [];
-
-    // TODO put this logic in ListStore
-    // TODO componentize these elements
-    if (this.props.list.todos.length < 10) {
-      for (let i = 0; i < 9 - this.props.list.todos.length; i++) {
-        blankTodos.push(
-          <div className='todo-item' key={i}></div>
-        );
-      }
-    }
-
     return (
       <div className='list-view' style={ this.props.style }>
         <NameForm list={this.props.list}/>
@@ -35,7 +24,7 @@ const ListView = React.createClass({
           <TodoList todos={ this.props.list.todos } />
           <TodoNew listId={ this.props.list.id } />
           <div onClick={this.focusTodoForm}>
-            { blankTodos }
+            <TodoBlanks numBlanks={ 9 - this.props.list.todos.length } />
           </div>
         </div>
       </div>
