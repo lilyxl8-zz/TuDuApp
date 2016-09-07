@@ -27,7 +27,7 @@ class Api::TodosController < ApplicationController
   end
 
   def toggle_done
-    @todo = current_user.todos.find(params[:id])
+    @todo = current_user.todos.find(params[:todo_id])
     if @todo.toggle!(:done)
       render :show
     else
@@ -45,7 +45,7 @@ class Api::TodosController < ApplicationController
   end
 
   def show
-    @todo = todo.find(params[:id])
+    @todo = Todo.find(params[:id])
 		render :show
   end
 

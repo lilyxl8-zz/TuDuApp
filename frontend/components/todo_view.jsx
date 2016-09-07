@@ -15,7 +15,7 @@ const TodoView = React.createClass({
     let newTodo = this.props.todo;
     newTodo.done = !newTodo.done;
     // TODO write ListUtil.toggleDone and use it here
-    ListUtil.updateTodo(newTodo);
+    ListUtil.toggleDone(this.props.todo);
   },
 
   toggleEditing () {

@@ -76,7 +76,7 @@ const ListUtil = {
   toggleDone: (todo) => {
     $.ajax({
       type: 'PUT',
-      url: '/api/todos/' + todo.id,
+      url: '/api/todos/' + todo.id + '/toggle_done',
       dataType: 'json',
       success: (updatedTodo) => {
         ListActions.todoReceived(updatedTodo);
