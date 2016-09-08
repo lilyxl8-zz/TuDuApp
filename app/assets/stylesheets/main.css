@@ -162,7 +162,7 @@ img {
 .list-wrapper {
   border-right: 1px solid #e2e2e2; }
 
-.list-wrapper:first-of-type {
+.list-view:first-of-type .list-wrapper {
   border-left: 1px solid #e2e2e2; }
 
 .list-name {

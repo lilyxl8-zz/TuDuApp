@@ -4,9 +4,9 @@ import React from 'react';
 
 import ListStore from '../stores/list_store';
 import ListUtil from '../utils/list_util';
-
 import ListList from './list_list';
-import ListView from './list_view';
+
+const blankList = { name: '', id: '' };
 
 const ListIndex = React.createClass({
   // props:
@@ -25,8 +25,7 @@ const ListIndex = React.createClass({
       index: 0,
       showCount: 5,
       animating: false,
-      directionAdvance: false,
-      lists: ListStore.all().concat({ name: '', id: '' })
+      lists: ListStore.all().concat(blankList)
     };
   },
 
@@ -36,7 +35,7 @@ const ListIndex = React.createClass({
   },
 
   _updateLists () {
-    this.setState({ lists: ListStore.all().concat({ name: '', id: '' }) });
+    this.setState({ lists: ListStore.all().concat(blankList) });
   },
 
   componentWillUnmount () {
@@ -44,22 +43,12 @@ const ListIndex = React.createClass({
   },
 
   showCarouselItems () {
-    let showArray = [];
     const listStyle = { width: 100 / this.state.showCount + '%' };
 
-    if (this.state.lists[this.state.index].id ) {
-      let max = Math.max(this.state.lists.length, this.state.index + this.state.showCount);
-      for (let i = this.state.index; i < max; i++) {
-        console.log(this.state.lists[i]);
-        showArray.push(<ListView
-          key={ this.state.lists[i].id }
-          list={ this.state.lists[i] }
-          style={ listStyle }
-        />);
-      }
-    }
+    let minEnd = Math.min(this.state.lists.length, this.state.index + this.state.showCount);
+    let listsToShow = this.state.lists.slice(this.state.index, minEnd);
 
-    return showArray;
+    return (<ListList lists={listsToShow} listStyle={listStyle} />);
   },
 
   retreatOne (e) {
@@ -77,9 +66,14 @@ const ListIndex = React.createClass({
     return (
       <div className='bg-app'>
         <div className='list-index'>
-          <div className='nav-arrow nav-left' onClick={this.retreatOne}>
-            <img src='images/arrow.svg'></img>
-          </div>
+          {
+            (this.state.index === 0) ?
+              null : (
+                <div className='nav-arrow nav-left' onClick={this.retreatOne}>
+                  <img src='images/arrow.svg'></img>
+                </div>
+              )
+          }
 
           <div className='lists-container-scroll'>
             <div className='lists-container'>
@@ -87,9 +81,14 @@ const ListIndex = React.createClass({
             </div>
           </div>
 
-          <div className='nav-arrow nav-right' onClick={this.advanceOne}>
-            <img src='images/arrow.svg'></img>
-          </div>
+          {
+            ((this.state.index + this.state.showCount) >= this.state.lists.length) ?
+            null : (
+              <div className='nav-arrow nav-right' onClick={this.advanceOne}>
+                <img src='images/arrow.svg'></img>
+              </div>
+            )
+          }
         </div>
       </div>
     );
