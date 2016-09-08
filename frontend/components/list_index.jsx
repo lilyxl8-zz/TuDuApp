@@ -26,7 +26,7 @@ const ListIndex = React.createClass({
       showCount: 5,
       animating: false,
       directionAdvance: false,
-      lists: ListStore.all()
+      lists: ListStore.all().concat({ name: '', id: '' })
     };
   },
 
@@ -36,19 +36,21 @@ const ListIndex = React.createClass({
   },
 
   _updateLists () {
-    this.setState({ lists: ListStore.all() });
+    this.setState({ lists: ListStore.all().concat({ name: '', id: '' }) });
   },
 
   componentWillUnmount () {
     this.listStoreToken.remove();
   },
 
-  showChildren () {
+  showCarouselItems () {
     let showArray = [];
     const listStyle = { width: 100 / this.state.showCount + '%' };
 
-    if (this.state.lists[this.state.index]) {
-      for (let i = this.state.index; i < this.state.index + this.state.showCount; i++) {
+    if (this.state.lists[this.state.index].id ) {
+      let max = Math.max(this.state.lists.length, this.state.index + this.state.showCount);
+      for (let i = this.state.index; i < max; i++) {
+        console.log(this.state.lists[i]);
         showArray.push(<ListView
           key={ this.state.lists[i].id }
           list={ this.state.lists[i] }
@@ -60,23 +62,32 @@ const ListIndex = React.createClass({
     return showArray;
   },
 
+  retreatOne (e) {
+    e.preventDefault();
+    this.setState({ index: this.state.index - 1 });
+  },
+
+  advanceOne (e) {
+    e.preventDefault();
+    this.setState({ index: this.state.index + 1 });
+  },
+
   render () {
     // TODO make React carousel
-
     return (
       <div className='bg-app'>
         <div className='list-index'>
-          <div className='nav-arrow nav-left'>
+          <div className='nav-arrow nav-left' onClick={this.retreatOne}>
             <img src='images/arrow.svg'></img>
           </div>
 
           <div className='lists-container-scroll'>
             <div className='lists-container'>
-              { this.showChildren() }
+              { this.showCarouselItems() }
             </div>
           </div>
 
-          <div className='nav-arrow nav-right'>
+          <div className='nav-arrow nav-right' onClick={this.advanceOne}>
             <img src='images/arrow.svg'></img>
           </div>
         </div>
