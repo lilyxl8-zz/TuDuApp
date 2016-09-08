@@ -40,8 +40,10 @@ const ListView = React.createClass({
 
     return (
       <div className='list-view' style={ this.props.style }>
-        <ListForm list={this.props.list} />
-        { newOrExistingListTodos }
+        <div className='list-wrapper'>
+          <ListForm list={this.props.list} />
+          { newOrExistingListTodos }
+        </div>
       </div>
     );
   }

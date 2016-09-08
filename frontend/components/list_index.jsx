@@ -7,8 +7,22 @@ import ListList from './list_list';
 import ListView from './list_view';
 
 const ListIndex = React.createClass({
+  // props:
+  // children = ListStore.all()
+  // animationDuration = 300ms
+  // initialIndex = 0
+  // width = 20% or this.props.showCount = 5
+
+  // 2) write arrow fns (advance, retreat, have them update index)
+  // 1) render subset of whole Lists array w/o animation (later limit to 150 at a time)
+  //  (for calendar, show 15 days and fetch more)
+  // write animation
+
   getInitialState () {
     return {
+      index: 0,
+      animating: false,
+      directionAdvance: false,
       lists: ListStore.all()
     };
   },
@@ -28,13 +42,7 @@ const ListIndex = React.createClass({
 
   render () {
     // TODO make React carousel
-    const divStyle = {
-      width: (this.state.lists.length + 1) / 5 * 100 + '%'
-    };
-
-    const listStyle = {
-      width: 98 / (this.state.lists.length + 1) + '%'
-    };
+    const listStyle = { width: 100 / 5 + '%' };
 
     const blankList = { name: '' };
 
@@ -44,15 +52,17 @@ const ListIndex = React.createClass({
           <div className='nav-arrow nav-left'>
             <img src='images/arrow.svg'></img>
           </div>
-          <div className='nav-arrow nav-right'>
-            <img src='images/arrow.svg'></img>
-          </div>
 
           <div className='lists-container-scroll'>
-            <div className='lists-container' style={ divStyle }>
-              <ListList lists={ this.state.lists } listStyle={ listStyle }/>
+            <div className='lists-container'>
+              <ListList lists={ this.state.lists } listStyle= { listStyle }/>
               <ListView list={ blankList } style={ listStyle } />
             </div>
+          </div>
+
+
+          <div className='nav-arrow nav-right'>
+            <img src='images/arrow.svg'></img>
           </div>
         </div>
       </div>

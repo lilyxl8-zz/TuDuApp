@@ -165,7 +165,6 @@ img {
 }
 
 .nav-arrow {
-  display: none;
   position: absolute;
   top: 2px;
   padding: 196px 0;
@@ -213,11 +212,13 @@ img {
   float: left;
   display: inline;
   position: relative;
-  // width: 19.79%;
+}
+
+.list-wrapper {
   border-right: 1px solid $light-gray-color;
 }
 
-.list-view:first-of-type {
+.list-wrapper:first-of-type {
   border-left: 1px solid $light-gray-color;
 }
 
