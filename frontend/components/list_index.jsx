@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react';
 
 import ListStore from '../stores/list_store';
@@ -21,6 +23,7 @@ const ListIndex = React.createClass({
   getInitialState () {
     return {
       index: 0,
+      showCount: 5,
       animating: false,
       directionAdvance: false,
       lists: ListStore.all()
@@ -40,11 +43,25 @@ const ListIndex = React.createClass({
     this.listStoreToken.remove();
   },
 
+  showChildren () {
+    let showArray = [];
+    const listStyle = { width: 100 / this.state.showCount + '%' };
+
+    if (this.state.lists[this.state.index]) {
+      for (let i = this.state.index; i < this.state.index + this.state.showCount; i++) {
+        showArray.push(<ListView
+          key={ this.state.lists[i].id }
+          list={ this.state.lists[i] }
+          style={ listStyle }
+        />);
+      }
+    }
+
+    return showArray;
+  },
+
   render () {
     // TODO make React carousel
-    const listStyle = { width: 100 / 5 + '%' };
-
-    const blankList = { name: '' };
 
     return (
       <div className='bg-app'>
@@ -55,11 +72,9 @@ const ListIndex = React.createClass({
 
           <div className='lists-container-scroll'>
             <div className='lists-container'>
-              <ListList lists={ this.state.lists } listStyle= { listStyle }/>
-              <ListView list={ blankList } style={ listStyle } />
+              { this.showChildren() }
             </div>
           </div>
-
 
           <div className='nav-arrow nav-right'>
             <img src='images/arrow.svg'></img>
