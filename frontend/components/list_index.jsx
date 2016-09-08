@@ -10,19 +10,17 @@ const blankList = { name: '', id: '' };
 
 const ListIndex = React.createClass({
   // props:
-  // children = ListStore.all()
   // animationDuration = 300ms
-  // initialIndex = 0
-  // width = 20% or this.props.showCount = 5
 
-  // 2) write arrow fns (advance, retreat, have them update index)
   // 1) render subset of whole Lists array w/o animation (later limit to 150 at a time)
+  // 2) write arrow fns (advance, retreat, have them update index)
   //  (for calendar, show 15 days and fetch more)
   // write animation
 
   getInitialState () {
     return {
       index: 0,
+      // TODO pass in via props
       showCount: 5,
       animating: false,
       lists: ListStore.all().concat(blankList)
@@ -45,10 +43,14 @@ const ListIndex = React.createClass({
   showCarouselItems () {
     const listStyle = { width: 100 / this.state.showCount + '%' };
 
-    let minEnd = Math.min(this.state.lists.length, this.state.index + this.state.showCount);
-    let listsToShow = this.state.lists.slice(this.state.index, minEnd);
+    const minEnd = Math.min(this.state.lists.length, this.maxIndex());
+    const listsToShow = this.state.lists.slice(this.state.index, minEnd);
 
     return (<ListList lists={listsToShow} listStyle={listStyle} />);
+  },
+
+  maxIndex () {
+    return this.state.index + this.state.showCount;
   },
 
   retreatOne (e) {
@@ -62,7 +64,6 @@ const ListIndex = React.createClass({
   },
 
   render () {
-    // TODO make React carousel
     return (
       <div className='bg-app'>
         <div className='list-index'>
@@ -82,12 +83,12 @@ const ListIndex = React.createClass({
           </div>
 
           {
-            ((this.state.index + this.state.showCount) >= this.state.lists.length) ?
-            null : (
-              <div className='nav-arrow nav-right' onClick={this.advanceOne}>
-                <img src='images/arrow.svg'></img>
-              </div>
-            )
+            (this.maxIndex() >= this.state.lists.length) ?
+              null : (
+                <div className='nav-arrow nav-right' onClick={this.advanceOne}>
+                  <img src='images/arrow.svg'></img>
+                </div>
+              )
           }
         </div>
       </div>

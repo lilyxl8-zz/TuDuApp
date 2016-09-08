@@ -35,7 +35,10 @@ const TuDuApp = React.createClass({
   render () {
     return (
       <div>
-        <NavOverlay location={this.props.location}/>
+        <NavOverlay
+          location={ this.props.location }
+          currentUser={ this.state.currentUser }
+        />
         { this.props.children }
       </div>
     );
