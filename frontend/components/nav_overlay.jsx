@@ -4,7 +4,6 @@ import SessionUtil from '../utils/session_util';
 import SessionStore from '../stores/session_store';
 
 const NavOverlay = React.createClass({
-
   getInitialState () {
     return {
       currentUser: SessionStore.currentUser()

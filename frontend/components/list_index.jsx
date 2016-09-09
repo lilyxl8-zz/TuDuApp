@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-
 import ListStore from '../stores/list_store';
 import ListUtil from '../utils/list_util';
 import ListList from './list_list';
@@ -9,13 +8,13 @@ import ListList from './list_list';
 const blankList = { name: '', id: '' };
 
 const ListIndex = React.createClass({
-  // props:
-  // animationDuration = 300ms
+  // props: showCount, animationDuration = 300ms
+  // write carouselDots
 
   // 1) render subset of whole Lists array w/o animation (later limit to 150 at a time)
   // 2) write arrow fns (advance, retreat, have them update index)
   //  (for calendar, show 15 days and fetch more)
-  // write animation
+  // 3) write animation
 
   getInitialState () {
     return {

@@ -10,20 +10,20 @@ class Api::TodosController < ApplicationController
 
   def create
     @todo = current_user.todos.new(todo_params)
-		if @todo.save
-			render :show
-		else
-			render json: {errors: @todo.errors.full_messages}, status: 422
-		end
+    if @todo.save
+      render :show
+    else
+      render json: {errors: @todo.errors.full_messages}, status: 422
+    end
   end
 
   def update
     @todo = current_user.todos.find(params[:id])
-		if @todo.update(todo_params)
-			render :show
-		else
-			render json: {errors: @todo.errors.full_messages}, status: 422
-		end
+    if @todo.update(todo_params)
+      render :show
+    else
+      render json: {errors: @todo.errors.full_messages}, status: 422
+    end
   end
 
   def toggle_done
@@ -37,16 +37,16 @@ class Api::TodosController < ApplicationController
 
   def destroy
     @todo = current_user.todos.find(params[:id])
-		if @todo.destroy
-			render json: { message: 'destroyed' }
-		else
-			render json: {errors: @todo.errors.full_messages}, status: 422
-		end
+    if @todo.destroy
+      render json: { message: 'destroyed' }
+    else
+      render json: {errors: @todo.errors.full_messages}, status: 422
+    end
   end
 
   def show
     @todo = Todo.find(params[:id])
-		render :show
+    render :show
   end
 
   private
