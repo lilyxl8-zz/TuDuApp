@@ -1,3 +1,5 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
   context: __dirname,
   entry: './frontend/tuDu.jsx',
@@ -15,11 +17,16 @@ module.exports = {
           presets: ['react', 'es2015']
         }
       }, {
-				test: /\.scss$/,
-				loaders: ['style', 'css', 'sass']
-			}
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('css?-url!sass')
+      }
     ]
   },
+  plugins: [
+    new ExtractTextPlugin('../stylesheets/main.css', {
+      allChunks: true
+    })
+  ],
   devtool: 'source-map',
   resolve: {
     extensions: ['', '.js', '.jsx']

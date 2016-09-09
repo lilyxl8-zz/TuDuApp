@@ -1,6 +1,5 @@
-/* MIXINS */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);/* MIXINS */
 /* RESET */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
 section, img, div, h2, p, form,
@@ -247,7 +246,8 @@ img {
 
 .done:hover .delete-todo {
   display: block; }
+
 .done:hover .edit-todo {
   display: none; }
 
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=main.css.map*/

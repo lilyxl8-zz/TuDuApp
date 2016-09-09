@@ -12,6 +12,8 @@ import SigninForm from './components/signin_form';
 import Landing from './components/landing';
 import ListIndex from './components/list_index';
 
+require('../app/assets/stylesheets/main.scss');
+
 const TuDuApp = React.createClass({
   getInitialState () {
     return {
