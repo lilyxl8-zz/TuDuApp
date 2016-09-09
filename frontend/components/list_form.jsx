@@ -21,6 +21,11 @@ const ListForm = React.createClass({
     this.setState({ editing: !this.state.editing });
   },
 
+  focus (e) {
+    e.preventDefault();
+    this.refs.listInput.focus();
+  },
+
   handleSubmit (e) {
     e.preventDefault();
     let newList = this.props.list;
@@ -51,6 +56,7 @@ const ListForm = React.createClass({
               placeholder='New list...'
               onChange={ this.updateName }
               onBlur={ this.toggleEditing }
+              ref='listInput'
               autoFocus />
           </form>
         </div>

@@ -65,7 +65,9 @@ const ListIndex = React.createClass({
     let dots = [];
     for (let i = 0; i < Math.ceil(this.state.lists.length / 5); i++) {
       dots.push(
-        <div className={
+        <div
+          key={i}
+          className={
             (this.state.index >= i * 5 && this.state.index < i * 5 + 5) ?
               'active' : ''
           }

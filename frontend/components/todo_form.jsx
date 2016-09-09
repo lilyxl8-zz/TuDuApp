@@ -14,6 +14,11 @@ const TodoForm = React.createClass({
     this.setState({ name: e.currentTarget.value });
   },
 
+  focus (e) {
+    e.preventDefault();
+    this.refs.todoInput.focus();
+  },
+
   handleSubmit () {
     let newTodo = this.props.todo;
     newTodo.name = this.state.name;
@@ -46,9 +51,10 @@ const TodoForm = React.createClass({
     return (
       <form className='todo-form' onSubmit={this.deleteOnEmptySubmit}>
         <input
-          value={this.state.name}
-          onChange={this.updateName}
-          onBlur={this.breakOnEmptySubmit}
+          value={ this.state.name }
+          ref='todoInput'
+          onChange={ this.updateName }
+          onBlur={ this.breakOnEmptySubmit }
         />
       </form>
     );

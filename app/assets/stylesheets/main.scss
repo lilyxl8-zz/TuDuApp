@@ -251,7 +251,12 @@ img {
     text-transform: uppercase;
   }
   input {
-    margin: 1px 0 4px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 100%;
   }
 }
 
