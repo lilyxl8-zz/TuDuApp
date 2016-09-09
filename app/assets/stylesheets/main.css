@@ -115,13 +115,14 @@ img {
   bottom: 0; }
 
 .list-index {
-  margin: 3.9rem 20px; }
+  margin: 1.95rem 20px 3.9rem; }
 
 .nav-arrow {
   position: absolute;
   top: 2px;
   padding: 196px 0;
-  margin-top: 3.9rem; }
+  margin-top: 3.9rem;
+  cursor: pointer; }
 
 .nav-arrow:hover {
   opacity: 0.5; }
@@ -142,7 +143,6 @@ img {
 .lists-container-scroll {
   display: block;
   margin: 0 60px;
-  height: 480px;
   overflow-x: scroll; }
 
 .lists-container-scroll::-webkit-scrollbar {
@@ -152,6 +152,20 @@ img {
   position: relative;
   overflow: hidden;
   height: 480px; }
+
+.list-carousel-dots {
+  color: #6B6B6B;
+  font-size: 1.5rem;
+  padding-bottom: 1.95rem;
+  text-align: center; }
+  .list-carousel-dots div {
+    display: inline;
+    padding: 0 8px;
+    cursor: pointer; }
+  .list-carousel-dots .active {
+    opacity: 0.6; }
+  .list-carousel-dots div:hover {
+    opacity: 0.4; }
 
 .list-view {
   float: left;

@@ -14,22 +14,17 @@ user to easily manipulate them. Upon submission, the todo is defocused, creating
 a smooth editing UX. This is accomplished through an on click event that shows
 the form as an input field rather than just text.
 
-        nameForm = () => {
-            if (this.state.editing) {
-                return (
-                    <form className='name-form' onSubmit={this.handleSubmit}>
-                    <input
-                        value={this.state.list.name}
-                        onChange={this.updateName}
-                        onBlur={this.toggleEditing}
-                        autoFocus />
-                    </form>
-                );
-            } else {
-                return (
-                    <h1 onClick={this.toggleEditing}>{this.state.list.name}</h1>
-                );
-            }
+            this.state.editing ?  (
+              <form className='name-form' onSubmit={this.handleSubmit}>
+              <input
+                  value={this.state.list.name}
+                  onChange={this.updateName}
+                  onBlur={this.toggleEditing}
+                  autoFocus />
+              </form>
+            ) : (
+              <h1 onClick={this.toggleEditing}>{this.state.list.name}</h1>
+            )
 
     The 'toggleEditing' function merely sets the state "editing" to the opposite
     value and causes a rerender.

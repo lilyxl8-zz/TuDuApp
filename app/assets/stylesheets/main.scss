@@ -13,7 +13,7 @@ $padding: 20px;
 $border-radius: 12px;
 $button-padding: 5px;
 
-$list-top-padding: 3.9rem;
+$list-vert-padding: 3.9rem;
 $list-name-padding: 2rem;
 $list-padding: 8px;
 $todo-height: 22px;
@@ -153,7 +153,7 @@ img {
 /* LIST INDEX */
 
 .bg-app {
-  top: $list-top-padding;
+  top: $list-vert-padding;
   background: white;
   position: absolute;
   width: 100%;
@@ -161,14 +161,15 @@ img {
 }
 
 .list-index {
-  margin: $list-top-padding $padding;
+  margin: ($list-vert-padding / 2) $padding $list-vert-padding;
 }
 
 .nav-arrow {
   position: absolute;
   top: 2px;
   padding: 196px 0;
-  margin-top: $list-top-padding;
+  margin-top: $list-vert-padding;
+  cursor: pointer;
 }
 
 .nav-arrow:hover {
@@ -193,7 +194,6 @@ img {
 .lists-container-scroll {
   display: block;
   margin: 0 ($padding * 3);
-  height: 480px;
   overflow-x: scroll;
 }
 
@@ -206,6 +206,25 @@ img {
   overflow: hidden;
   height: 480px;
   // width: 1200px;
+}
+
+.list-carousel-dots {
+  color: $dark-gray-color;
+  font-size: 1.5rem;
+  padding-bottom: $list-vert-padding / 2;
+  text-align: center;
+  div {
+    display: inline;
+    padding: 0 8px;
+    cursor: pointer;
+  }
+  .active {
+    opacity: 0.6;
+  }
+
+  div:hover {
+    opacity: 0.4;
+  }
 }
 
 .list-view {

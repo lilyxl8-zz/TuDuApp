@@ -9,7 +9,7 @@ const blankList = { name: '', id: '' };
 
 const ListIndex = React.createClass({
   // props: showCount, animationDuration = 300ms
-  // write carouselDots
+  // write showCarouselDots
 
   // 1) render subset of whole Lists array w/o animation (later limit to 150 at a time)
   // 2) write arrow fns (advance, retreat, have them update index)
@@ -21,7 +21,6 @@ const ListIndex = React.createClass({
       index: 0,
       // TODO pass in via props
       showCount: 5,
-      animating: false,
       lists: ListStore.all().concat(blankList)
     };
   },
@@ -54,12 +53,30 @@ const ListIndex = React.createClass({
 
   retreatOne (e) {
     e.preventDefault();
-    this.setState({ index: this.state.index - 1 });
+    this.setState({ index: this.state.index - this.state.showCount });
   },
 
   advanceOne (e) {
     e.preventDefault();
-    this.setState({ index: this.state.index + 1 });
+    this.setState({ index: this.state.index + this.state.showCount });
+  },
+
+  showCarouselDots () {
+    let dots = [];
+    for (let i = 0; i < Math.ceil(this.state.lists.length / 5); i++) {
+      dots.push(
+        <div className={
+            (this.state.index >= i * 5 && this.state.index < i * 5 + 5) ?
+              'active' : ''
+          }
+          onClick={ (e) => {
+            e.preventDefault();
+            this.setState({ index: i * 5 });
+          } } >
+          ●
+        </div>);
+    }
+    return dots;
   },
 
   render () {
@@ -67,27 +84,31 @@ const ListIndex = React.createClass({
       <div className='bg-app'>
         <div className='list-index'>
           {
-            (this.state.index === 0) ?
-              null : (
-                <div className='nav-arrow nav-left' onClick={this.retreatOne}>
+            this.state.index != 0 ?
+              (
+                <div className='nav-arrow nav-left' onClick={ this.retreatOne }>
                   <img src='images/arrow.svg'></img>
                 </div>
-              )
+              ) : null
           }
 
           <div className='lists-container-scroll'>
+            <div className='list-carousel-dots'>
+              { this.showCarouselDots() }
+            </div>
+
             <div className='lists-container'>
               { this.showCarouselItems() }
             </div>
           </div>
 
           {
-            (this.maxIndex() >= this.state.lists.length) ?
-              null : (
-                <div className='nav-arrow nav-right' onClick={this.advanceOne}>
+            (this.maxIndex() < this.state.lists.length) ?
+              (
+                <div className='nav-arrow nav-right' onClick={ this.advanceOne }>
                   <img src='images/arrow.svg'></img>
                 </div>
-              )
+              ) : null
           }
         </div>
       </div>
