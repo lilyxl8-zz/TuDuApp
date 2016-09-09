@@ -245,18 +245,15 @@ img {
   cursor: default;
   height: 54px;
   margin: 0 $list-padding $list-name-padding;
-  h1 {
-    text-align: center;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-  }
+  text-align: center;
+  font-size: 1.2rem;
+  text-transform: uppercase;
   input {
     margin-bottom: 4px;
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: 700;
     width: 100%;
+    text-align: center;
+    text-transform: uppercase;
   }
 }
 
