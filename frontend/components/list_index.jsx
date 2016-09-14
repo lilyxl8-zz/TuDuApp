@@ -117,11 +117,11 @@ const ListIndex = React.createClass({
           <img src='images/arrow.svg'></img>
         </div>
 
+        <div className='list-carousel-dots'>
+          { this.showCarouselDots() }
+        </div>
+        
         <div className='lists-container-scroll'>
-          <div className='list-carousel-dots'>
-            { this.showCarouselDots() }
-          </div>
-
           { this.showCarouselItems() }
         </div>
         <div className={

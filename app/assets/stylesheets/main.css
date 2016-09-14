@@ -140,11 +140,12 @@ button {
 
 .nav-arrow {
   position: absolute;
-  top: 2px;
-  padding: 196px 0;
+  top: 32px;
+  padding-top: 210px;
   margin-top: 3.9rem;
   transition: opacity 0.5s ease;
-  opacity: 0; }
+  opacity: 0;
+  height: 100%; }
 
 .shown:hover {
   opacity: 0.5; }

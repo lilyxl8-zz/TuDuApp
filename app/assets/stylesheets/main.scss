@@ -191,11 +191,12 @@ button {
 
 .nav-arrow {
   position: absolute;
-  top: 2px;
-  padding: 196px 0;
+  top: 32px;
+  padding-top: 210px;
   margin-top: $list-vert-padding;
   transition: opacity 0.5s ease;
   opacity: 0;
+  height: 100%;
 }
 
 .shown:hover {
