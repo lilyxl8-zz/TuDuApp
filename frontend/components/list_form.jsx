@@ -27,6 +27,7 @@ const ListForm = React.createClass({
     newList.name = this.state.name
     if (this.props.isForm && this.state.name !== '') {
       this.state.listHandler.createList(newList)
+      if (!this.props.isDemo) { this.setState({ name: '' }) }
     } else {
       if (this.props.list.name === '') { return }
       this.state.listHandler.updateList(newList)

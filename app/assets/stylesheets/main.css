@@ -144,8 +144,7 @@ button {
   padding-top: 210px;
   margin-top: 3.9rem;
   transition: opacity 0.5s ease;
-  opacity: 0;
-  height: 100%; }
+  opacity: 0; }
 
 .shown:hover {
   opacity: 0.5; }

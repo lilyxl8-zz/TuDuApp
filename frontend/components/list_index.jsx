@@ -88,7 +88,8 @@ const ListIndex = React.createClass({
       <div className='lists-container'>
       {
         listsToShow.map((list, idx) => {
-          const keyVal = this.props.isDemo ? this.state.index + idx : list.id
+          const keyVal = this.props.isDemo ? this.state.index + idx : (
+            (list.id) ? (list.id) : 0 )
           const isForm = (this.state.index + idx === this.state.lists.length - 1)
 
           return (
@@ -120,7 +121,7 @@ const ListIndex = React.createClass({
         <div className='list-carousel-dots'>
           { this.showCarouselDots() }
         </div>
-        
+
         <div className='lists-container-scroll'>
           { this.showCarouselItems() }
         </div>
