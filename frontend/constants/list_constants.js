@@ -5,6 +5,6 @@ const ListConstants = {
   LIST_DELETED: 'LIST_DELETED',
   TODO_RECEIVED: 'TODO_RECEIVED',
   TODO_DELETED: 'TODO_DELETED'
-};
+}
 
-export default ListConstants;
+export default ListConstants

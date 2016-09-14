@@ -11,7 +11,7 @@ const UserUtil = {
         callback && callback({
           username: credentials.username,
           password: credentials.password
-        });
+        })
       }
     })
   }

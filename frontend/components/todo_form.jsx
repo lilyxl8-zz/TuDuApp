@@ -1,49 +1,57 @@
-import React from 'react';
-import ListUtil from '../utils/list_util';
+import React from 'react'
+import ListUtil from '../utils/list_util'
+import ListActions from '../actions/list_actions'
 
-// TODO put this component back in TodoView?
 const TodoForm = React.createClass({
+  propTypes: {
+    isDemo: React.PropTypes.bool
+  },
+
   getInitialState () {
     return {
-      name: this.props.todo.name
-    };
+      name: this.props.todo.name,
+      handler: this.props.isDemo ? ListActions : ListUtil
+    }
   },
 
   updateName (e) {
-    e.preventDefault();
-    this.setState({ name: e.currentTarget.value });
+    e.preventDefault()
+    this.setState({ name: e.currentTarget.value })
   },
 
   focus (e) {
-    e.preventDefault();
-    this.refs.todoInput.focus();
+    e.preventDefault()
+    this.refs.todoInput.focus()
   },
 
   handleSubmit () {
-    let newTodo = this.props.todo;
-    newTodo.name = this.state.name;
+    let newTodo = this.props.todo
+    newTodo.name = this.state.name
     if (this.props.todo.id) {
-      ListUtil.updateTodo(newTodo);
-      this.props.toggleEditing && this.props.toggleEditing();
+      this.state.handler.updateTodo(newTodo)
+      this.props.toggleEditing && this.props.toggleEditing()
     } else {
-      ListUtil.createTodo(newTodo, () => { this.setState({name: ''}); });
+      if (this.props.isDemo) {
+        newTodo.id = this.props.id
+      }
+      this.state.handler.createTodo(newTodo)
+      this.setState({name: ''})
     }
   },
 
   deleteOnEmptySubmit (e) {
-    e.preventDefault();
-    // TODO have ListUtil handle empty case, write updateOrDelete(todo)
+    e.preventDefault()
     if (this.state.name === '') {
-      ListUtil.deleteTodo(this.props.todo);
+      this.state.handler.deleteTodo(this.props.todo)
     } else {
-      this.handleSubmit();
+      this.handleSubmit()
     }
   },
 
   breakOnEmptySubmit (e) {
-    e.preventDefault();
-    if (this.state.name != '') { this.handleSubmit(); }
-    this.props.toggleEditing && this.props.toggleEditing();
+    e.preventDefault()
+    if (this.state.name !== '') { this.handleSubmit() }
+    this.props.toggleEditing && this.props.toggleEditing()
   },
 
   // return when empty deletes the todo, blur when empty does nothing
@@ -58,8 +66,8 @@ const TodoForm = React.createClass({
           autoFocus
         />
       </form>
-    );
+    )
   }
-});
+})
 
-export default TodoForm;
+export default TodoForm

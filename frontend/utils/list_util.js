@@ -1,4 +1,4 @@
-import ListActions from '../actions/list_actions';
+import ListActions from '../actions/list_actions'
 
 const ListUtil = {
   fetchUserLists: () => {
@@ -7,21 +7,21 @@ const ListUtil = {
       url: '/api/lists',
       dataType: 'json',
       success: (lists) => {
-        ListActions.listsReceived(lists);
+        ListActions.listsReceived(lists)
       }
-    });
+    })
   },
 
-  createList: (listName) => {
+  createList: (list) => {
     $.ajax({
       type: 'POST',
       url: '/api/lists',
       dataType: 'json',
-      data: { list: { name: listName } },
+      data: { list: list },
       success: (newList) => {
-        ListActions.listReceived(newList);
+        ListActions.createList(newList)
       }
-    });
+    })
   },
 
   updateList: (list) => {
@@ -30,10 +30,10 @@ const ListUtil = {
       url: '/api/lists/' + list.id,
       dataType: 'json',
       data: { list: list },
-      success: (newList) => {
-        ListActions.listReceived(newList);
+      success: (updatedList) => {
+        ListActions.updateList(updatedList)
       }
-    });
+    })
   },
 
   deleteList: (list) => {
@@ -43,22 +43,21 @@ const ListUtil = {
       dataType: 'json',
       data: { list: list },
       success: () => {
-        ListActions.listDeleted(list);
+        ListActions.deleteList(list)
       }
-    });
+    })
   },
 
-  createTodo: (todo, callback) => {
+  createTodo: (todo) => {
     $.ajax({
       type: 'POST',
       url: '/api/todos',
       dataType: 'json',
       data: { todo: todo },
-      success: (newTodo) => {
-        ListActions.todoReceived(newTodo); // TODO
-        callback && callback();
+      success: (todo) => {
+        ListActions.createTodo(todo)
       }
-    });
+    })
   },
 
   updateTodo: (todo) => {
@@ -67,10 +66,10 @@ const ListUtil = {
       url: '/api/todos/' + todo.id,
       dataType: 'json',
       data: { todo: todo },
-      success: (updatedTodo) => {
-        ListActions.todoReceived(updatedTodo);
+      success: (todo) => {
+        ListActions.updateTodo(todo)
       }
-    });
+    })
   },
 
   toggleDone: (todo) => {
@@ -78,10 +77,10 @@ const ListUtil = {
       type: 'PUT',
       url: '/api/todos/' + todo.id + '/toggle_done',
       dataType: 'json',
-      success: (updatedTodo) => {
-        ListActions.todoReceived(updatedTodo);
+      success: (todo) => {
+        ListActions.updateTodo(todo)
       }
-    });
+    })
   },
 
   deleteTodo: (todo) => {
@@ -90,10 +89,10 @@ const ListUtil = {
       url: '/api/todos/' + todo.id,
       dataType: 'json',
       success: () => {
-        ListActions.todoDeleted(todo);
+        ListActions.deleteTodo(todo)
       }
-    });
+    })
   }
-};
+}
 
-export default ListUtil;
+export default ListUtil

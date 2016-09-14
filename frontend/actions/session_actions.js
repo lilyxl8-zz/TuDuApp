@@ -2,17 +2,17 @@ import AppDispatcher from '../dispatcher/dispatcher'
 import SessionConstants from '../constants/session_constants'
 
 const SessionActions = {
-  currentUserReceived: function(currentUser) {
+  currentUserReceived: function (currentUser) {
     AppDispatcher.dispatch({
       actionType: SessionConstants.CURRENT_USER_RECEIVED,
       currentUser: currentUser
-    });
+    })
   },
 
-  logout: function() {
+  logout: function () {
     AppDispatcher.dispatch({
       actionType: SessionConstants.LOGOUT
-    });
+    })
   }
 }
 

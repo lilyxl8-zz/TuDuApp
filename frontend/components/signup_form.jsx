@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router';
-import UserUtil from '../utils/user_util';
-import SessionUtil from '../utils/session_util';
+import React from 'react'
+import { Link } from 'react-router'
+import UserUtil from '../utils/user_util'
+import SessionUtil from '../utils/session_util'
 
 const SignupForm = React.createClass({
-  contextTypes : {
+  contextTypes: {
     router: React.PropTypes.object.isRequired
   },
 
@@ -12,26 +12,26 @@ const SignupForm = React.createClass({
     return {
       username: '',
       password: ''
-    };
+    }
   },
 
   executeSubmit (e) {
-    e.preventDefault();
-    let router = this.context.router;
+    e.preventDefault()
+    let router = this.context.router
 
     UserUtil.createAccount(this.state, (credentials) => {
       SessionUtil.login(credentials, () => {
-        router.push('/app');
-      });
-    });
+        router.push('/app')
+      })
+    })
   },
 
   updateUsername (e) {
-    this.setState({ username: e.currentTarget.value });
+    this.setState({ username: e.currentTarget.value })
   },
 
   updatePassword (e) {
-    this.setState({ password: e.currentTarget.value });
+    this.setState({ password: e.currentTarget.value })
   },
 
   render () {
@@ -56,8 +56,8 @@ const SignupForm = React.createClass({
           <button>Sign up</button>
         </form>
       </div>
-    );
+    )
   }
-});
+})
 
-export default SignupForm;
+export default SignupForm

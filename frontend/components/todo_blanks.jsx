@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
 
-const TodoBlanks = ({ numBlanks }) => {
-  let blankTodos = [];
+const TodoBlanks = ({ numBlanks, onClick }) => {
+  let blankTodos = []
 
   for (let i = 0; i < numBlanks; i++) {
     blankTodos.push(
       <div className='todo-item' key={i}></div>
-    );
+    )
   }
   return (
-    <div>
+    <div onClick={ onClick }>
       { blankTodos }
     </div>
-  );
-};
+  )
+}
 
-export default TodoBlanks;
+export default TodoBlanks

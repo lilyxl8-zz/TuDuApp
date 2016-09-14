@@ -1,6 +1,6 @@
-import SessionActions from '../actions/session_actions';
-import ListActions from '../actions/list_actions';
-import TodoActions from '../actions/todo_actions';
+import SessionActions from '../actions/session_actions'
+import ListActions from '../actions/list_actions'
+import TodoActions from '../actions/todo_actions'
 
 const SessionUtil = {
   login: (credentials, callback) => {
@@ -10,10 +10,10 @@ const SessionUtil = {
       dataType: 'json',
       data: { user: credentials },
       success: (currentUser) => {
-        SessionActions.currentUserReceived(currentUser);
-        callback && callback();
+        SessionActions.currentUserReceived(currentUser)
+        callback && callback()
       }
-    });
+    })
   },
 
   logout: () => {
@@ -22,13 +22,13 @@ const SessionUtil = {
       url: '/api/session',
       dataType: 'json',
       success: () => {
-        SessionActions.logout();
+        SessionActions.logout()
       },
       complete: () => {
-        ListActions.clearLists();
-        TodoActions.clearTodos();
+        ListActions.setDemo()
+        TodoActions.clearTodos()
       }
-    });
+    })
   },
 
   fetchCurrentUser: (completion) => {
@@ -37,13 +37,13 @@ const SessionUtil = {
       url: '/api/session',
       dataType: 'json',
       success: (currentUser) => {
-        SessionActions.currentUserReceived(currentUser);
+        SessionActions.currentUserReceived(currentUser)
       },
       complete: () => {
-        completion && completion();
+        completion && completion()
       }
-    });
+    })
   }
-};
+}
 
-export default SessionUtil;
+export default SessionUtil

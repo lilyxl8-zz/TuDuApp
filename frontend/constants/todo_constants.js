@@ -1,7 +1,8 @@
 const TodoConstants = {
-  TODO_RECEIVED: 'TODO_RECEIVED',
+  TODO_CREATED: 'TODO_CREATED',
+  TODO_UPDATED: 'TODO_UPDATED',
   TODOS_RECEIVED: 'TODOS_RECEIVED',
   TODOS_CLEARED: 'TODOS_CLEARED'
-};
+}
 
-export default TodoConstants;
+export default TodoConstants

@@ -1,12 +1,12 @@
-import React from 'react';
-import TodoView from './todo_view';
+import React from 'react'
+import TodoView from './todo_view'
 
-const TodoList = ({ todos }) => (
+const TodoList = ({ todos, isDemo }) => (
   <div>
     { todos.map( todo =>
-      <TodoView key={todo.id} todo={todo} />
+      <TodoView key={todo.id} todo={todo} isDemo={ isDemo } />
     ) }
   </div>
-);
+)
 
-export default TodoList;
+export default TodoList

@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router';
-import SessionUtil from '../utils/session_util';
-import SessionStore from '../stores/session_store';
+import React from 'react'
+import { Link } from 'react-router'
+import SessionUtil from '../utils/session_util'
+import SessionStore from '../stores/session_store'
 
 const SigninForm = React.createClass({
-  contextTypes : {
+  contextTypes: {
     router: React.PropTypes.object.isRequired
   },
 
@@ -12,39 +12,39 @@ const SigninForm = React.createClass({
     return {
       username: '',
       password: ''
-    };
+    }
   },
 
   // TODO remove since tuDu.jsx already has listener?
   componentDidMount () {
-    this.sessionStoreToken = SessionStore.addListener(this._checkUser);
+    this.sessionStoreToken = SessionStore.addListener(this._checkLoggedIn)
   },
 
-  _checkUser () {
+  _checkLoggedIn () {
     if (SessionStore.currentUser()) {
-      this.context.router.push('/app');
+      this.context.router.push('/app')
     }
   },
 
+  componentWillUnmount () {
+    this.sessionStoreToken.remove()
+  },
+
   executeSubmit (e) {
-    e.preventDefault();
-    let router = this.context.router;
+    e.preventDefault()
+    let router = this.context.router
 
     SessionUtil.login(this.state, () => {
-      router.push('/app');
-    });
+      router.push('/app')
+    })
   },
 
   updateUsername (e) {
-    this.setState({ username: e.currentTarget.value });
+    this.setState({ username: e.currentTarget.value })
   },
 
   updatePassword (e) {
-    this.setState({ password: e.currentTarget.value });
-  },
-
-  componentWillUnmount() {
-    this.sessionStoreToken.remove();
+    this.setState({ password: e.currentTarget.value })
   },
 
   render () {
@@ -69,8 +69,8 @@ const SigninForm = React.createClass({
           <button>Sign in</button>
         </form>
       </div>
-    );
+    )
   }
-});
+})
 
-export default SigninForm;
+export default SigninForm

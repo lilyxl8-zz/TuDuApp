@@ -1,6 +1,6 @@
-import TodoActions from '../actions/todo_actions';
+import TodoActions from '../actions/todo_actions'
 
- //TODO rewrite as CalUtil
+ // TODO rewrite as CalUtil
 const TodoUtil = {
   createTodo: (name) => {
     $.ajax({
@@ -9,9 +9,9 @@ const TodoUtil = {
       dataType: 'json',
       data: { name: name, list_id: 1 },
       success: (todo) => {
-        TodoActions.todoReceived(todo);
+        TodoActions.todoCreated(todo)
       }
-    });
+    })
   },
 
   fetchTodosByListId: (listId) => {
@@ -20,10 +20,10 @@ const TodoUtil = {
       url: '/api/lists/' + listId,
       dataType: 'json',
       success: (list) => {
-        TodoActions.todosReceived(list.todos);
+        TodoActions.todosReceived(list.todos)
       }
-    });
+    })
   }
-};
+}
 
-export default TodoUtil;
+export default TodoUtil

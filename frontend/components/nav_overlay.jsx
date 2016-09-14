@@ -1,32 +1,36 @@
-import React from 'react';
-import { Link } from 'react-router';
-import SessionUtil from '../utils/session_util';
-import SessionStore from '../stores/session_store';
+import React from 'react'
+import { Link } from 'react-router'
+import SessionUtil from '../utils/session_util'
+import SessionStore from '../stores/session_store'
 
 const NavOverlay = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+
   getInitialState () {
     return {
       currentUser: SessionStore.currentUser()
-    };
+    }
   },
 
   componentDidMount () {
-    this.SessionStoreToken = SessionStore.addListener(this._onChange);
+    this.SessionStoreToken = SessionStore.addListener(this._onChange)
   },
 
   _onChange () {
-    this.setState({ currentUser: SessionStore.currentUser() });
+    this.setState({ currentUser: SessionStore.currentUser() })
   },
 
   componentWillUnmount () {
-    this.SessionStoreToken.remove();
+    this.SessionStoreToken.remove()
   },
 
   render () {
     return (
-      <div className='bg-overlay'>
+      <div className='jumbotron bg'>
         {
-          (this.props.location.pathname != '/') ? (
+          (this.props.location.pathname !== '/') ? (
             <Link to='/'>
               <img src='images/logo.png' className='app-logo'></img>
             </Link>
@@ -50,8 +54,8 @@ const NavOverlay = React.createClass({
           )
         }
       </div>
-    );
+    )
   }
-});
+})
 
-export default NavOverlay;
+export default NavOverlay

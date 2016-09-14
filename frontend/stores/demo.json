@@ -1,0 +1,58 @@
+[
+  {
+    "id": 0,
+    "name": "Edit me!",
+        "todos":
+    [
+      {
+        "id": 0,
+        "name": "Hover to edit me!",
+        "list_id": 0,
+        "done": false,
+        "date": null
+      },
+      {
+        "id": 1,
+        "name": "Click to mark me done!",
+        "list_id": 0,
+        "done": false,
+        "date": null
+      },
+      {
+        "id": 2,
+        "name": "Add your todos here!",
+        "list_id": 0,
+        "done": false,
+        "date": null
+      },
+      {
+        "id": 3,
+        "name": "Hover to delete me!",
+        "list_id": 0,
+        "done": true,
+        "date": null
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Groceries",
+        "todos":
+    [
+      {
+        "id": 0,
+        "name": "Buy milk",
+        "list_id": 1,
+        "done": false,
+        "date": null
+      },
+      {
+        "id": 1,
+        "name": "Buy cheese",
+        "list_id": 1,
+        "done": false,
+        "date": null
+      }
+    ]
+  }
+]

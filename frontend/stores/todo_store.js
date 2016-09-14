@@ -1,48 +1,46 @@
 // handles only Calendar todos TODO write scope
 // List todos are handled under ListStore
 
-import { Store } from 'flux/utils';
-import TodoConstants from '../constants/session_constants';
-import AppDispatcher from '../dispatcher/dispatcher';
+import { Store } from 'flux/utils'
+import TodoConstants from '../constants/session_constants'
+import AppDispatcher from '../dispatcher/dispatcher'
 
-const TodoStore = new Store(AppDispatcher);
+const TodoStore = new Store(AppDispatcher)
 
-let _todos = [];
+let _todos = []
 
 TodoStore.replaceTodo = (todo) => {
-  let replaced = false;
+  let replaced = false
 
-  _todos = _todos.map( (el) => {
+  _todos = _todos.map((el) => {
     if (el.id === todo.id) {
-      replaced = true;
-      return todo;
+      replaced = true
+      return todo
     } else {
-      return el;
+      return el
     }
-  });
+  })
 
   if (!replaced) {
-    _todos.push(todo);
+    _todos.push(todo)
   }
-};
+}
 
 TodoStore.all = () => {
-  return _todos;
-};
-
-
+  return _todos
+}
 
 TodoStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
-    case TodoConstants.TODO_RECEIVED:
-      this.replaceTodo(payload.todo);
-      TodoStore.__emitChange();
-      break;
+    case TodoConstants.TODO_CREATED:
+      this.replaceTodo(payload.todo)
+      TodoStore.__emitChange()
+      break
     case TodoConstants.TODOS_RECEIVED:
-      _todos = payload.todos;
-      TodoStore.__emitChange();
-      break;
+      _todos = payload.todos
+      TodoStore.__emitChange()
+      break
   }
-};
+}
 
-export default TodoStore;
+export default TodoStore

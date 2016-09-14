@@ -1,75 +1,54 @@
-import React from 'react';
-import ListUtil from '../utils/list_util';
+import React from 'react'
+import ListUtil from '../utils/list_util'
+import ListActions from '../actions/list_actions'
 
 const ListForm = React.createClass({
+  // TODO is state the right place to put listHandler?
   getInitialState () {
     return {
-      // false for existing to-dos, true for new to-do
-      editing: (this.props.list.name === ''),
-      name: this.props.list.name
-    };
+      name: this.props.list.name,
+      listHandler: this.props.isDemo ? ListActions : ListUtil
+    }
   },
 
   updateName (e) {
-    e.preventDefault();
-    this.setState({ name: e.currentTarget.value });
-  },
-
-  toggleEditing (e) {
-    e.preventDefault();
-    if (this.props.list.name === '') { return; }
-    this.setState({ editing: !this.state.editing });
+    e.preventDefault()
+    this.setState({ name: e.currentTarget.value })
   },
 
   focus (e) {
-    e.preventDefault();
-    this.refs.listInput.focus();
+    e.preventDefault()
+    this.refs.listInput.focus()
   },
 
   handleSubmit (e) {
-    e.preventDefault();
-    let newList = this.props.list;
-    if (newList.name === '') {
-      if (this.state.name != '') {
-        ListUtil.createList(this.state.name);
-        this.setState({ name: '' });
-      }
+    e.preventDefault()
+    let newList = this.props.list
+    newList.name = this.state.name
+    if (this.props.isForm && this.state.name !== '') {
+      this.state.listHandler.createList(newList)
     } else {
-      newList.name = this.state.name;
-      ListUtil.updateList(this.props.newList);
+      if (this.props.list.name === '') { return }
+      this.state.listHandler.updateList(newList)
+      this.props.toggleEditing(e)
     }
-    this.toggleEditing(e);
-  },
-
-  deleteList (e) {
-    e.preventDefault();
-    ListUtil.deleteList(this.props.list);
   },
 
   render () {
     return (
-      (this.state.editing) ? (
-        <div className='list-name'>
-          <form className='name-form' onSubmit={ this.handleSubmit }>
-            <input
-              value={ this.state.name }
-              placeholder='New list...'
-              onChange={ this.updateName }
-              onBlur={ this.toggleEditing }
-              ref='listInput'
-              autoFocus />
-          </form>
-        </div>
-      ) : (
-        <div className='list-name'>
-          <h1 onClick={ this.toggleEditing }>
-            { this.props.list.name }
-          </h1>
-          <a onClick={ this.deleteList } className='delete-list'></a>
-        </div>
-      )
-    );
+      <div className='list-name'>
+        <form className='name-form' onSubmit={ this.handleSubmit }>
+          <input
+            value={ this.state.name }
+            placeholder='New list...'
+            onChange={ this.updateName }
+            onBlur={ this.props.toggleEditing }
+            ref='listInput'
+            autoFocus />
+        </form>
+      </div>
+    )
   }
-});
+})
 
-export default ListForm;
+export default ListForm
