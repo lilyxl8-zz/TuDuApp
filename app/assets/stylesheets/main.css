@@ -138,18 +138,15 @@ button {
 .list-index {
   margin: 1.95rem 20px 3.9rem; }
 
-.hidden {
-  opacity: 0; }
-
 .nav-arrow {
   position: absolute;
   top: 2px;
   padding: 196px 0;
   margin-top: 3.9rem;
-  cursor: pointer;
-  transition: opacity 0.5s ease; }
+  transition: opacity 0.5s ease;
+  opacity: 0; }
 
-.nav-arrow:hover {
+.shown:hover {
   opacity: 0.5; }
 
 .nav-left {
@@ -164,6 +161,10 @@ button {
   text-align: right; }
   .nav-right img {
     transform: rotate(180deg); }
+
+.shown {
+  cursor: pointer;
+  opacity: 1; }
 
 .lists-container-scroll {
   display: block;

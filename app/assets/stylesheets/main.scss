@@ -189,20 +189,16 @@ button {
   margin: ($list-vert-padding / 2) $padding $list-vert-padding;
 }
 
-.hidden {
-  opacity: 0;
-}
-
 .nav-arrow {
   position: absolute;
   top: 2px;
   padding: 196px 0;
   margin-top: $list-vert-padding;
-  cursor: pointer;
   transition: opacity 0.5s ease;
+  opacity: 0;
 }
 
-.nav-arrow:hover {
+.shown:hover {
   opacity: 0.5;
 }
 
@@ -211,6 +207,7 @@ button {
   margin-left: $padding;
   padding-right: $padding;
 }
+
 .nav-right {
   right: 0px;
   padding-left: $padding;
@@ -219,6 +216,11 @@ button {
   img {
     transform: rotate(180deg);
   }
+}
+
+.shown {
+  cursor: pointer;
+  opacity: 1;
 }
 
 .lists-container-scroll {

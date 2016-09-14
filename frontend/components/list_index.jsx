@@ -48,11 +48,13 @@ const ListIndex = React.createClass({
 
   retreatOne (e) {
     e.preventDefault()
+    if (this.state.index === 0) { return }
     this.setState({ index: this.state.index - this.props.showCount })
   },
 
   advanceOne (e) {
     e.preventDefault()
+    if (this.maxIndex() >= this.state.lists.length) { return }
     this.setState({ index: this.state.index + this.props.showCount })
   },
 
@@ -109,7 +111,7 @@ const ListIndex = React.createClass({
       <div className='list-index'>
         <div className={'nav-arrow nav-left' +
             ((this.state.index === 0) ?
-            ' hidden' : '')
+            '' : ' shown')
           }
           onClick={ this.retreatOne }>
           <img src='images/arrow.svg'></img>
@@ -125,7 +127,7 @@ const ListIndex = React.createClass({
         <div className={
             'nav-arrow nav-right' +
             ((this.maxIndex() >= this.state.lists.length) ?
-            ' hidden' : '')
+            '' : ' shown')
           }
           onClick={ this.advanceOne }>
           <img src='images/arrow.svg'></img>
