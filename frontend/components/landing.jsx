@@ -31,11 +31,11 @@ const Landing = React.createClass({
         </div>
         {
           this.state.isLoggedIn ? (
-            <div className="jumbotron subheader">
+            <Link className="jumbotron subheader" to='app'>
               <button>
                 Get to it!
               </button>
-            </div>
+            </Link>
           ) : (
             <div>
               <div className="jumbotron subheader text">Give it a try...</div>
