@@ -219,6 +219,10 @@ button {
     text-align: center;
     text-transform: uppercase;
     opacity: .5; }
+  .list-name h1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
 
 .delete-list {
   display: none;
