@@ -2,7 +2,7 @@
   "env": {
     "browser": true,
     "es6": true,
-		"jquery": true
+    "jquery": true
   },
   "extends": "eslint:recommended",
   "parserOptions": {
@@ -28,7 +28,7 @@
       "error",
       "always"
     ],
-		"react/jsx-uses-react": "error",
-		"react/jsx-uses-vars": "error"
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
   }
 }
