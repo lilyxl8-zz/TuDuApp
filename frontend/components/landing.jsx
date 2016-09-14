@@ -31,10 +31,14 @@ const Landing = React.createClass({
         </div>
         {
           this.state.isLoggedIn ? (
-            <div className="jumbotron btn">Go to your to-dos!</div>
+            <div className="jumbotron subheader">
+              <button>
+                Get to it!
+              </button>
+            </div>
           ) : (
             <div>
-              <div className="jumbotron text">Give it a whirl...</div>
+              <div className="jumbotron subheader text">Give it a try...</div>
               <div className='landing-demo'>
                 <ListIndex
                   showCount={ 5 }

@@ -39,14 +39,14 @@ const NavOverlay = React.createClass({
 
         {
           (this.state.currentUser) ? (
-            <div className='nav-overlay group'>
+            <div className='nav-overlay'>
               <Link to='/app'>
                 Welcome, { this.state.currentUser.username }</Link>
               <Link to='/' onClick={ SessionUtil.logout }>
                 Log out</Link>
             </div>
           ) : (
-            <div className='nav-overlay group'>
+            <div className='nav-overlay'>
               <Link to='/'>Home</Link>
               <Link to='/signup'>Sign up</Link>
               <Link to='/signin'>Sign in</Link>

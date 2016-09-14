@@ -29,14 +29,18 @@ ul {
 img {
   display: block; }
 
+a {
+  transition: color 0.2s ease; }
+
 /* NAVBAR */
 .nav-overlay {
   z-index: 1;
   float: right;
   padding-top: 1px;
-  font-weight: 700;
-  color: #fefefe; }
+  font-weight: 500;
+  letter-spacing: 1px; }
   .nav-overlay a {
+    color: #fefefe;
     margin-left: 20px; }
   .nav-overlay a:hover {
     color: #e2e2e2; }
@@ -73,8 +77,10 @@ h3 {
   text-align: center;
   letter-spacing: 3px; }
 
+.subheader {
+  padding-bottom: 2.5rem; }
+
 .text {
-  padding-bottom: 2.5rem;
   text-align: center;
   vertical-align: bottom;
   font-size: 1.2rem;
@@ -114,6 +120,8 @@ h3 {
     font-size: 0.9rem;
     display: block;
     margin: 10px 0; }
+  .auth-form .auth-text:hover {
+    color: #e2e2e2; }
 
 button {
   color: #fefefe;
@@ -125,7 +133,11 @@ button {
   padding: 10px 30px;
   letter-spacing: 2px;
   display: block;
-  cursor: pointer; }
+  cursor: pointer;
+  transition: background 0.2s ease; }
+
+button:hover {
+  background: #00A37D; }
 
 /* LIST INDEX */
 .bg-app {
