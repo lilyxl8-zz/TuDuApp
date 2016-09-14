@@ -1,5 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);/* MIXINS */
+/* MIXINS */
 /* RESET */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
 section, img, div, h2, p, form,
@@ -46,14 +47,16 @@ img {
   float: left; }
 
 /* bg-overlay */
-.bg-overlay {
+.jumbotron {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute; }
+
+.bg {
   z-index: -1;
   background: linear-gradient(90deg, #032555, #00CFDD);
   top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: absolute;
   padding: 20px; }
 
 .title {
@@ -64,11 +67,29 @@ img {
   color: #fefefe; }
   .title img {
     margin: 0 auto 20px; }
-  .title h3 {
-    font-size: 1.5rem;
-    font-weight: 300;
-    text-align: center;
-    letter-spacing: 3px; }
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 3px; }
+
+.text {
+  padding-bottom: 2.5rem;
+  text-align: center;
+  vertical-align: bottom;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff; }
+
+.landing-demo {
+  top: 100vh;
+  position: absolute;
+  width: 100%; }
+
+.cta {
+  padding-bottom: 3.9rem; }
 
 /* SIGN IN/UP */
 .auth-form {
@@ -94,17 +115,18 @@ img {
     font-size: 0.9rem;
     display: block;
     margin: 10px 0; }
-  .auth-form button {
-    color: #fefefe;
-    background: #00D5A3;
-    border-radius: 12px;
-    margin: 36px auto 0;
-    font-size: 1.2rem;
-    font-weight: 300;
-    padding: 10px 30px;
-    letter-spacing: 2px;
-    display: block;
-    cursor: pointer; }
+
+button {
+  color: #fefefe;
+  background: #00D5A3;
+  border-radius: 12px;
+  margin: 36px auto 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 10px 30px;
+  letter-spacing: 2px;
+  display: block;
+  cursor: pointer; }
 
 /* LIST INDEX */
 .bg-app {
@@ -117,12 +139,16 @@ img {
 .list-index {
   margin: 1.95rem 20px 3.9rem; }
 
+.hidden {
+  opacity: 0; }
+
 .nav-arrow {
   position: absolute;
   top: 2px;
   padding: 196px 0;
   margin-top: 3.9rem;
-  cursor: pointer; }
+  cursor: pointer;
+  transition: opacity 0.5s ease; }
 
 .nav-arrow:hover {
   opacity: 0.5; }
@@ -190,7 +216,8 @@ img {
     font-weight: 700;
     width: 100%;
     text-align: center;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    opacity: .5; }
 
 .delete-list {
   display: none;
@@ -263,8 +290,7 @@ img {
 
 .done:hover .delete-todo {
   display: block; }
-
 .done:hover .edit-todo {
   display: none; }
 
-/*# sourceMappingURL=main.css.map*/
+/*# sourceMappingURL=main.css.map */
