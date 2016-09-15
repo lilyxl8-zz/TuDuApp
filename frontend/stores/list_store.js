@@ -9,6 +9,10 @@ let _lists = []
 let _isDemo
 
 ListStore.replaceList = (list) => {
+  // const listKey = list.id
+  // if (_lists.listKey) {
+  //   _lists.listKey = list
+  // }
   for (let i = 0; i < _lists.length; i++) {
     if (_lists[i].id === list.id) {
       _lists[i] = list
@@ -72,6 +76,12 @@ ListStore.populateLists = (lists) => {
     name: '',
     todos: []
   })
+  // for (let i = 0; i < lists.length; i++) {
+  //   const listKey = lists[i].id
+  //   _lists[listKey] = lists[i]
+  // }
+  // _lists[0] = { name: '', todos: [] }
+  // console.log(_lists)
   _isDemo = false
 }
 
@@ -85,6 +95,12 @@ ListStore.setDemo = () => {
     id: demoData.length,
     todos: []
   })
+  // for (let i = 0; i < demoData.length; i++) {
+  //   const listKey = demoData[i].id
+  //   _lists[listKey] = demoData[i]
+  // }
+  // _lists[demoData.length] = { name: '', id: demoData.length, todos: [] }
+  // console.log(_lists)
   _isDemo = true
 }
 
