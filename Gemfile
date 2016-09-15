@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.6'
 # Use PostgreSQL as the database for Active Record
 gem 'pg'
+# TODO install 'thin'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
