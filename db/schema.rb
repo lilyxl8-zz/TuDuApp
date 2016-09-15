@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160805181013) do
+ActiveRecord::Schema.define(version: 20160915175904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cal_dates", force: :cascade do |t|
+    t.date     "full_date",  null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "cal_dates", ["full_date"], name: "index_cal_dates_on_full_date", using: :btree
+  add_index "cal_dates", ["user_id"], name: "index_cal_dates_on_user_id", using: :btree
 
   create_table "lists", force: :cascade do |t|
     t.string   "name",       null: false
@@ -30,7 +40,7 @@ ActiveRecord::Schema.define(version: 20160805181013) do
     t.integer  "user_id",                    null: false
     t.boolean  "done",       default: false
     t.date     "date"
-    t.integer  "list_id",                    null: false
+    t.integer  "list_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end

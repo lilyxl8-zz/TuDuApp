@@ -5,7 +5,7 @@ class CreateTodos < ActiveRecord::Migration
       t.integer :user_id, null: false
 			t.boolean :done, :default => false
       t.date :date
-      t.integer :list_id, null: false
+      t.integer :list_id
 
       t.timestamps null: false
     end

@@ -17,11 +17,19 @@ list2 = List.create!(name: "Dat list", user_id: user2.id)
 list3 = List.create!(name: "Dat list", user_id: user3.id)
 list4 = List.create!(name: "Die Liste", user_id: user1.id)
 
+CalDate.destroy_all
+
+day0 = CalDate.create!(full_date: Date.today(), user_id: user0.id)
+day1 = CalDate.create!(full_date: Date.today() + 1, user_id: user0.id)
 
 Todo.destroy_all
 
 Todo.create!(name:"buy milk", user_id: user0.id, list_id: list0.id)
 Todo.create!(name:"don't buy milk", user_id: user0.id, list_id: list0.id)
+
+Todo.create!(name:"buy spinach", user_id: user0.id, date: Date.today())
+Todo.create!(name:"buy grass", user_id: user0.id, date: Date.today() + 1)
+
 Todo.create!(name:"buy cheese", user_id: user1.id, list_id: list1.id)
 Todo.create!(name:"don't buy code", user_id: user0.id, list_id: list0.id)
 Todo.create!(name:"please help", user_id: user2.id, list_id: list2.id)
