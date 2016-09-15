@@ -30,6 +30,7 @@ const ListActions = {
     })
   },
 
+// TODO separate to TodoActions
   toggleDone (todo) {
     AppDispatcher.dispatch({
       actionType: ListConstants.TODO_RECEIVED,
@@ -37,6 +38,7 @@ const ListActions = {
     })
   },
 
+  // TODO let it add to a Date
   createTodo (todo) {
     AppDispatcher.dispatch({
       actionType: ListConstants.TODO_RECEIVED,
@@ -44,6 +46,7 @@ const ListActions = {
     })
   },
 
+  // TODO let it add to a Date
   updateTodo (todo) {
     AppDispatcher.dispatch({
       actionType: ListConstants.TODO_RECEIVED,
@@ -52,6 +55,7 @@ const ListActions = {
   },
 
   deleteTodo (todo) {
+    // TODO check if it's the last to-do deleted from a Date, then delete that Date
     AppDispatcher.dispatch({
       actionType: ListConstants.TODO_DELETED,
       todo: todo

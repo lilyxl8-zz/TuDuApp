@@ -1,4 +1,6 @@
 class Api::ListsController < ApplicationController
+  before_action :require_logged_in
+  
   def index
     @lists = current_user.lists
     render :index

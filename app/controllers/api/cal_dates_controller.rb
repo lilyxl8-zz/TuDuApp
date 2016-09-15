@@ -7,8 +7,15 @@ class Api::CalDatesController < ApplicationController
   end
 
   def show
-    @cal_date = CalDate.find_or_create(current_user, Date.parse(params[:id]))
-    render :show
+    query_date = Date.parse(params[:id])
+    @cal_date = current_user.cal_dates.find_by(full_date: query_date)
+
+    # show a Date to DateStore only if it has to-dos
+    if @cal_date.todos.any?
+      render :show
+    else
+      render []
+    end
   end
 
   # def new

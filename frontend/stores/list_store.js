@@ -9,10 +9,6 @@ let _lists = []
 let _isDemo
 
 ListStore.replaceList = (list) => {
-  // const listKey = list.id
-  // if (_lists.listKey) {
-  //   _lists.listKey = list
-  // }
   for (let i = 0; i < _lists.length; i++) {
     if (_lists[i].id === list.id) {
       _lists[i] = list
@@ -26,6 +22,11 @@ ListStore.replaceList = (list) => {
       return
     }
   }
+  // USE LIST HASHES INSTEAD?
+  // const listKey = list.id
+  // if (_lists.listKey) {
+  //   _lists.listKey = list
+  // }
   _lists.splice(_lists.length - 1, 0, list)
   _lists[_lists.length - 1].name = ''
 }
@@ -90,17 +91,8 @@ ListStore.all = () => {
 }
 
 ListStore.setDemo = () => {
-  _lists = demoData.concat({
-    name: '',
-    id: demoData.length,
-    todos: []
-  })
-  // for (let i = 0; i < demoData.length; i++) {
-  //   const listKey = demoData[i].id
-  //   _lists[listKey] = demoData[i]
-  // }
-  // _lists[demoData.length] = { name: '', id: demoData.length, todos: [] }
-  // console.log(_lists)
+  _lists = demoData
+  _lists[demoData.length] = { name: '', id: demoData.length, todos: [] }
   _isDemo = true
 }
 

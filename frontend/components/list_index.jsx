@@ -2,6 +2,7 @@
 
 import React from 'react'
 import ListStore from '../stores/list_store'
+
 import ListUtil from '../utils/list_util'
 import ListView from './list_view'
 
@@ -14,6 +15,8 @@ import ListView from './list_view'
 
 const ListIndex = React.createClass({
   propTypes: {
+    // 0 demo-lists, 1 lists, 2 calendar
+    viewType: React.PropTypes.number,
     showCount: React.PropTypes.number
   },
 
