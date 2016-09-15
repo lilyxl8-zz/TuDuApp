@@ -19,8 +19,7 @@ this.state.editing ? (
   <input
     value={this.state.list.name}
     onChange={this.updateName}
-    onBlur={this.toggleEditing}
-    autoFocus />
+    onBlur={this.toggleEditing} />
   </form>
 ) : (
   <h1 onClick={this.toggleEditing}>{this.state.list.name}</h1>

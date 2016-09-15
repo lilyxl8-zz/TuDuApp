@@ -62,9 +62,7 @@ const TodoForm = React.createClass({
           value={ this.state.name }
           ref='todoInput'
           onChange={ this.updateName }
-          onBlur={ this.breakOnEmptySubmit }
-          autoFocus
-        />
+          onBlur={ this.breakOnEmptySubmit } />
       </form>
     )
   }

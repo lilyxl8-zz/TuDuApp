@@ -44,8 +44,7 @@ const ListForm = React.createClass({
             placeholder='New list...'
             onChange={ this.updateName }
             onBlur={ this.props.toggleEditing }
-            ref='listInput'
-            autoFocus />
+            ref='listInput' />
         </form>
       </div>
     )
