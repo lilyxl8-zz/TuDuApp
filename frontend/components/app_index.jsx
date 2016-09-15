@@ -2,6 +2,7 @@
 
 import React from 'react'
 import ListIndex from './list_index'
+import DateIndex from './date_index'
 import SessionStore from '../stores/session_store'
 
 const AppIndex = React.createClass({
@@ -26,6 +27,7 @@ const AppIndex = React.createClass({
   render () {
     return (
       <div className='bg-app'>
+        <DateIndex />
         <ListIndex
           showCount={ 5 }
         />

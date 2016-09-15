@@ -1,6 +1,6 @@
 import SessionActions from '../actions/session_actions'
 import ListActions from '../actions/list_actions'
-import TodoActions from '../actions/todo_actions'
+import DateActions from '../actions/date_actions'
 
 const SessionUtil = {
   login: (credentials, callback) => {
@@ -26,7 +26,7 @@ const SessionUtil = {
       },
       complete: () => {
         ListActions.setDemo()
-        TodoActions.clearTodos()
+        // DateActions.clearDates() TODO
       }
     })
   },
