@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 	attr_reader :password
 
 	has_many :lists, dependent: :destroy
+  has_many :cal_dates, dependent: :destroy
 	has_many :todos, dependent: :destroy
 
 	def self.find_by_credentials(username, password)

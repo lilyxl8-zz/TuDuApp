@@ -17,6 +17,7 @@ list2 = List.create!(name: "Dat list", user_id: user2.id)
 list3 = List.create!(name: "Dat list", user_id: user3.id)
 list4 = List.create!(name: "Die Liste", user_id: user1.id)
 
+# TODO remove CalDate seeds
 CalDate.destroy_all
 
 day0 = CalDate.create!(full_date: Date.today(), user_id: user0.id)

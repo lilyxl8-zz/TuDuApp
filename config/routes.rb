@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       put :toggle_done
     end
     resources :lists, only: [:index, :create, :show, :update, :destroy]
-    resources :days, only:  [:create, :show]
+    resources :cal_dates, only: [:index, :show]
     resource :session, only: [:new, :show, :create, :destroy]
   end
 	get "*unmatched_route", to: "static_pages#root"
