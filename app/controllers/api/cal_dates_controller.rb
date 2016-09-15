@@ -1,11 +1,13 @@
 class Api::CalDatesController < ApplicationController
+  before_action :require_logged_in
+
   def index
     @cal_dates = current_user.cal_dates
     render :index
   end
 
   def show
-    @cal_date = CalDate.find(params[:id])
+    @cal_date = CalDate.find_or_create(current_user, Date.parse(params[:id]))
     render :show
   end
 
