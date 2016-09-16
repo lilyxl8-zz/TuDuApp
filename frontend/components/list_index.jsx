@@ -16,6 +16,8 @@ import ListView from './list_view'
 const ListIndex = React.createClass({
   propTypes: {
     // 0 demo-lists, 1 lists, 2 calendar
+    // isDemo => viewType true = 0, false = 1, then add switch for 2
+
     viewType: React.PropTypes.number,
     showCount: React.PropTypes.number
   },
@@ -114,8 +116,8 @@ const ListIndex = React.createClass({
     return (
       <div className='list-index'>
         <div className={'nav-arrow nav-left' +
-            ((this.state.index === 0) ?
-            '' : ' shown')
+            ((this.state.index !== 0) ?
+            ' shown' : '')
           }
           onClick={ this.retreatOne }>
           <img src='images/arrow.svg'></img>
@@ -130,8 +132,8 @@ const ListIndex = React.createClass({
         </div>
         <div className={
             'nav-arrow nav-right' +
-            ((this.maxIndex() >= this.state.lists.length) ?
-            '' : ' shown')
+            ((this.maxIndex() < this.state.lists.length) ?
+            ' shown' : '')
           }
           onClick={ this.advanceOne }>
           <img src='images/arrow.svg'></img>

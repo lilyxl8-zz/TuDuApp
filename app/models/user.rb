@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
 		nil
 	end
 
+  def dates_with_todos
+    dates = cal_dates.select { |date| date.todos.any? }
+  end
+
 	def password=(pword)
 		self.password_digest = BCrypt::Password.create(pword)
 	end

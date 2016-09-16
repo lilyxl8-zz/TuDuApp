@@ -32,10 +32,13 @@ const DateIndex = React.createClass({
     this.dateStoreToken.remove()
   },
 
+  // starting from todayIdx, make array of next 7 dates to key into
+  // generate this array on the fly
+  // alternative approaches? add +1 to date - doesn't calc new months
+  // JUST NEED ONE ARRAY, of date objects
   render () {
     return (
       <div>
-        { this.state.index }
       </div>
     )
   }

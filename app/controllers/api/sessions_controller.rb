@@ -3,6 +3,7 @@ class Api::SessionsController < ApplicationController
     render :new
   end
 
+  # TODO render error msg client-side
   def create
     @user = User.find_by_credentials(
     params[:user][:username],

@@ -14,11 +14,15 @@ let _dates = {}
 //  this can only happen on deleteTodo, so put a check there
 
 // CALSTORE
-// 1) populateDates
+// 1) populateDates DONE
 // 4) replaceDate (replaceTodo?)
 // removeDate (date) – triggered by deleteTodo
-// 3) clearDates
-// 2) all
+// 3) clearDates DONE
+// 2) all DONE
+
+// DATEINDEX
+// show 1 week from todayIdx
+//  write DateStore.increment
 
 DateStore.increment = (start, move) => {
   // const today = new Date().toJSON().slice(0, 10)
@@ -42,6 +46,10 @@ DateStore.replaceTodo = (todo) => {
   if (!replaced) {
     _dates.push(todo)
   }
+}
+
+DateStore.clearDates = () => {
+  _dates = {}
 }
 
 DateStore.all = () => {

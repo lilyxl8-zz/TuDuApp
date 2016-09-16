@@ -2,7 +2,8 @@ class Api::CalDatesController < ApplicationController
   before_action :require_logged_in
 
   def index
-    @cal_dates = current_user.cal_dates
+    # show a Date to DateStore only if it has to-dos
+    @cal_dates = current_user.dates_with_todos
     render :index
   end
 
