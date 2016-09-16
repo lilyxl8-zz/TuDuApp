@@ -3,6 +3,8 @@ import { Link } from 'react-router'
 import SessionStore from '../stores/session_store'
 import ListIndex from './list_index'
 
+// TODO move demo half onto jumbotron
+
 const Landing = React.createClass({
   getInitialState () {
     return {

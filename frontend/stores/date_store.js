@@ -62,7 +62,6 @@ DateStore.populateDates = (dates) => {
     dateKey = dates[i].full_date
     _dates[dateKey] = dates[i]
   }
-  console.log(_dates)
 }
 
 DateStore.__onDispatch = (payload) => {

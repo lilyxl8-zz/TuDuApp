@@ -32,13 +32,67 @@ const DateIndex = React.createClass({
     this.dateStoreToken.remove()
   },
 
-  // starting from todayIdx, make array of next 7 dates to key into
-  // generate this array on the fly
-  // alternative approaches? add +1 to date - doesn't calc new months
-  // JUST NEED ONE ARRAY, of date objects
+  showCarouselItems () {
+    let dateIdxs = []
+    let datesToShow = []
+    let date = new Date()
+    let d = date.getDate()
+    let m = date.getMonth()
+    let y = date.getFullYear()
+
+    for (let i = 0; i < 5; i++) {
+      let curDate = new Date(y, m, d + i).toJSON().slice(0, 10)
+      dateIdxs.push(curDate)
+    }
+
+    for (var i = 0; i < dateIdxs.length; i++) {
+      let queryDate = this.state.dates[dateIdxs[i]]
+      queryDate ?
+        datesToShow.push(queryDate) :
+        datesToShow.push({ full_date: dateIdxs[i], todos: [] })
+    }
+    return datesToShow
+  },
+
   render () {
     return (
-      <div>
+      <div className='list-index'>
+        <div className={'nav-arrow nav-left' +
+            ((0 == 0) ?
+            ' shown' : '')
+          }
+          onClick={ this.retreatOne }>
+          <img src='images/arrow.svg'></img>
+        </div>
+
+        <div className='lists-container-scroll'>
+          {
+            this.showCarouselItems().map((date, idx) => {
+              return (
+                <div key={ idx }>
+                  { date.full_date }
+                  {
+                    date.todos.map((todo, idx) => {
+                      return (
+                        <div key={ idx }>
+                          { todo.name }
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+              )
+            })
+          }
+        </div>
+        <div className={
+            'nav-arrow nav-right' +
+            ((0 == 0) ?
+            ' shown' : '')
+          }
+          onClick={ this.advanceOne }>
+          <img src='images/arrow.svg'></img>
+        </div>
       </div>
     )
   }
