@@ -1,6 +1,7 @@
 import React from 'react'
 
 const ListName = React.createClass({
+
   render () {
     return (
       <div className='list-name'>

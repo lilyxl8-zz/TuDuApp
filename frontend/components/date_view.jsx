@@ -74,15 +74,14 @@ const DateView = React.createClass({
   },
 
   render () {
-    // <ListName
-    //   list={ this.props.list }
-    // />
     // { this.newOrExistingListTodos() }
     return (
       <div className='list-view' style={ this.props.style }>
         <div className='list-wrapper'>
-          { this.props.date.full_date }
-
+          <div className='list-name'>
+            <h1>{ this.props.date.full_date }</h1>
+          </div>
+          
         </div>
       </div>
     )
