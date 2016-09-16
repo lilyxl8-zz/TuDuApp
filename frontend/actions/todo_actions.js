@@ -3,44 +3,35 @@ import ListConstants from '../constants/list_constants'
 import DateConstants from '../constants/date_constants'
 
 const TodoActions = {
-// TODO separate to TodoActions and DateConstants import @ top
+  getActionType (todo) {
+    return todo.list_id ?
+      ListConstants.TODO_RECEIVED :
+      DateConstants.TODO_RECEIVED
+  },
+
   toggleDone (todo) {
-    const actionType = todo.list_id ?
-      ListConstants.TODO_RECEIVED :
-      DateConstants.TODO_RECEIVED
-
     AppDispatcher.dispatch({
-      actionType: actionType,
+      actionType: this.getActionType(todo),
       todo: todo
     })
   },
 
-  // TODO let it add to a Date
   create (todo) {
-    const actionType = todo.list_id ?
-      ListConstants.TODO_RECEIVED :
-      DateConstants.TODO_RECEIVED
-
+    // TODO DateReceived
     AppDispatcher.dispatch({
-      actionType: actionType,
+      actionType: this.getActionType(todo),
       todo: todo
     })
   },
 
-  // TODO let it add to a Date
   update (todo) {
-    const actionType = todo.list_id ?
-      ListConstants.TODO_RECEIVED :
-      DateConstants.TODO_RECEIVED
-
     AppDispatcher.dispatch({
-      actionType: actionType,
+      actionType: this.getActionType(todo),
       todo: todo
     })
   },
 
   delete (todo) {
-    // TODO check if it's the last to-do deleted from a Date, then delete that Date
     const actionType = todo.list_id ?
       ListConstants.TODO_DELETED :
       DateConstants.TODO_DELETED

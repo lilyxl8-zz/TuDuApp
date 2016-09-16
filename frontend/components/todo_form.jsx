@@ -4,7 +4,7 @@ import ListActions from '../actions/list_actions'
 
 const TodoForm = React.createClass({
   propTypes: {
-    // viewType: React.PropTypes.n
+    // viewType: React.PropTypes.Number
   },
 
   getInitialState () {

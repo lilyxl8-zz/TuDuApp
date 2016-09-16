@@ -2,17 +2,17 @@ import AppDispatcher from '../dispatcher/dispatcher'
 import DateConstants from '../constants/date_constants'
 
 const DateActions = {
-  dateCreated (date) {
-    AppDispatcher.dispatch({
-      actionType: DateConstants.DATE_CREATED,
-      date: date
-    })
-  },
-
   datesReceived (dates) {
     AppDispatcher.dispatch({
       actionType: DateConstants.DATES_RECEIVED,
       dates: dates
+    })
+  },
+
+  dateReceived (date) {
+    AppDispatcher.dispatch({
+      actionType: DateConstants.DATE_RECEIVED,
+      date: date
     })
   },
 

@@ -49,6 +49,7 @@ const ListUtil = {
     })
   },
 
+// NEW TO-DO UTIL
   createTodo: (todo) => {
     $.ajax({
       type: 'POST',

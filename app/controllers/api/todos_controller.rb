@@ -13,7 +13,6 @@ class Api::TodosController < ApplicationController
   def create
     @todo = current_user.todos.new(todo_params)
     if @todo.save
-      # TODO remove CalDate check
       date = todo_params[:date]
       if date
         CalDate.find_or_create(current_user, date)

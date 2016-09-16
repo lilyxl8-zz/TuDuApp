@@ -6,40 +6,42 @@ const DateStore = new Store(AppDispatcher)
 
 let _dates = {}
 
-// DATEACTIONS
-// add or remove a todo to a Date
-// if a Date is emptied of to-dos, remove it from DateStore
-//  this can only happen on deleteTodo, so put a check there
+// DateStore.replaceTodo = (todo) => {
+//   let replaced = false
+//   let _todos = _dates[todo.date].todos
+//
+//   _dates[todo.date].todos = _todos.map((el) => {
+//     if (el.id === todo.id) {
+//       replaced = true
+//       return todo
+//     } else {
+//       return el
+//     }
+//   })
+//
+//   if (!replaced) {
+//     _dates[todo.date].todos.push(todo)
+//   }
+// }
 
-// CALSTORE
-// 1) deleteTodo
-// removeDate (date) – triggered by deleteTodo
-
-// DATEINDEX
-//  write DateStore.increment
-
-DateStore.increment = (start, move) => {
-  // const today = new Date().toJSON().slice(0, 10)
-  // let startDate = new Date(start)
-  // todayIdx.setDate(todayIdx.getDate() - 2)
-  // todayIdx = todayIdx.toJSON().slice(0, 10)
+DateStore.replaceDate = (todo) => {
+  _dates[todo.date] = todo.cal_date
 }
 
-DateStore.replaceTodo = (todo) => {
-  let replaced = false
-  let _todos = _dates[todo.date].todos
+DateStore.removeTodo = (todo) => {
+  let _date = _dates[todo.date]
 
-  _dates[todo.date].todos = _todos.map((el) => {
-    if (el.id === todo.id) {
-      replaced = true
-      return todo
-    } else {
-      return el
+  for (let i = 0; i < _date.todos.length; i++) {
+    if (_date.todos[i].id === todo.id) {
+      _date.todos.splice(i, 1)
+      break
     }
-  })
+  }
 
-  if (!replaced) {
-    _dates[todo.date].todos.push(todo)
+  if (_date.todos.length > 0) {
+    _dates[todo.date] = _date
+  } else {
+    delete _dates[todo.date]
   }
 }
 
@@ -61,7 +63,7 @@ DateStore.populateDates = (dates) => {
 
 DateStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
-    case DateConstants.DATE_CREATED:
+    case DateConstants.DATE_RECEIVED:
       this.replaceDate(payload.date)
       DateStore.__emitChange()
       break
@@ -70,7 +72,11 @@ DateStore.__onDispatch = (payload) => {
       DateStore.__emitChange()
       break
     case DateConstants.TODO_RECEIVED:
-      DateStore.replaceTodo(payload.todo)
+      DateStore.replaceDate(payload.todo)
+      DateStore.__emitChange()
+      break
+    case DateConstants.TODO_DELETED:
+      DateStore.removeTodo(payload.todo)
       DateStore.__emitChange()
       break
   }
