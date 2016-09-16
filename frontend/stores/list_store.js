@@ -9,6 +9,7 @@ let _lists = []
 let _isDemo
 
 ListStore.replaceList = (list) => {
+  // TODO Go back to map method for readability
   for (let i = 0; i < _lists.length; i++) {
     if (_lists[i].id === list.id) {
       _lists[i] = list

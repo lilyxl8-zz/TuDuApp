@@ -27,7 +27,7 @@ const AppIndex = React.createClass({
   render () {
     return (
       <div className='bg-app'>
-        <DateIndex />
+        <DateIndex showCount={ 5 }/>
         <ListIndex
           viewType={ 1 }
           showCount={ 5 }

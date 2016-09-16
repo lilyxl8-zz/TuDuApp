@@ -51,14 +51,38 @@ const DateIndex = React.createClass({
         datesToShow.push(queryDate) :
         datesToShow.push({ full_date: dateIdxs[i], todos: [] })
     }
-    return datesToShow
+
+    // const listStyle = { width: 100 / this.props.showCount + '%' }
+    console.log(datesToShow)
+    return (
+      <div className='lists-container'>
+        {
+          datesToShow.map((date, idx) => {
+            return (
+              <div key={ idx }>
+                { date.full_date }
+                {
+                  date.todos.map((todo, idx) => {
+                    return (
+                      <div key={ idx }>
+                        { todo.name }
+                      </div>
+                    )
+                  })
+                }
+              </div>
+            )
+          })
+        }
+      </div>
+    )
   },
 
   render () {
     return (
       <div className='list-index'>
         <div className={'nav-arrow nav-left' +
-            ((0 == 0) ?
+            ((0 === 0) ?
             ' shown' : '')
           }
           onClick={ this.retreatOne }>
@@ -67,27 +91,12 @@ const DateIndex = React.createClass({
 
         <div className='lists-container-scroll'>
           {
-            this.showCarouselItems().map((date, idx) => {
-              return (
-                <div key={ idx }>
-                  { date.full_date }
-                  {
-                    date.todos.map((todo, idx) => {
-                      return (
-                        <div key={ idx }>
-                          { todo.name }
-                        </div>
-                      )
-                    })
-                  }
-                </div>
-              )
-            })
+            this.showCarouselItems()
           }
         </div>
         <div className={
             'nav-arrow nav-right' +
-            ((0 == 0) ?
+            ((0 === 0) ?
             ' shown' : '')
           }
           onClick={ this.advanceOne }>
