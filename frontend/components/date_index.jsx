@@ -14,7 +14,7 @@ todayIdx = todayIdx.toJSON().slice(0, 10)
 
 // TODO fix nav-arrow CSS
 // TODO name formatting
-// TODO createTodo 1)
+// TODO editTodo 1)
 // TODO deleteTodo 2)
 // TODO arrow clicks 3)
 

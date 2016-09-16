@@ -68,7 +68,7 @@ const ListUtil = {
       dataType: 'json',
       data: { todo: todo },
       success: (todo) => {
-        ListActions.updateTodo(todo)
+        TodoActions.update(todo)
       }
     })
   },
@@ -79,7 +79,7 @@ const ListUtil = {
       url: '/api/todos/' + todo.id + '/toggle_done',
       dataType: 'json',
       success: (todo) => {
-        ListActions.updateTodo(todo)
+        TodoActions.update(todo)
       }
     })
   },
@@ -90,7 +90,7 @@ const ListUtil = {
       url: '/api/todos/' + todo.id,
       dataType: 'json',
       success: () => {
-        ListActions.deleteTodo(todo)
+        TodoActions.delete(todo)
       }
     })
   }

@@ -21,7 +21,6 @@ const TodoActions = {
       ListConstants.TODO_RECEIVED :
       DateConstants.TODO_RECEIVED
 
-    console.log(actionType)
     AppDispatcher.dispatch({
       actionType: actionType,
       todo: todo
@@ -29,17 +28,25 @@ const TodoActions = {
   },
 
   // TODO let it add to a Date
-  updateTodo (todo) {
+  update (todo) {
+    const actionType = todo.list_id ?
+      ListConstants.TODO_RECEIVED :
+      DateConstants.TODO_RECEIVED
+
     AppDispatcher.dispatch({
-      actionType: ListConstants.TODO_RECEIVED,
+      actionType: actionType,
       todo: todo
     })
   },
 
-  deleteTodo (todo) {
+  delete (todo) {
     // TODO check if it's the last to-do deleted from a Date, then delete that Date
+    const actionType = todo.list_id ?
+      ListConstants.TODO_DELETED :
+      DateConstants.TODO_DELETED
+
     AppDispatcher.dispatch({
-      actionType: ListConstants.TODO_DELETED,
+      actionType: actionType,
       todo: todo
     })
   }
