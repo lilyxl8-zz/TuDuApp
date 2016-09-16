@@ -33,8 +33,9 @@ DateStore.increment = (start, move) => {
 
 DateStore.replaceTodo = (todo) => {
   let replaced = false
+  let _todos = _dates[todo.date].todos
 
-  _dates = _dates.map((el) => {
+  _dates[todo.date].todos = _todos.map((el) => {
     if (el.id === todo.id) {
       replaced = true
       return todo
@@ -44,7 +45,7 @@ DateStore.replaceTodo = (todo) => {
   })
 
   if (!replaced) {
-    _dates.push(todo)
+    _dates[todo.date].todos.push(todo)
   }
 }
 
@@ -72,6 +73,10 @@ DateStore.__onDispatch = (payload) => {
       break
     case DateConstants.DATES_RECEIVED:
       DateStore.populateDates(payload.dates)
+      DateStore.__emitChange()
+      break
+    case DateConstants.TODO_RECEIVED:
+      DateStore.replaceTodo(payload.todo)
       DateStore.__emitChange()
       break
   }

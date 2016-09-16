@@ -1,5 +1,6 @@
 import AppDispatcher from '../dispatcher/dispatcher'
 import ListConstants from '../constants/list_constants'
+import DateConstants from '../constants/date_constants'
 
 const ListActions = {
   listsReceived (lists) {
@@ -30,10 +31,14 @@ const ListActions = {
     })
   },
 
-// TODO separate to TodoActions
+// TODO separate to TodoActions and DateConstants import @ top
   toggleDone (todo) {
+    const actionType = todo.list_id ?
+      ListConstants.TODO_RECEIVED :
+      DateConstants.TODO_RECEIVED
+
     AppDispatcher.dispatch({
-      actionType: ListConstants.TODO_RECEIVED,
+      actionType: actionType,
       todo: todo
     })
   },
