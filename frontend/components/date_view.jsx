@@ -7,63 +7,33 @@ import TodoForm from './todo_form'
 import TodoBlanks from './todo_blanks'
 
 const DateView = React.createClass({
-  focusListForm (e) {
-    e.preventDefault()
-    this.refs.listForm.focus(e)
-  },
-
   focusTodoForm (e) {
     e.preventDefault()
     this.refs.todoForm.focus(e)
   },
 
-  toggleEditing (e) {
-    e.preventDefault()
-    if (this.props.list.name === '') { return }
-    this.setState({ editing: !this.state.editing })
-  },
-
-  setEditing () {
-    this.setState({ editing: true })
-  },
-
-  deleteList (e) {
-    e.preventDefault()
-    if (this.props.viewType === 0) {
-      DateActions.deleteList(this.props.list)
-    } else {
-      DateUtil.deleteList(this.props.list)
-    }
-  },
-
   newOrExistingListTodos () {
-    const _blankTodo = { name: '', list_id: this.props.list.id }
+    const _blankTodo = { name: '', date: this.props.date.full_date }
 
-    return (this.props.list.name === '') ? (
-      <div className='list-todos'>
-        <div onClick={this.focusListForm}>
-          <TodoBlanks numBlanks='10' />
-        </div>
-      </div>
-    ) : (
+    return (
       <div className='list-todos'>
         <TodoList
-          todos={ this.props.list.todos }
+          todos={ this.props.date.todos }
           viewType={ this.props.viewType }
         />
       {
-        this.props.list.todos.length < 10 ? (
+        this.props.date.todos.length < 10 ? (
           <div>
             <div className='todo-item'>
               <TodoForm
                 ref='todoForm'
                 todo={ _blankTodo }
                 viewType={ this.props.viewType }
-                id={ (this.props.viewType === 0) ? this.props.list.todos.length : null }
+                id={ (this.props.viewType === 0) ? this.props.date.todos.length : null }
               />
             </div>
             <TodoBlanks
-              numBlanks={ 9 - this.props.list.todos.length }
+              numBlanks={ 9 - this.props.date.todos.length }
               onClick={ this.focusTodoForm }
             />
           </div>
@@ -74,14 +44,13 @@ const DateView = React.createClass({
   },
 
   render () {
-    // { this.newOrExistingListTodos() }
     return (
       <div className='list-view' style={ this.props.style }>
         <div className='list-wrapper'>
           <div className='list-name'>
             <h1>{ this.props.date.full_date }</h1>
           </div>
-          
+          { this.newOrExistingListTodos() }
         </div>
       </div>
     )

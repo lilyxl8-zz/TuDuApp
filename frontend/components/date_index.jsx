@@ -60,24 +60,12 @@ const DateIndex = React.createClass({
         {
           datesToShow.map((date, idx) => {
             return (
-              <div key={ idx }>
-                { date.full_date }
-                {
-                  date.todos.map((todo, idx) => {
-                    return (
-                      <div key={ idx }>
-                        { todo.name }
-                      </div>
-                    )
-                  })
-                }
-                <DateView
-                  key={ idx }
-                  date={ date }
-                  style={ listStyle }
-                  viewType={ 2 }
-                />
-              </div>
+              <DateView
+                key={ idx }
+                date={ date }
+                style={ listStyle }
+                viewType={ 2 }
+              />
             )
           })
         }
