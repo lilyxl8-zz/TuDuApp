@@ -1,4 +1,5 @@
 import ListActions from '../actions/list_actions'
+import TodoActions from '../actions/todo_actions'
 
 const ListUtil = {
   fetchUserLists: () => {
@@ -55,7 +56,7 @@ const ListUtil = {
       dataType: 'json',
       data: { todo: todo },
       success: (todo) => {
-        ListActions.createTodo(todo)
+        TodoActions.create(todo)
       }
     })
   },

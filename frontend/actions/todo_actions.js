@@ -2,36 +2,7 @@ import AppDispatcher from '../dispatcher/dispatcher'
 import ListConstants from '../constants/list_constants'
 import DateConstants from '../constants/date_constants'
 
-const ListActions = {
-  listsReceived (lists) {
-    AppDispatcher.dispatch({
-      actionType: ListConstants.LISTS_RECEIVED,
-      lists: lists
-    })
-  },
-
-  createList (list) {
-    AppDispatcher.dispatch({
-      actionType: ListConstants.LIST_RECEIVED,
-      list: list
-    })
-  },
-
-  updateList (list) {
-    AppDispatcher.dispatch({
-      actionType: ListConstants.LIST_RECEIVED,
-      list: list
-    })
-  },
-
-  deleteList (list) {
-    AppDispatcher.dispatch({
-      actionType: ListConstants.LIST_DELETED,
-      list: list
-    })
-  },
-
-// NEW FILE
+const TodoActions = {
 // TODO separate to TodoActions and DateConstants import @ top
   toggleDone (todo) {
     const actionType = todo.list_id ?
@@ -45,11 +16,12 @@ const ListActions = {
   },
 
   // TODO let it add to a Date
-  createTodo (todo) {
+  create (todo) {
     const actionType = todo.list_id ?
       ListConstants.TODO_RECEIVED :
       DateConstants.TODO_RECEIVED
 
+    console.log(actionType)
     AppDispatcher.dispatch({
       actionType: actionType,
       todo: todo
@@ -70,13 +42,7 @@ const ListActions = {
       actionType: ListConstants.TODO_DELETED,
       todo: todo
     })
-  },
-
-  setDemo () {
-    AppDispatcher.dispatch({
-      actionType: ListConstants.LISTS_CLEARED
-    })
   }
 }
 
-export default ListActions
+export default TodoActions

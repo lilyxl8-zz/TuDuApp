@@ -12,6 +12,12 @@ let todayIdx = new Date()
 todayIdx.setDate(todayIdx.getDate() - 2)
 todayIdx = todayIdx.toJSON().slice(0, 10)
 
+// TODO fix nav-arrow CSS
+// TODO name formatting
+// TODO createTodo 1)
+// TODO deleteTodo 2)
+// TODO arrow clicks 3)
+
 const DateIndex = React.createClass({
   getInitialState () {
     return {

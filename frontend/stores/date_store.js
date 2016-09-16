@@ -5,23 +5,17 @@ import AppDispatcher from '../dispatcher/dispatcher'
 const DateStore = new Store(AppDispatcher)
 
 let _dates = {}
-// only include a Date if it has todos!
 
 // DATEACTIONS
-// datesReceived (dates) - DONE
-// dateUpdated (date) (add a todo to it)
+// add or remove a todo to a Date
 // if a Date is emptied of to-dos, remove it from DateStore
 //  this can only happen on deleteTodo, so put a check there
 
 // CALSTORE
-// 1) populateDates DONE
-// 4) replaceDate (replaceTodo?)
+// 1) deleteTodo
 // removeDate (date) – triggered by deleteTodo
-// 3) clearDates DONE
-// 2) all DONE
 
 // DATEINDEX
-// show 1 week from todayIdx
 //  write DateStore.increment
 
 DateStore.increment = (start, move) => {

@@ -14,7 +14,8 @@ class Api::TodosController < ApplicationController
     @todo = current_user.todos.new(todo_params)
     if @todo.save
       # TODO remove CalDate check
-      if todo_params[:date]
+      date = todo_params[:date]
+      if date
         CalDate.find_or_create(current_user, date)
       end
       render :show

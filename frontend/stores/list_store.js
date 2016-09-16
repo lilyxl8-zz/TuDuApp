@@ -1,7 +1,7 @@
 import { Store } from 'flux/utils'
 import ListConstants from '../constants/list_constants'
 import AppDispatcher from '../dispatcher/dispatcher'
-import demoData from './demo.json'
+import demoData from './list_demo.json'
 
 const ListStore = new Store(AppDispatcher)
 
