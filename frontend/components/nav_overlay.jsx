@@ -47,7 +47,6 @@ const NavOverlay = React.createClass({
             </div>
           ) : (
             <div className='nav-overlay'>
-              <Link to='/'>Home</Link>
               <Link to='/signup'>Sign up</Link>
               <Link to='/signin'>Sign in</Link>
             </div>

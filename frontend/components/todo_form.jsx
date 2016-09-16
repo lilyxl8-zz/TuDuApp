@@ -4,13 +4,13 @@ import ListActions from '../actions/list_actions'
 
 const TodoForm = React.createClass({
   propTypes: {
-    isDemo: React.PropTypes.bool
+    // viewType: React.PropTypes.n
   },
 
   getInitialState () {
     return {
       name: this.props.todo.name,
-      handler: this.props.isDemo ? ListActions : ListUtil
+      handler: this.props.viewType === 0 ? ListActions : ListUtil
     }
   },
 
@@ -31,7 +31,7 @@ const TodoForm = React.createClass({
       this.state.handler.updateTodo(newTodo)
       this.props.toggleEditing && this.props.toggleEditing()
     } else {
-      if (this.props.isDemo) {
+      if (this.props.viewType === 0) {
         newTodo.id = this.props.id
       }
       this.state.handler.createTodo(newTodo)

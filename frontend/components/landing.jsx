@@ -42,7 +42,7 @@ const Landing = React.createClass({
               <div className='landing-demo'>
                 <ListIndex
                   showCount={ 5 }
-                  isDemo={ true }
+                  viewType={ 0 }
                 />
                 <div className="cta">
                   <h3>Ready to get stuff done?</h3>

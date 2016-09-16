@@ -7,7 +7,7 @@ const ListForm = React.createClass({
   getInitialState () {
     return {
       name: this.props.list.name,
-      listHandler: this.props.isDemo ? ListActions : ListUtil
+      listHandler: this.props.viewType === 0 ? ListActions : ListUtil
     }
   },
 
@@ -27,7 +27,7 @@ const ListForm = React.createClass({
     newList.name = this.state.name
     if (this.props.isForm && this.state.name !== '') {
       this.state.listHandler.createList(newList)
-      if (!this.props.isDemo) { this.setState({ name: '' }) }
+      if (this.props.viewType === 1) { this.setState({ name: '' }) }
     } else {
       if (this.props.list.name === '') { return }
       this.state.listHandler.updateList(newList)

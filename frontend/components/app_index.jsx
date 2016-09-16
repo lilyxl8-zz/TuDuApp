@@ -29,6 +29,7 @@ const AppIndex = React.createClass({
       <div className='bg-app'>
         <DateIndex />
         <ListIndex
+          viewType={ 1 }
           showCount={ 5 }
         />
       </div>

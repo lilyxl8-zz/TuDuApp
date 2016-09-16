@@ -37,7 +37,7 @@ const ListView = React.createClass({
 
   deleteList (e) {
     e.preventDefault()
-    if (this.props.isDemo) {
+    if (this.props.viewType === 0) {
       ListActions.deleteList(this.props.list)
     } else {
       ListUtil.deleteList(this.props.list)
@@ -57,7 +57,7 @@ const ListView = React.createClass({
       <div className='list-todos'>
         <TodoList
           todos={ this.props.list.todos }
-          isDemo={ this.props.isDemo }
+          viewType={ this.props.viewType }
         />
       {
         this.props.list.todos.length < 10 ? (
@@ -66,8 +66,8 @@ const ListView = React.createClass({
               <TodoForm
                 ref='todoForm'
                 todo={ _blankTodo }
-                isDemo={ this.props.isDemo }
-                id={ (this.props.isDemo) ? this.props.list.todos.length : null }
+                viewType={ this.props.viewType }
+                id={ (this.props.viewType === 0) ? this.props.list.todos.length : null }
               />
             </div>
             <TodoBlanks
@@ -90,7 +90,7 @@ const ListView = React.createClass({
               <ListForm
                 list={this.props.list}
                 ref='listForm'
-                isDemo={ this.props.isDemo }
+                viewType={ this.props.viewType }
                 toggleEditing={this.toggleEditing}
                 setEditing={this.setEditing}
                 isForm={this.props.isForm}

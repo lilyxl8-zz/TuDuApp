@@ -16,7 +16,7 @@ import ListView from './list_view'
 const ListIndex = React.createClass({
   propTypes: {
     // 0 demo-lists, 1 lists, 2 calendar
-    // isDemo => viewType true = 0, false = 1, then add switch for 2
+    // viewType demo 0, false = 1, then add switch for 2
 
     viewType: React.PropTypes.number,
     showCount: React.PropTypes.number
@@ -30,12 +30,12 @@ const ListIndex = React.createClass({
   },
 
   setListStore () {
-    if (this.props.isDemo) { ListStore.setDemo() }
+    if (this.props.viewType === 0) { ListStore.setDemo() }
     return ListStore.all()
   },
 
   componentDidMount () {
-    if (!this.props.isDemo) { ListUtil.fetchUserLists() }
+    if (this.props.viewType === 1) { ListUtil.fetchUserLists() }
     this.listStoreToken = ListStore.addListener(this._updateLists)
   },
 
@@ -93,7 +93,7 @@ const ListIndex = React.createClass({
       <div className='lists-container'>
       {
         listsToShow.map((list, idx) => {
-          const keyVal = this.props.isDemo ? this.state.index + idx : (
+          const keyVal = this.props.viewType === 0 ? this.state.index + idx : (
             (list.id) ? (list.id) : 0 )
           const isForm = (this.state.index + idx === this.state.lists.length - 1)
 
@@ -102,7 +102,7 @@ const ListIndex = React.createClass({
               key={ keyVal }
               list={ list }
               style={ listStyle }
-              isDemo={ this.props.isDemo }
+              viewType={ this.props.viewType }
               isForm={ isForm }
             />
           )

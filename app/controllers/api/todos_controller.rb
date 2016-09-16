@@ -1,6 +1,6 @@
 class Api::TodosController < ApplicationController
   before_action :require_logged_in
-  
+
   def index
     @todos = Todo.all
     render :index
@@ -14,7 +14,7 @@ class Api::TodosController < ApplicationController
     @todo = current_user.todos.new(todo_params)
     if @todo.save
       # TODO remove CalDate check
-      if todo_params.date
+      if todo_params[:date]
         CalDate.find_or_create(current_user, date)
       end
       render :show

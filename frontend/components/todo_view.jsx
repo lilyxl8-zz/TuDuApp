@@ -8,7 +8,7 @@ const TodoView = React.createClass({
     return {
       name: this.props.todo.name,
       editing: false,
-      handler: this.props.isDemo ? ListActions : ListUtil
+      handler: this.props.viewType === 0 ? ListActions : ListUtil
     }
   },
 
@@ -37,7 +37,7 @@ const TodoView = React.createClass({
           <TodoForm
             todo={ this.props.todo }
             toggleEditing={ this.toggleEditing }
-            isDemo={ this.props.isDemo }
+            viewType={ this.props.viewType }
           />
         </div>
        :
