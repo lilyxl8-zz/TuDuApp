@@ -4,6 +4,7 @@ import React from 'react'
 import DateStore from '../stores/date_store'
 
 import DateUtil from '../utils/date_util'
+import DateView from './date_view'
 
 // returns UTC date, TODO get user's current timezone
 // const today = new Date().toJSON().slice(0, 10)
@@ -52,7 +53,7 @@ const DateIndex = React.createClass({
         datesToShow.push({ full_date: dateIdxs[i], todos: [] })
     }
 
-    // const listStyle = { width: 100 / this.props.showCount + '%' }
+    const listStyle = { width: 100 / this.props.showCount + '%' }
     console.log(datesToShow)
     return (
       <div className='lists-container'>
@@ -70,6 +71,12 @@ const DateIndex = React.createClass({
                     )
                   })
                 }
+                <DateView
+                  key={ idx }
+                  date={ date }
+                  style={ listStyle }
+                  viewType={ 2 }
+                />
               </div>
             )
           })
