@@ -53,7 +53,7 @@ const DateView = React.createClass({
         <div className='list-wrapper'>
           <div className='list-name'>
             <h3>{ DateConstants.weekDays[curDate.getDay()] }</h3>
-            <h2>{ DateConstants.monthsNames[m - 1] } { d }, { y }</h2>
+            <h2>{ d } { DateConstants.monthsNames[m - 1] } { y }</h2>
           </div>
           { this.newOrExistingListTodos() }
         </div>

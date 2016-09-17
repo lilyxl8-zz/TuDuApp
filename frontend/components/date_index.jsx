@@ -13,11 +13,11 @@ let currDate = new Date()
 currDate.setDate(todayDate.getDate() - 2)
 
 // TODO today button
-//
 // top divider - put quotes
 // navigate by calendar
 // handle login errors
-// add demo login EASY
+// add demo login EASY 1)
+// multiline comment box for ListForm
 
 const DateIndex = React.createClass({
   getInitialState () {
@@ -43,14 +43,12 @@ const DateIndex = React.createClass({
   advanceOne (e) {
     e.preventDefault()
     currDate.setDate(currDate.getDate() + 1)
-    console.log(currDate)
     this.setState({ idxDate: currDate })
   },
 
   retreatOne (e) {
     e.preventDefault()
     currDate.setDate(currDate.getDate() - 1)
-    console.log(currDate)
     this.setState({ idxDate: currDate })
   },
 
@@ -75,7 +73,6 @@ const DateIndex = React.createClass({
     }
 
     const listStyle = { width: 100 / this.props.showCount + '%' }
-    console.log(datesToShow)
     return (
       <div className='lists-container'>
         {

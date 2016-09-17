@@ -7,17 +7,15 @@ import ListUtil from '../utils/list_util'
 import ListView from './list_view'
 
 // TODO refactor DOM css
-// TODO refactor router pushes for loggedIn
 
 // TODO rewrite components as ES6 classes
-// TODO fix demo autofocus on landing
+// TODO fix autofocus in app & landing
 // TODO for draggable, give lists a position idx
 
 const ListIndex = React.createClass({
   propTypes: {
     // 0 demo-lists, 1 lists, 2 calendar
     // viewType demo 0, false = 1, then add switch for 2
-
     viewType: React.PropTypes.number,
     showCount: React.PropTypes.number
   },
