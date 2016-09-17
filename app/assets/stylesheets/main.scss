@@ -11,6 +11,7 @@ $dark-teal-color: #00A37D;
 $tudu-gradient: linear-gradient(90deg, #032555, #00CFDD);
 
 $padding: 20px;
+$small-padding: 6px;
 $border-radius: 12px;
 $button-padding: 5px;
 
@@ -114,11 +115,12 @@ h2 {
   text-align: center;
 }
 
-.cta h2 {
-  font-size: 1.5rem;
-  letter-spacing: 3px;
+.cta, .title {
+  h2 {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+  }
 }
-
 .subheader {
   padding-bottom: 2.5rem;
 }
@@ -230,14 +232,14 @@ button:hover {
 
 .nav-left {
   left: 0px;
-  margin-left: $padding;
+  margin-left: $small-padding;
   padding-right: $padding;
 }
 
 .nav-right {
   right: 0px;
   padding-left: $padding;
-  margin-right: $padding;
+  margin-right: $small-padding;
   text-align: right;
   img {
     transform: rotate(180deg);
@@ -315,12 +317,15 @@ button:hover {
   }
   h2 {
     font-size: 1rem;
+    color: $dark-gray-color;
   }
   h3 {
     text-transform: uppercase;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-bottom: $small-padding;
+    word-break: break-all;
+    max-height: 8ex;
   }
 }
 

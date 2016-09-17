@@ -75,7 +75,7 @@ h2 {
   font-weight: 300;
   text-align: center; }
 
-.cta h2 {
+.cta h2, .title h2 {
   font-size: 1.5rem;
   letter-spacing: 3px; }
 
@@ -168,13 +168,13 @@ button:hover {
 
 .nav-left {
   left: 0px;
-  margin-left: 20px;
+  margin-left: 6px;
   padding-right: 20px; }
 
 .nav-right {
   right: 0px;
   padding-left: 20px;
-  margin-right: 20px;
+  margin-right: 6px;
   text-align: right; }
   .nav-right img {
     transform: rotate(180deg); }
@@ -235,12 +235,15 @@ button:hover {
     text-transform: uppercase;
     opacity: .5; }
   .date-name h2, .list-name h2 {
-    font-size: 1rem; }
+    font-size: 1rem;
+    color: #6B6B6B; }
   .date-name h3, .list-name h3 {
     text-transform: uppercase;
-    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; }
+    text-overflow: ellipsis;
+    margin-bottom: 6px;
+    word-break: break-all;
+    max-height: 8ex; }
 
 .delete-list {
   display: none;

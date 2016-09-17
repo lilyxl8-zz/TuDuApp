@@ -12,6 +12,13 @@ let todayDate = new Date()
 let currDate = new Date()
 currDate.setDate(todayDate.getDate() - 2)
 
+// TODO today button
+//
+// top divider - put quotes
+// navigate by calendar
+// handle login errors
+// add demo login EASY
+
 const DateIndex = React.createClass({
   getInitialState () {
     return {
@@ -93,6 +100,10 @@ const DateIndex = React.createClass({
         <div className={ 'nav-arrow nav-left shown' }
           onClick={ this.retreatOne }>
           <img src='images/arrow.svg'></img>
+        </div>
+
+        <div className='list-carousel-dots'>
+          &#8220;Stay in your lane.&#8221;
         </div>
 
         <div className='lists-container-scroll'>
