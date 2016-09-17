@@ -25,11 +25,11 @@ $letter-spacing: 2px;
 
 /* RESET */
 
-html, body, header, nav, h1, a,
+html, body, header, nav, h3, a,
 ul, li, strong, main, button, i,
-section, img, div, h2, p, form,
+section, img, div, h1, p, form,
 fieldset, label, input, textarea,
-span, article, footer, time, small, h3 {
+span, article, footer, time, small, h2 {
   font-size: inherit;
   color: inherit;
   font-family: inherit;
@@ -109,10 +109,13 @@ a {
   }
 }
 
-h3 {
-  font-size: 1.5rem;
+h2 {
   font-weight: 300;
   text-align: center;
+}
+
+.cta h2 {
+  font-size: 1.5rem;
   letter-spacing: 3px;
 }
 
@@ -202,17 +205,23 @@ button:hover {
   bottom: 0;
 }
 
-.list-index {
+.date-index, .list-index {
   margin: ($list-vert-padding / 2) $padding $list-vert-padding;
+  display: block;
+  position: relative;
+  h1 {
+
+  }
 }
 
 .nav-arrow {
   position: absolute;
   top: 32px;
-  padding-top: 210px;
+  padding-top: 180px;
   margin-top: $list-vert-padding;
   transition: opacity 0.5s ease;
   opacity: 0;
+  display: block;
 }
 
 .shown:hover {
@@ -290,13 +299,12 @@ button:hover {
   border-left: 1px solid $light-gray-color;
 }
 
-.list-name {
+.date-name, .list-name {
   cursor: default;
   height: 54px;
   margin: 0 $list-padding $list-name-padding;
   text-align: center;
   font-size: 1.2rem;
-  text-transform: uppercase;
   input {
     margin-bottom: 4px;
     font-weight: 700;
@@ -305,7 +313,11 @@ button:hover {
     text-transform: uppercase;
     opacity: .5;
   }
-  h1 {
+  h2 {
+    font-size: 1rem;
+  }
+  h3 {
+    text-transform: uppercase;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -1,10 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);/* MIXINS */
 /* RESET */
-html, body, header, nav, h1, a,
+html, body, header, nav, h3, a,
 ul, li, strong, main, button, i,
-section, img, div, h2, p, form,
+section, img, div, h1, p, form,
 fieldset, label, input, textarea,
-span, article, footer, time, small, h3 {
+span, article, footer, time, small, h2 {
   font-size: inherit;
   color: inherit;
   font-family: inherit;
@@ -71,10 +71,12 @@ a {
   .title img {
     margin: 0 auto 20px; }
 
-h3 {
-  font-size: 1.5rem;
+h2 {
   font-weight: 300;
-  text-align: center;
+  text-align: center; }
+
+.cta h2 {
+  font-size: 1.5rem;
   letter-spacing: 3px; }
 
 .subheader {
@@ -147,16 +149,19 @@ button:hover {
   width: 100%;
   bottom: 0; }
 
-.list-index {
-  margin: 1.95rem 20px 3.9rem; }
+.date-index, .list-index {
+  margin: 1.95rem 20px 3.9rem;
+  display: block;
+  position: relative; }
 
 .nav-arrow {
   position: absolute;
   top: 32px;
-  padding-top: 210px;
+  padding-top: 180px;
   margin-top: 3.9rem;
   transition: opacity 0.5s ease;
-  opacity: 0; }
+  opacity: 0;
+  display: block; }
 
 .shown:hover {
   opacity: 0.5; }
@@ -216,21 +221,23 @@ button:hover {
 .list-view:first-of-type .list-wrapper {
   border-left: 1px solid #e2e2e2; }
 
-.list-name {
+.date-name, .list-name {
   cursor: default;
   height: 54px;
   margin: 0 8px 2rem;
   text-align: center;
-  font-size: 1.2rem;
-  text-transform: uppercase; }
-  .list-name input {
+  font-size: 1.2rem; }
+  .date-name input, .list-name input {
     margin-bottom: 4px;
     font-weight: 700;
     width: 100%;
     text-align: center;
     text-transform: uppercase;
     opacity: .5; }
-  .list-name h1 {
+  .date-name h2, .list-name h2 {
+    font-size: 1rem; }
+  .date-name h3, .list-name h3 {
+    text-transform: uppercase;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; }

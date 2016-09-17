@@ -29,7 +29,7 @@ const Landing = React.createClass({
       <div>
         <div className='title'>
           <img src='images/logo.png' />
-          <h3>Just to-dos. No filler.</h3>
+          <h2>Just to-dos. No filler.</h2>
         </div>
         {
           this.state.isLoggedIn ? (
@@ -47,7 +47,7 @@ const Landing = React.createClass({
                   viewType={ 0 }
                 />
                 <div className="cta">
-                  <h3>Ready to get stuff done?</h3>
+                  <h2>Ready to get stuff done?</h2>
                   <Link to="/signup">
                     <button>Sign up!</button>
                   </Link>

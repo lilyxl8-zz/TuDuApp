@@ -8,18 +8,14 @@ import DateView from './date_view'
 
 // returns UTC date, TODO get user's current timezone
 // const today = new Date().toJSON().slice(0, 10)
-let todayIdx = new Date()
-todayIdx.setDate(todayIdx.getDate() - 2)
-todayIdx = todayIdx.toJSON().slice(0, 10)
-
-// TODO fix nav-arrow CSS
-// TODO name formatting
-// TODO arrow clicks 3)
+let todayDate = new Date()
+let currDate = new Date()
+currDate.setDate(todayDate.getDate() - 2)
 
 const DateIndex = React.createClass({
   getInitialState () {
     return {
-      index: todayIdx,
+      idxDate: currDate,
       dates: DateStore.all()
     }
   },
@@ -37,10 +33,24 @@ const DateIndex = React.createClass({
     this.dateStoreToken.remove()
   },
 
+  advanceOne (e) {
+    e.preventDefault()
+    currDate.setDate(currDate.getDate() + 1)
+    console.log(currDate)
+    this.setState({ idxDate: currDate })
+  },
+
+  retreatOne (e) {
+    e.preventDefault()
+    currDate.setDate(currDate.getDate() - 1)
+    console.log(currDate)
+    this.setState({ idxDate: currDate })
+  },
+
   showCarouselItems () {
     let dateIdxs = []
     let datesToShow = []
-    let date = new Date()
+    let date = this.state.idxDate
     let d = date.getDate()
     let m = date.getMonth()
     let y = date.getFullYear()
@@ -79,11 +89,8 @@ const DateIndex = React.createClass({
 
   render () {
     return (
-      <div className='list-index'>
-        <div className={'nav-arrow nav-left' +
-            ((0 === 0) ?
-            ' shown' : '')
-          }
+      <div className='date-index'>
+        <div className={ 'nav-arrow nav-left shown' }
           onClick={ this.retreatOne }>
           <img src='images/arrow.svg'></img>
         </div>
@@ -93,11 +100,7 @@ const DateIndex = React.createClass({
             this.showCarouselItems()
           }
         </div>
-        <div className={
-            'nav-arrow nav-right' +
-            ((0 === 0) ?
-            ' shown' : '')
-          }
+        <div className={ 'nav-arrow nav-right shown' }
           onClick={ this.advanceOne }>
           <img src='images/arrow.svg'></img>
         </div>

@@ -5,9 +5,9 @@ const ListName = React.createClass({
   render () {
     return (
       <div className='list-name'>
-        <h1 onClick={ this.props.toggleEditing }>
+        <h3 onClick={ this.props.toggleEditing }>
           { this.props.list.name }
-        </h1>
+        </h3>
         <a onClick={ this.props.deleteList } className='delete-list'></a>
       </div>
     )

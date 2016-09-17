@@ -1,10 +1,8 @@
 import React from 'react'
-import DateUtil from '../utils/list_util'
-import DateActions from '../actions/list_actions'
-import ListName from './list_name'
 import TodoList from './todo_list'
 import TodoForm from './todo_form'
 import TodoBlanks from './todo_blanks'
+import DateConstants from '../constants/date_constants'
 
 const DateView = React.createClass({
   focusTodoForm (e) {
@@ -44,11 +42,18 @@ const DateView = React.createClass({
   },
 
   render () {
+    let date = this.props.date.full_date.split('-')
+    let d = date[2]
+    let m = parseInt(date[1])
+    let y = date[0]
+    let curDate = new Date(y, m, d)
+
     return (
       <div className='list-view' style={ this.props.style }>
         <div className='list-wrapper'>
           <div className='list-name'>
-            <h1>{ this.props.date.full_date }</h1>
+            <h3>{ DateConstants.weekDays[curDate.getDay()] }</h3>
+            <h2>{ DateConstants.monthsNames[m - 1] } { d }, { y }</h2>
           </div>
           { this.newOrExistingListTodos() }
         </div>
