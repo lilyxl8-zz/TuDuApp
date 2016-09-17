@@ -6,24 +6,6 @@ const DateStore = new Store(AppDispatcher)
 
 let _dates = {}
 
-// DateStore.replaceTodo = (todo) => {
-//   let replaced = false
-//   let _todos = _dates[todo.date].todos
-//
-//   _dates[todo.date].todos = _todos.map((el) => {
-//     if (el.id === todo.id) {
-//       replaced = true
-//       return todo
-//     } else {
-//       return el
-//     }
-//   })
-//
-//   if (!replaced) {
-//     _dates[todo.date].todos.push(todo)
-//   }
-// }
-
 DateStore.replaceDate = (todo) => {
   _dates[todo.date] = todo.cal_date
 }

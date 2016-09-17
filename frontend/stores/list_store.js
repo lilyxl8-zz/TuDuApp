@@ -23,11 +23,6 @@ ListStore.replaceList = (list) => {
       return
     }
   }
-  // USE LIST HASHES INSTEAD?
-  // const listKey = list.id
-  // if (_lists.listKey) {
-  //   _lists.listKey = list
-  // }
   _lists.splice(_lists.length - 1, 0, list)
   _lists[_lists.length - 1].name = ''
 }
@@ -78,12 +73,6 @@ ListStore.populateLists = (lists) => {
     name: '',
     todos: []
   })
-  // for (let i = 0; i < lists.length; i++) {
-  //   const listKey = lists[i].id
-  //   _lists[listKey] = lists[i]
-  // }
-  // _lists[0] = { name: '', todos: [] }
-  // console.log(_lists)
   _isDemo = false
 }
 
