@@ -14,7 +14,8 @@ user to easily manipulate them. Upon submission, the todo is defocused, creating
 a smooth editing UX. This is accomplished through an on click event that shows
 the form as an input field rather than just text.
 
-```this.state.editing ? (
+```
+this.state.editing ? (
   <form className='name-form' onSubmit={this.handleSubmit}>
   <input
     value={this.state.list.name}
@@ -36,7 +37,8 @@ and the form input field is cleared. This process moves the form down to the
 next line in preparation for adding another todo. The following is the submit
 function for the new todo, using the form.
 
-```handleSubmit (e) {
+```
+handleSubmit (e) {
   e.preventDefault();
   ListUtil.createTodo(this.state.todo);
   let newTodo = this.state.todo;
